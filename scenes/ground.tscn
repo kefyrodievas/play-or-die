@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://nfq8wnvn6nyg"]
+
+[ext_resource type="Texture2D" uid="uid://c446ldkc08hww" path="res://assets/img/background/Screenshot 2026-02-22 011909.png" id="1_pybca"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pybca"]
+size = Vector2(1202.375, 60)
+
+[node name="Ground" type="Node2D" unique_id=1642867878]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=123323233]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=622060780]
+position = Vector2(568, 623.99994)
+scale = Vector2(0.6593802, 0.39261755)
+texture = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1454691971]
+position = Vector2(563.25, 624)
+shape = SubResource("RectangleShape2D_pybca")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=168575163]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1591437731]
+position = Vector2(1751.9999, 624)
+scale = Vector2(0.6593802, 0.39261755)
+texture = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=964778137]
+position = Vector2(1750.8125, 624)
+shape = SubResource("RectangleShape2D_pybca")

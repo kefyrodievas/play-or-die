@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://lbdb1xbd2i0i"]
+
+[ext_resource type="PackedScene" uid="uid://dy7tu3cn6asbx" path="res://scenes/bg.tscn" id="1_sugp2"]
+[ext_resource type="PackedScene" uid="uid://nfq8wnvn6nyg" path="res://scenes/ground.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
+
+[node name="Main" type="Node2D" unique_id=599958050]
+
+[node name="Bg" parent="." unique_id=445599313 instance=ExtResource("1_sugp2")]
+
+[node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("3_tbgi4")]
+process_priority = 1
+position = Vector2(118, 518)
+
+[node name="Ground" parent="." unique_id=330768187 instance=ExtResource("2_jyhfs")]
+top_level = true
