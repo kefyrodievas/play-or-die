@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ce0qhlmjkphle"]
 
 [ext_resource type="Texture2D" uid="uid://bdfrpdwi6howi" path="res://assets/img/characters/samurai/IDLE.png" id="1_tri0m"]
+[ext_resource type="Script" uid="uid://cxm47au8nr1wf" path="res://scenes/samurai.gd" id="1_v3kpt"]
 [ext_resource type="Texture2D" uid="uid://8kcbad0pe0im" path="res://assets/img/characters/samurai/RUN.png" id="2_v3kpt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfi5h"]
@@ -202,7 +203,9 @@ animations = [{
 height = 30.5
 
 [node name="Samurai" type="CharacterBody2D" unique_id=1828783833]
+z_index = 1
 scale = Vector2(4, 4)
+script = ExtResource("1_v3kpt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=240678399]
 texture_filter = 1
