@@ -4,7 +4,7 @@ const START_POS := Vector2i(118, 518)
 const CAM_START_POS := Vector2i(0,0)
 
 var speed : float
-const START_SPEED : float = 10.0
+const START_SPEED : float = 0.0
 const MAX_SPEED : int = 25
 var screen_size : Vector2i
 
