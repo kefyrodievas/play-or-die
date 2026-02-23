@@ -209,11 +209,13 @@ script = ExtResource("1_v3kpt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=240678399]
 texture_filter = 1
-position = Vector2(-6.5, -14.25)
+position = Vector2(-2.25, -13.25)
 sprite_frames = SubResource("SpriteFrames_qm0jt")
 animation = &"idle"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.66203594
 
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=647481060]
-position = Vector2(-0.25, 3.75)
+position = Vector2(-0.75, 4)
 shape = SubResource("CapsuleShape2D_visgd")
