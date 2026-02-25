@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	pass # Replace with function body.
 
-var speed := 300  # pixels per second
+var speed := 0  # pixels per second
 
 func _process(delta):
 	pass#$Parallax2D.scroll_offset.x += speed

@@ -13,7 +13,6 @@ script = ExtResource("1_5vsr6")
 process_priority = 1
 texture_filter = 1
 repeat_size = Vector2(320, 0)
-autoscroll = Vector2(-20, 0)
 repeat_times = 3
 ignore_camera_scroll = true
 
@@ -23,10 +22,21 @@ texture_repeat = 3
 position = Vector2(160, 90)
 texture = ExtResource("1_qd2e1")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=854555812]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(1440, 90)
+texture = ExtResource("1_qd2e1")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D" unique_id=230996539]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1120, 90)
+texture = ExtResource("1_qd2e1")
+
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1443830690]
 texture_filter = 1
 repeat_size = Vector2(320, 0)
-autoscroll = Vector2(-40, 0)
 repeat_times = 3
 ignore_camera_scroll = true
 
@@ -36,10 +46,21 @@ texture_repeat = 3
 position = Vector2(160, 90)
 texture = ExtResource("2_5vsr6")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=1038522760]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(1440, 90)
+texture = ExtResource("2_5vsr6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D2" unique_id=473107181]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1120, 90)
+texture = ExtResource("2_5vsr6")
+
 [node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1648702588]
 texture_filter = 1
 repeat_size = Vector2(320, 0)
-autoscroll = Vector2(-60, 0)
 repeat_times = 3
 ignore_camera_scroll = true
 
@@ -47,4 +68,16 @@ ignore_camera_scroll = true
 texture_filter = 1
 texture_repeat = 3
 position = Vector2(160.27779, 90)
+texture = ExtResource("3_w68nc")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3" unique_id=1870055108]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(1440, 90)
+texture = ExtResource("3_w68nc")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Parallax2D3" unique_id=224772461]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(-1120, 90)
 texture = ExtResource("3_w68nc")
