@@ -1,30 +1,46 @@
 extends CharacterBody2D
 
-
 const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 
 
+# SCORE SYSTEM
+var score = 0
+var score_multiplier = 1
+var multiplier_time = 10.0
+
+# JUMP SYSTEM
+var max_jumps = 1
+var jump_count = 0
+var double_jump_duration = 20.0
+
+
 func _physics_process(delta: float) -> void:
 	
-	# Add animation
+	# ANIMATION
 	if velocity.x > 1 or velocity.x < -1:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
-		
-	# Add the gravity.
+	
+	
+	# GRAVITY
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-
-	# Handle jump.
-	if Input.is_action_pressed("Jump") and is_on_floor():
+	# Reset jumps on floor
+	if is_on_floor():
+		jump_count = 0
+	
+	# Jump logic
+	if Input.is_action_just_pressed("Jump") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+		jump_count += 1
+	
+	
+	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -32,10 +48,34 @@ func _physics_process(delta: float) -> void:
 		
 		if abs(velocity.x) < 1:
 			velocity.x = 0
-
+	
 	move_and_slide()
 	
 	if direction == 1.0:
 		$AnimatedSprite2D.flip_h = false
 	elif direction == -1.0:
 		$AnimatedSprite2D.flip_h = true
+
+# SCORE
+func add_score(amount):
+	score += amount * score_multiplier
+	print("Score: ", score)
+
+
+func activate_score_doubler():
+	score_multiplier = 2
+	$ScoreBoostTimer.start(multiplier_time)
+
+
+func _on_score_boost_timer_timeout():
+	score_multiplier = 1
+
+
+# DOUBLE JUMP
+func activate_double_jump():
+	max_jumps = 2
+	$DoubleJumpTimer.start(double_jump_duration)
+
+
+func _on_double_jump_timer_timeout():
+	max_jumps = 1

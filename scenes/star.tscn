@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dn2y1gi02oqyv"]
+
+[ext_resource type="Script" uid="uid://wwa2f3gm7r3b" path="res://scenes/star.gd" id="1_ef0hr"]
+[ext_resource type="Texture2D" uid="uid://clb7nlyxrdr86" path="res://assets/img/items/star_12.png" id="1_mcqwg"]
+[ext_resource type="Texture2D" uid="uid://bq3u4qbt51q24" path="res://assets/img/items/star64_12.png" id="2_j6vao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6vao"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef0hr"]
+atlas = ExtResource("2_j6vao")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ef0hr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6vao")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ef0hr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8d8bx"]
+radius = 24.0
+
+[node name="Star" type="Area2D" unique_id=2096763841]
+script = ExtResource("1_ef0hr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1133630517]
+sprite_frames = SubResource("SpriteFrames_ef0hr")
+autoplay = "default"
+frame_progress = 0.1760448
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=133385390]
+shape = SubResource("CircleShape2D_8d8bx")

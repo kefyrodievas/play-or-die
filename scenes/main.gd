@@ -24,7 +24,8 @@ func _process(delta: float) -> void:
 		
 	var Player_velocity = $Samurai.velocity.x
 	
-	print($Samurai.velocity.x)
+	#print($Samurai.velocity.x)
+	#print($Samurai.score)
 	
 	# Farthest background (moves slowest)
 	$Bg/Parallax2D.scroll_offset.x -= Player_velocity * 0.05 * delta

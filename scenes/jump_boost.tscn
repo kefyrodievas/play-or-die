@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://q5fbfmrildw4"]
+
+[ext_resource type="Script" uid="uid://dkd4u0lal5prt" path="res://scenes/jump_boost.gd" id="1_lew4j"]
+[ext_resource type="Texture2D" uid="uid://dx5f8qmoiv1ps" path="res://assets/img/items/boost64_1025.png" id="1_ow3vr"]
+[ext_resource type="Texture2D" uid="uid://cvlk4jogak7eq" path="res://assets/img/items/boost64_1029.png" id="3_f3vir"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sd06"]
+atlas = ExtResource("1_ow3vr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow3vr"]
+atlas = ExtResource("3_f3vir")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3vwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sd06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow3vr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aa5we"]
+radius = 32.0
+
+[node name="Jump_boost" type="Area2D" unique_id=1781381766]
+script = ExtResource("1_lew4j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1232439978]
+sprite_frames = SubResource("SpriteFrames_r3vwk")
+autoplay = "default"
+frame = 1
+frame_progress = 0.253596
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=887389156]
+shape = SubResource("CircleShape2D_aa5we")

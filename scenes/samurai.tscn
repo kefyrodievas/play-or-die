@@ -308,3 +308,7 @@ frame_progress = 0.9912272
 [node name="RunCol" type="CollisionShape2D" parent="." unique_id=647481060]
 position = Vector2(-0.75, 4)
 shape = SubResource("CapsuleShape2D_visgd")
+
+[node name="ScoreBoostTimer" type="Timer" parent="." unique_id=622969652]
+
+[node name="DoubleJumpTimer" type="Timer" parent="." unique_id=63298662]

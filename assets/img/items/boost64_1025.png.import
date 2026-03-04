@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://htb644v4m21a"
-path="res://.godot/imported/groundTilemap_64px.png-f163a87a5927ad3079c66e208f92c84c.ctex"
+uid="uid://dx5f8qmoiv1ps"
+path="res://.godot/imported/boost64_1025.png-07aa2e58fd5857f2f8232deb1b097337.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/background/groundTilemap_64px.png"
-dest_files=["res://.godot/imported/groundTilemap_64px.png-f163a87a5927ad3079c66e208f92c84c.ctex"]
+source_file="res://assets/img/items/boost64_1025.png"
+dest_files=["res://.godot/imported/boost64_1025.png-07aa2e58fd5857f2f8232deb1b097337.ctex"]
 
 [params]
 
