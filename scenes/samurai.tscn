@@ -310,5 +310,10 @@ position = Vector2(-0.75, 4)
 shape = SubResource("CapsuleShape2D_visgd")
 
 [node name="ScoreBoostTimer" type="Timer" parent="." unique_id=622969652]
+one_shot = true
 
 [node name="DoubleJumpTimer" type="Timer" parent="." unique_id=63298662]
+one_shot = true
+
+[connection signal="timeout" from="ScoreBoostTimer" to="." method="_on_score_boost_timer_timeout"]
+[connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]

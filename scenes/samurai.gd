@@ -56,6 +56,7 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1.0:
 		$AnimatedSprite2D.flip_h = true
 
+
 # SCORE
 func add_score(amount):
 	score += amount * score_multiplier
@@ -64,18 +65,24 @@ func add_score(amount):
 
 func activate_score_doubler():
 	score_multiplier = 2
+	#$AnimatedSprite2D.modulate = Color(1, 1, 0)
 	$ScoreBoostTimer.start(multiplier_time)
 
 
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
+	#$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 
 # DOUBLE JUMP
 func activate_double_jump():
 	max_jumps = 2
-	$DoubleJumpTimer.start(double_jump_duration)
-
+	$DoubleJumpTimer.wait_time = double_jump_duration
+	#$AnimatedSprite2D.modulate = Color(0, 1, 0) # GREEN for score boost
+	$DoubleJumpTimer.start()
 
 func _on_double_jump_timer_timeout():
+	#print("Double jump ended")
 	max_jumps = 1
+	#$AnimatedSprite2D.modulate = Color(1, 1, 1) # Back to normal
+	
