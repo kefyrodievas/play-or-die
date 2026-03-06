@@ -3,7 +3,6 @@ extends CharacterBody2D
 const SPEED = 400.0
 const JUMP_VELOCITY = -600.0
 
-
 # SCORE SYSTEM
 var score = 0
 var score_multiplier = 1
@@ -14,6 +13,8 @@ var max_jumps = 1
 var jump_count = 0
 var double_jump_duration = 20.0
 
+
+var playerBody = self
 
 func _physics_process(delta: float) -> void:
 	
