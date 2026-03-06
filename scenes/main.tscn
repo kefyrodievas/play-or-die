@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=599958050]
 script = ExtResource("1_jyhfs")
@@ -32,3 +33,6 @@ position = Vector2(600, 520)
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("6_tefeu")]
 position = Vector2(900, 520)
+
+[node name="Enemy" parent="." unique_id=1458510823 instance=ExtResource("7_o6xl0")]
+position = Vector2(1562, 504)
