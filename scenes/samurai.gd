@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 		jump_count += 1
 	
 	
+	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
 	
@@ -87,3 +88,6 @@ func _on_double_jump_timer_timeout():
 	max_jumps = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1) # Back to normal
 	
+func onSwitchScene():
+	# changes scene to 3rd floor (for now)
+	get_tree().change_scene_to_file("res://scenes/3_rd_floor.tscn")

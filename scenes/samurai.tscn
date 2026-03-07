@@ -315,5 +315,13 @@ one_shot = true
 [node name="DoubleJumpTimer" type="Timer" parent="." unique_id=63298662]
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=96058188]
+position = Vector2(0.5, -5.25)
+scale = Vector2(0.25, 0.25)
+limit_left = -10000128
+limit_top = -3
+limit_right = 3455
+limit_bottom = 653
+
 [connection signal="timeout" from="ScoreBoostTimer" to="." method="_on_score_boost_timer_timeout"]
 [connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]

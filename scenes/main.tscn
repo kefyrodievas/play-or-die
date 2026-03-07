@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
 
 [node name="Main" type="Node2D" unique_id=599958050]
 script = ExtResource("1_jyhfs")
@@ -14,14 +15,6 @@ script = ExtResource("1_jyhfs")
 [node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("3_tbgi4")]
 process_priority = 1
 position = Vector2(118, 518)
-
-[node name="Camera2D" type="Camera2D" parent="Samurai" unique_id=59885533]
-position = Vector2(0.5, -5.25)
-scale = Vector2(0.25, 0.25)
-limit_left = -10000128
-limit_top = -3
-limit_right = 3455
-limit_bottom = 653
 
 [node name="Ground" parent="." unique_id=330768187 instance=ExtResource("2_jyhfs")]
 top_level = true
@@ -36,3 +29,7 @@ position = Vector2(900, 520)
 
 [node name="Enemy" parent="." unique_id=1458510823 instance=ExtResource("7_o6xl0")]
 position = Vector2(1269, 499)
+
+[node name="Door" parent="." unique_id=486801942 instance=ExtResource("8_tipki")]
+position = Vector2(1686, 497)
+scale = Vector2(6, 6)
