@@ -17,7 +17,7 @@ var is_dealing_damage: bool = false
 
 var direction: Vector2
 const gravity = 900
-var knockback_force = 200
+var knockback_force = -20
 var is_roaming: bool = true
 
 var player: CharacterBody2D
@@ -40,6 +40,9 @@ func move(delta):
 			var direction_to_player = position.direction_to(player.position) * speed
 			velocity.x = direction_to_player.x #not gonna follow it upwards
 			direction.x = abs(velocity.x) / velocity.x
+		elif taking_damage:
+			var knockback_direction = position.direction_to(player.position) * knockback_force
+			velocity.x = knockback_direction.x
 		is_roaming = true
 	elif dead:
 		velocity.x = 0
@@ -78,24 +81,15 @@ func choose(array):
 	array.shuffle()
 	return array.front()
 
-
-
-
-#@onready var target = $"."
-#var speed = 150
-#
-#func _physics_process(delta):
-		#var direction = (target.position-position).normalized()
-		#velocity = direction * speed
-		#look_at(target.position)
-		#move_and_slide()
-		#
-
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#pass # Replace with function body.
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+func _on_hitbox_area_entered(area):
+	var damage = 10
+	#if area == damageZone:
+	take_damage(damage)
+		
+func take_damage(damage):
+	health -= damage
+	taking_damage = true
+	if health <= health_min:
+		health = health_min
+		dead = true
+	print(str(self), "current healt is ", health)
