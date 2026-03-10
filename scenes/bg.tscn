@@ -19,7 +19,8 @@ ignore_camera_scroll = true
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=366957844]
 texture_filter = 1
 texture_repeat = 3
-position = Vector2(160, 90)
+position = Vector2(160, 69.44444)
+scale = Vector2(1, 1.2283951)
 texture = ExtResource("1_qd2e1")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallax2D" unique_id=854555812]
@@ -43,7 +44,8 @@ ignore_camera_scroll = true
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=1242340973]
 texture_filter = 1
 texture_repeat = 3
-position = Vector2(160, 90)
+position = Vector2(160, 75.694435)
+scale = Vector2(1, 1.1589507)
 texture = ExtResource("2_5vsr6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2" unique_id=1038522760]
@@ -67,7 +69,8 @@ ignore_camera_scroll = true
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=1987995921]
 texture_filter = 1
 texture_repeat = 3
-position = Vector2(160.27779, 90)
+position = Vector2(160.27779, 78.47223)
+scale = Vector2(1, 1.1280864)
 texture = ExtResource("3_w68nc")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallax2D3" unique_id=1870055108]

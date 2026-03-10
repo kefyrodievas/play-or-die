@@ -129,5 +129,8 @@ func unlock_damage_boost():
 	)
 	
 func onSwitchScene():
-	# changes scene to 3rd floor (for now)
+	call_deferred("_switch_scene")
+	
+
+func _switch_scene():
 	get_tree().change_scene_to_file("res://scenes/3_rd_floor.tscn")
