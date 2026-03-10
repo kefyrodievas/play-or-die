@@ -15,9 +15,14 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 1
-var damage_multiplier = 1
+var damage_multiplier = 2
 var damage_boost_duration = 10.0
 
+#HEALTH SYSTEM
+var health = 100
+var is_Alive: bool = true
+
+#ENEMY SYSTEM
 var playerBody = self
 
 func _physics_process(delta: float) -> void:
@@ -27,7 +32,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
-	
 	
 	# GRAVITY
 	if not is_on_floor():
@@ -44,7 +48,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Dash") and canDash:
 		activate_dash()
-	
 	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
@@ -70,12 +73,10 @@ func add_score(amount):
 	score += amount * score_multiplier
 	print("Score: ", score)
 
-
 func activate_score_doubler():
 	score_multiplier = 2
 	#$AnimatedSprite2D.modulate = Color(1, 1, 0)
 	$ScoreBoostTimer.start(multiplier_time)
-
 
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
@@ -127,10 +128,39 @@ func unlock_damage_boost():
 	timer.timeout.connect(func():
 		damage_multiplier = 1
 	)
-	
+
 func onSwitchScene():
 	call_deferred("_switch_scene")
-	
 
 func _switch_scene():
 	get_tree().change_scene_to_file("res://scenes/3_rd_floor.tscn")
+
+var enemy: CharacterBody2D
+
+func check_hitbox():
+	var hitbox_areas = $Hitbox.get_overlapping_areas()
+	var damage: int
+	print(hitbox_areas.name)
+	if hitbox_areas:
+		var hitbox = hitbox_areas.front()
+		
+		if hitbox.get_parent() is EnemySkeleton:
+			enemy = $"../Enemy"
+			damage = $"../Enemy".damage_to_deal
+			
+	take_damage(damage)
+
+func take_damage(damage):
+	if damage != 0:
+		if health > 0:
+			$AnimatedSprite2D.play("hurt")
+			health -= damage
+			print(str(self), "current healt is ", health)
+			
+			
+
+func _on_s_hitbox_area_entered(area):
+	print(area.name)
+	var damage = 10
+	if (area.name == "Hitbox"):
+		take_damage(damage)

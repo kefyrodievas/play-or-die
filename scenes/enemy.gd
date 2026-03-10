@@ -65,6 +65,8 @@ func handle_animation():
 		anim_sprite.play("dying")
 		await get_tree().create_timer(1.0).timeout
 		handle_death()
+	elif !dead and is_dealing_damage:
+		anim_sprite.play("attack")
 
 func handle_death():
 	self.queue_free()
@@ -83,8 +85,8 @@ func choose(array):
 
 func _on_hitbox_area_entered(area):
 	var damage = 10
-	#if area == damageZone:
-	take_damage(damage)
+	if (area.name == "SHitbox"):
+		take_damage(damage)
 		
 func take_damage(damage):
 	health -= damage
@@ -93,3 +95,10 @@ func take_damage(damage):
 		health = health_min
 		dead = true
 	print(str(self), "current healt is ", health)
+
+func _on_deal_damage_area_area_entered(area):
+	if area.name == "SHitbox":
+		is_dealing_damage == true
+		await get_tree().create_timer(1.0).timeout
+		is_dealing_damage = false
+	

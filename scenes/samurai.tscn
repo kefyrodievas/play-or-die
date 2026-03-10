@@ -289,7 +289,12 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_visgd"]
-height = 30.5
+radius = 8.5
+height = 33.5
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6way"]
+radius = 13.0
+height = 34.0
 
 [node name="Samurai" type="CharacterBody2D" unique_id=1828783833]
 z_index = 1
@@ -298,15 +303,13 @@ script = ExtResource("1_v3kpt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=240678399]
 texture_filter = 1
-position = Vector2(-2.25, -13.25)
+position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_qm0jt")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 5
-frame_progress = 0.9912272
 
-[node name="RunCol" type="CollisionShape2D" parent="." unique_id=647481060]
-position = Vector2(-0.75, 4)
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=647481060]
+position = Vector2(0.5, 1.25)
 shape = SubResource("CapsuleShape2D_visgd")
 
 [node name="ScoreBoostTimer" type="Timer" parent="." unique_id=622969652]
@@ -323,5 +326,13 @@ limit_top = -1000000
 limit_right = 3455
 limit_bottom = 653
 
+[node name="SHitbox" type="Area2D" parent="." unique_id=1839130142]
+position = Vector2(0, -15)
+
+[node name="HitboxColl" type="CollisionShape2D" parent="SHitbox" unique_id=957888313]
+position = Vector2(0.5, 16.25)
+shape = SubResource("CapsuleShape2D_s6way")
+
 [connection signal="timeout" from="ScoreBoostTimer" to="." method="_on_score_boost_timer_timeout"]
 [connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]
+[connection signal="area_entered" from="SHitbox" to="." method="_on_s_hitbox_area_entered"]

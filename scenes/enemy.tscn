@@ -363,12 +363,12 @@ radius = 41.0
 height = 154.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xwavj"]
-radius = 35.0
-height = 156.0
+radius = 88.0
+height = 176.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nenq2"]
-radius = 56.0
-height = 156.0
+radius = 94.0
+height = 188.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2045138673]
 script = ExtResource("1_md0e3")
