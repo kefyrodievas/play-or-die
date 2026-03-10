@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="11_ya4ey"]
 
 [node name="Main" type="Node2D" unique_id=599958050]
 script = ExtResource("1_jyhfs")
@@ -33,3 +36,10 @@ position = Vector2(1269, 499)
 [node name="Door" parent="." unique_id=486801942 instance=ExtResource("8_tipki")]
 position = Vector2(1686, 497)
 scale = Vector2(6, 6)
+
+[node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("9_85g3d")]
+position = Vector2(1051, 524)
+script = ExtResource("10_choun")
+
+[node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("11_ya4ey")]
+position = Vector2(723, 519)

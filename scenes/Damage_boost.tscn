@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://duhc0s151bqb2"]
+
+[ext_resource type="Script" uid="uid://y1nmqir6et0g" path="res://scenes/Damage_boost.gd" id="1_bbpp6"]
+[ext_resource type="Texture2D" uid="uid://dkdmcoesjq5kj" path="res://assets/img/items/Damage_boost.png" id="2_278mu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs60v"]
+atlas = ExtResource("2_278mu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwupx"]
+atlas = ExtResource("2_278mu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cpog"]
+atlas = ExtResource("2_278mu")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfh7b"]
+atlas = ExtResource("2_278mu")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfnfv"]
+atlas = ExtResource("2_278mu")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iasuk"]
+atlas = ExtResource("2_278mu")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciuuw"]
+atlas = ExtResource("2_278mu")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs7o1"]
+atlas = ExtResource("2_278mu")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_642r6"]
+atlas = ExtResource("2_278mu")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t5eb2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hs60v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwupx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cpog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfh7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfnfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iasuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciuuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs7o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_642r6")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wu0up"]
+size = Vector2(47, 57)
+
+[node name="DamageBoost" type="Area2D" unique_id=1792063056]
+script = ExtResource("1_bbpp6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317849889]
+sprite_frames = SubResource("SpriteFrames_t5eb2")
+animation = &"Idle"
+frame_progress = 0.083650075
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015479616]
+position = Vector2(-5.5, -3.5)
+shape = SubResource("RectangleShape2D_wu0up")

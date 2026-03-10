@@ -13,6 +13,10 @@ var max_jumps = 1
 var jump_count = 0
 var double_jump_duration = 20.0
 
+#DAMAGE SYSTEM
+var damage = 1
+var damage_multiplier = 1
+var damage_boost_duration = 10.0
 
 var playerBody = self
 
@@ -38,18 +42,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 	
+	if Input.is_action_just_pressed("Dash") and canDash:
+		activate_dash()
 	
 	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
 	
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * delta)
-		
-		if abs(velocity.x) < 1:
-			velocity.x = 0
+	if not is_dashing:
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta / 0.3)
+			if abs(velocity.x) < 1:
+				velocity.x = 0
 	
 	move_and_slide()
 	
@@ -87,6 +93,40 @@ func _on_double_jump_timer_timeout():
 	#print("Double jump ended")
 	max_jumps = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1) # Back to normal
+	
+
+#DASH
+var canDash = true
+var is_dashing = false
+var dashSpeed = 1200
+var dashDuration = 0.2
+var dashCooldown = 1.0
+
+func unlock_dash():
+	canDash = true
+
+func activate_dash():
+	canDash = false
+	is_dashing = true
+	var dash_direction = 1.0 if not $AnimatedSprite2D.flip_h else -1.0
+	velocity.x = dash_direction * dashSpeed
+	
+	var dash_timer = get_tree().create_timer(dashDuration)
+	dash_timer.timeout.connect(func():
+		is_dashing = false
+	)
+	
+	var cooldown_timer = get_tree().create_timer(dashDuration + dashCooldown)
+	cooldown_timer.timeout.connect(func():
+		canDash = true
+	)
+	
+func unlock_damage_boost():
+	damage_multiplier = 2
+	var timer = get_tree().create_timer(damage_boost_duration)
+	timer.timeout.connect(func():
+		damage_multiplier = 1
+	)
 	
 func onSwitchScene():
 	# changes scene to 3rd floor (for now)
