@@ -84,9 +84,9 @@ func choose(array):
 	return array.front()
 
 func _on_hitbox_area_entered(area):
-	var damage = 10
-	if (area.name == "SHitbox"):
-		take_damage(damage)
+	#print(area.get_groups())
+	if area.is_in_group("Attack"):
+		take_damage($"../Samurai".damage_multiplier)
 		
 func take_damage(damage):
 	health -= damage

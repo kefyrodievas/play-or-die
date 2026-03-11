@@ -15,7 +15,7 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 1
-var damage_multiplier = 2
+var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
 #HEALTH SYSTEM
@@ -25,6 +25,11 @@ var is_Alive: bool = true
 #ENEMY SYSTEM
 var playerBody = self
 
+#ATTACK SYSTEM
+const hitbox := preload("res://scenes/attack_hitbox.tscn")
+var inAttack = false
+
+
 func _physics_process(delta: float) -> void:
 	
 	# ANIMATION
@@ -32,7 +37,9 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
-	
+	if inAttack:
+		$AnimatedSprite2D.play("attack")
+		
 	# GRAVITY
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -48,6 +55,16 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Dash") and canDash:
 		activate_dash()
+		
+	# Attack logic
+	if Input.is_action_just_pressed("Attack_up"):
+		attack(Vector2.UP)
+	elif Input.is_action_just_pressed("Attack_down"):
+		attack(Vector2.DOWN)
+	elif Input.is_action_just_pressed("Attack_left"):
+		attack(Vector2.LEFT)
+	elif Input.is_action_just_pressed("Attack_right"):
+		attack(Vector2.RIGHT)
 	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
@@ -123,10 +140,10 @@ func activate_dash():
 	)
 	
 func unlock_damage_boost():
-	damage_multiplier = 2
+	damage_multiplier *= 2
 	var timer = get_tree().create_timer(damage_boost_duration)
 	timer.timeout.connect(func():
-		damage_multiplier = 1
+		damage_multiplier /= 2 
 	)
 
 var enemy: CharacterBody2D
@@ -158,3 +175,36 @@ func _on_s_hitbox_area_entered(area):
 	var damage = 10
 	if (area.name == "Hitbox"):
 		take_damage(damage)
+
+
+# ATTACK
+var can_attack = true
+var attack_cd = 0.4
+var attack_duration = 0.2
+var attack_inst
+
+func attack(direction):
+	if can_attack:
+		attack_inst = hitbox.instantiate()
+		if direction == Vector2.UP:
+			attack_inst.call_deferred("_rotate", -90.0)
+		elif direction == Vector2.LEFT:
+			attack_inst.call_deferred("_rotate", 180.0)
+		elif direction == Vector2.DOWN:
+			attack_inst.call_deferred("_rotate", 90.0)	
+		add_child(attack_inst, true)
+		can_attack = false
+		inAttack = true
+		attack_timers()
+
+func attack_timers():
+	var cooldown_timer = get_tree().create_timer(attack_cd)
+	var dest_timer = get_tree().create_timer(attack_duration)
+	cooldown_timer.timeout.connect(func():
+		can_attack = true
+		)
+	dest_timer.timeout.connect(func():
+		attack_inst.free()
+		inAttack = false
+		)
+	
