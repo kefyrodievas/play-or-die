@@ -89,6 +89,7 @@ func _physics_process(delta: float) -> void:
 func add_score(amount):
 	score += amount * score_multiplier
 	print("Score: ", score)
+	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
 
 func activate_score_doubler():
 	score_multiplier = 2

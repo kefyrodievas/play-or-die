@@ -326,6 +326,20 @@ limit_top = -1000000
 limit_right = 3455
 limit_bottom = 653
 
+[node name="ScoreDispText" type="Label" parent="Camera2D" unique_id=1824143636]
+offset_left = -542.0
+offset_top = -301.0
+offset_right = -467.0
+offset_bottom = -278.0
+text = "Score:"
+
+[node name="ScoreDispNum" type="Label" parent="Camera2D/ScoreDispText" unique_id=1966831536]
+layout_mode = 0
+offset_left = 56.0
+offset_right = 214.0
+offset_bottom = 23.0
+text = "0"
+
 [node name="SHitbox" type="Area2D" parent="." unique_id=1839130142]
 position = Vector2(0, -15)
 
