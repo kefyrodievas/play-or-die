@@ -395,9 +395,9 @@ autostart = true
 position = Vector2(-1, 10)
 shape = SubResource("CapsuleShape2D_xwavj")
 
-[node name="DealDamgeArea" type="Area2D" parent="." unique_id=1689948129]
+[node name="DealDamageArea" type="Area2D" parent="." unique_id=1689948129]
 
-[node name="DealDamageCollision" type="CollisionShape2D" parent="DealDamgeArea" unique_id=1605860416]
+[node name="DealDamageCollision" type="CollisionShape2D" parent="DealDamageArea" unique_id=1605860416]
 position = Vector2(4, 8)
 shape = SubResource("CapsuleShape2D_nenq2")
 

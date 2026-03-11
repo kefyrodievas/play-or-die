@@ -21,6 +21,7 @@ var damage_boost_duration = 10.0
 #HEALTH SYSTEM
 var health = 100
 var is_Alive: bool = true
+var taking_damage: bool = false
 
 #ENEMY SYSTEM
 var playerBody = self
@@ -35,10 +36,15 @@ func _physics_process(delta: float) -> void:
 	# ANIMATION
 	if velocity.x > 1 or velocity.x < -1:
 		$AnimatedSprite2D.play("run")
+	elif inAttack:
+		$AnimatedSprite2D.play("attack")
+	elif is_Alive and taking_damage:
+		#velocity = Vector2.ZERO
+		$AnimatedSprite2D.play("hurt")
+		await get_tree().create_timer(0.3).timeout
+		taking_damage = false
 	else:
 		$AnimatedSprite2D.play("idle")
-	if inAttack:
-		$AnimatedSprite2D.play("attack")
 		
 	# GRAVITY
 	if not is_on_floor():
@@ -147,34 +153,19 @@ func unlock_damage_boost():
 		damage_multiplier /= 2 
 	)
 
+#TAKING DAMAGE FROM ENEMY
 var enemy: CharacterBody2D
-
-func check_hitbox():
-	var hitbox_areas = $Hitbox.get_overlapping_areas()
-	var damage: int
-	print(hitbox_areas.name)
-	if hitbox_areas:
-		var hitbox = hitbox_areas.front()
-		
-		if hitbox.get_parent() is EnemySkeleton:
-			enemy = $"../Enemy"
-			damage = $"../Enemy".damage_to_deal
-			
-	take_damage(damage)
 
 func take_damage(damage):
 	if damage != 0:
 		if health > 0:
-			$AnimatedSprite2D.play("hurt")
+			taking_damage = true
 			health -= damage
 			print(str(self), "current healt is ", health)
-			
-			
 
 func _on_s_hitbox_area_entered(area):
-	print(area.name)
 	var damage = 10
-	if (area.name == "Hitbox"):
+	if (area.name == "DealDamageArea"):
 		take_damage(damage)
 
 
