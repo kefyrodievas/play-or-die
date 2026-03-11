@@ -36,6 +36,7 @@ position = Vector2(1269, 499)
 [node name="Door" parent="." unique_id=486801942 instance=ExtResource("8_tipki")]
 position = Vector2(1686, 497)
 scale = Vector2(6, 6)
+target_scene = "res://scenes/2ndFloor.tscn"
 
 [node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("9_85g3d")]
 position = Vector2(1051, 524)

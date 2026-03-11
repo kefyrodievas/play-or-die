@@ -97,7 +97,7 @@ func _on_double_jump_timer_timeout():
 	
 
 #DASH
-var canDash = true
+var canDash = false
 var is_dashing = false
 var dashSpeed = 1200
 var dashDuration = 0.2
@@ -128,12 +128,6 @@ func unlock_damage_boost():
 	timer.timeout.connect(func():
 		damage_multiplier = 1
 	)
-
-func onSwitchScene():
-	call_deferred("_switch_scene")
-
-func _switch_scene():
-	get_tree().change_scene_to_file("res://scenes/3_rd_floor.tscn")
 
 var enemy: CharacterBody2D
 
