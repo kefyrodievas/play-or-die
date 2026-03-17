@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_1n317"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_f5vw6"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_1n317"]
+[ext_resource type="PackedScene" uid="uid://crklelqujgyx8" path="res://scenes/boss.tscn" id="5_f5vw6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
 texture = ExtResource("1_larob")
@@ -173,7 +174,7 @@ tile_map_data = PackedByteArray("AAD//woAAQACAAEAAAAAAAoAAQACAAEAAAABAAoAAQACAAE
 tile_set = SubResource("TileSet_gb4gt")
 
 [node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("2_1n317")]
-position = Vector2(-10, 135.75)
+position = Vector2(-0.5, 140.75)
 scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_f5vw6")]
@@ -183,3 +184,6 @@ target_scene = "res://scenes/2ndFloor.tscn"
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_1n317")]
 position = Vector2(53.75, 33)
 scale = Vector2(0.3, 0.3)
+
+[node name="Boss" parent="." unique_id=457228902 instance=ExtResource("5_f5vw6")]
+position = Vector2(360, 25.25)

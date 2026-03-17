@@ -1,13 +1,13 @@
 extends CharacterBody2D
 
-class_name EnemySkeleton
+class_name Boss
 
 const speed = 50
-var is_skeleton_chase: bool = false
+var is_boss_chase: bool = false
 #if true - following player, false - roaming around randomly
 
-var health = 80
-var health_max = 80
+var health = 200
+var health_max = 200
 var health_min = 0
 
 var dead: bool = false
@@ -32,9 +32,9 @@ func _process(delta):
 
 func move(delta):
 	if !dead:
-		if !is_skeleton_chase:
+		if !is_boss_chase:
 			velocity += direction * speed * delta
-		elif is_skeleton_chase and !taking_damage:
+		elif is_boss_chase and !taking_damage:
 			var direction_to_player = position.direction_to($"../Samurai".playerBody.position) * speed
 			velocity.x = direction_to_player.x #not gonna follow it upwards
 			direction.x = abs(velocity.x) / velocity.x
@@ -45,7 +45,6 @@ func move(delta):
 	elif dead:
 		velocity.x = 0
 	
-
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
 	if !dead and !taking_damage and !is_dealing_damage:
@@ -73,25 +72,10 @@ func handle_death():
 #RANDOM MOVEMENT
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time = choose([1.5,2.0,2.5,3.0,3.5])
-	if !is_skeleton_chase:
+	if !is_boss_chase:
 		direction = choose([Vector2.RIGHT, Vector2.LEFT])
 		velocity.x = 0
-		
 
 func choose(array):
 	array.shuffle()
 	return array.front()
-
-#TAKE DAMAGE
-func _on_hitbox_area_entered(area):
-	print(area.name)
-	if area.name == "AttackArea2D":
-		take_damage($"../Samurai".damage)
-		
-func take_damage(damage):
-	health -= damage
-	taking_damage = true
-	if health <= health_min:
-		health = health_min
-		dead = true
-	print(str(self), "current health dis ", health)

@@ -293,7 +293,6 @@ radius = 8.5
 height = 33.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s6way"]
-radius = 13.0
 height = 34.0
 
 [node name="Samurai" type="CharacterBody2D" unique_id=1828783833]
