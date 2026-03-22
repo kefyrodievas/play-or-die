@@ -58,6 +58,8 @@ func _process(delta: float) -> void:
 	#update ground position
 	if $Samurai/Camera2D.position.x - $Ground.position.x > screen_size.x:
 		$Ground.position.x += screen_size.x
+	#if $Samurai/Camera2D.position.x - $Ground.position.x > screen_size.x:
+		#$Ground.position.x += screen_size.x
 	
 	
 	
