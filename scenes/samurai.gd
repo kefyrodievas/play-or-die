@@ -30,6 +30,15 @@ var playerBody = self
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
 var inAttack = false
 
+func _ready():
+	score = GameData.current_score
+	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
+	
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(score)
+	else:
+		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(highscore)
 
 func _physics_process(delta: float) -> void:
 	
@@ -94,8 +103,13 @@ func _physics_process(delta: float) -> void:
 # SCORE
 func add_score(amount):
 	score += amount * score_multiplier
+	GameData.current_score = score
 	print("Score: ", score)
 	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
+	
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(score)
 
 func activate_score_doubler():
 	score_multiplier = 2
@@ -119,6 +133,16 @@ func _on_double_jump_timer_timeout():
 	max_jumps = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1) # Back to normal
 	
+
+#Score saving on game close
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save_highscore()
+		
+func _save_highscore():
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		GameData.save_highscore(score)
 
 #DASH
 var canDash = false
@@ -162,6 +186,9 @@ func take_damage(damage):
 			taking_damage = true
 			health -= damage
 			print(str(self), "current healt is ", health)
+			if health <= 0:
+				_save_highscore()
+				is_Alive = false
 
 func _on_s_hitbox_area_entered(area):
 	var damage = 10

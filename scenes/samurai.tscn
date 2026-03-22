@@ -340,6 +340,13 @@ offset_right = 214.0
 offset_bottom = 23.0
 text = "0"
 
+[node name="HighscoreLabel1" type="Label" parent="Camera2D/ScoreDispText" unique_id=188883873]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 23.0
+offset_right = 41.0
+offset_bottom = 46.0
+
 [node name="SHitbox" type="Area2D" parent="." unique_id=1839130142]
 position = Vector2(0, -15)
 

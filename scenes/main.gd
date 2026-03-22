@@ -12,6 +12,7 @@ var screen_size : Vector2i
 func _ready() -> void:
 	screen_size = get_window().size
 	new_game()
+	
 
 func new_game():
 	$Samurai.position = START_POS
