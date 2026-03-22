@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Play or Die"
-run/main_scene="uid://0batdvsrfcqn"
+run/main_scene="uid://dqamomkwq2cn3"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -68,3 +73,6 @@ Attack_right={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/stretch/scale_mode="fractional"
+textures/stretch/aspect="keep"
+textures/stretch/mode="disabled"

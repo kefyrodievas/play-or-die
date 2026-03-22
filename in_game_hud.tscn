@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://be7c70sj1c75o"]
+
+[node name="InGameHUD" type="Control" unique_id=1950831247]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=13709942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=719685639]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=9242482]
+layout_mode = 2
+
+[node name="ScoreText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1900513571]
+layout_mode = 2
+text = "Score: "
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1795015610]
+layout_mode = 2
+
+[node name="ScoreNum" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=604595277]
+layout_mode = 2
+text = "0
+"
