@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Play or Die"
-run/main_scene="uid://b7gn7ty6t7bjk"
+run/main_scene="uid://lbdb1xbd2i0i"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameData="*uid://dhgrn52srjggo"
+LevelManager="*uid://crws3gf5pxaim"
 
 [input]
 

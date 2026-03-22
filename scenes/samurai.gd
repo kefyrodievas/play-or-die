@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 400.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -700.0
 
 # SCORE SYSTEM
 var score = 0
@@ -67,6 +67,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
+		
+			
+	if Input.is_action_just_released("Jump") and velocity.y < -200:
+		velocity.y = -200
 	
 	if Input.is_action_just_pressed("Dash") and canDash:
 		activate_dash()
