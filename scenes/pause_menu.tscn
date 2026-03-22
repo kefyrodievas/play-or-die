@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://ddgbner4d46ex"]
+
+[ext_resource type="Script" uid="uid://dpbx7ss70oyd5" path="res://scenes/pause_menu.gd" id="1_n87rw"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=483087796]
+process_mode = 3
+visible = false
+script = ExtResource("1_n87rw")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=435044908]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=1046606]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.49803922, 0.60784316, 0.63529414, 0.39215687)
+
+[node name="GridContainer" type="GridContainer" parent="PauseMenu" unique_id=977120760]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 392.5
+offset_top = 221.5
+offset_right = 759.5
+offset_bottom = 426.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 16
+
+[node name="Label" type="Label" parent="PauseMenu/GridContainer" unique_id=359697860]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Game is paused"
+
+[node name="ResumeBtn" type="Button" parent="PauseMenu/GridContainer" unique_id=1314722505]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="QuitBtn" type="Button" parent="PauseMenu/GridContainer" unique_id=602776273]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="PauseMenu/GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
+[connection signal="pressed" from="PauseMenu/GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
