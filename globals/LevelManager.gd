@@ -6,7 +6,8 @@ var floor_variants = {
 	],
 	"2ndFloor": [
 		"res://scenes/2ndFloor.tscn",
-		"res://scenes/2ndFloorB.tscn"
+		"res://scenes/2ndFloorB.tscn",
+		"res://scenes/2bdFloorC.tscn"
 	],
 	"3rdFloor": [
 		"res://scenes/3_rd_floor.tscn",

@@ -321,9 +321,9 @@ one_shot = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=96058188]
 position = Vector2(0.5, -5.25)
 scale = Vector2(0.25, 0.25)
+limit_enabled = false
 limit_left = -10000128
 limit_top = -1000000
-limit_right = 3455
 limit_bottom = 653
 
 [node name="ScoreDispText" type="Label" parent="Camera2D" unique_id=1824143636]

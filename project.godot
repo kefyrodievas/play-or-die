@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Play or Die"
-run/main_scene="uid://lbdb1xbd2i0i"
+run/main_scene="uid://y4l85m4f480k"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
