@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://54py7d84kbhd"]
+
+[ext_resource type="Texture2D" uid="uid://dp74hgs4iae1l" path="res://assets/img/items/gem0.png" id="1_aqqvs"]
+[ext_resource type="Texture2D" uid="uid://5bdr2i1gory2" path="res://assets/img/items/gem1.png" id="2_gm24i"]
+[ext_resource type="Texture2D" uid="uid://b4mg5d65l6xhw" path="res://assets/img/items/gem2.png" id="3_aalvx"]
+[ext_resource type="Texture2D" uid="uid://da37t6arxoxa3" path="res://assets/img/items/gem3.png" id="4_rnfkx"]
+[ext_resource type="Texture2D" uid="uid://h6hroae4m3eq" path="res://assets/img/items/gem4.png" id="5_og1vo"]
+[ext_resource type="Texture2D" uid="uid://drk571e7xkj4m" path="res://assets/img/items/gem5.png" id="6_2w12h"]
+[ext_resource type="Texture2D" uid="uid://bm5s4ehqay5gu" path="res://assets/img/items/gem6.png" id="7_so1k6"]
+[ext_resource type="Texture2D" uid="uid://ktwx2fk84u27" path="res://assets/img/items/gem7.png" id="8_aosns"]
+[ext_resource type="Texture2D" uid="uid://b46yyae63j4ry" path="res://assets/img/items/gem8.png" id="9_6j4na"]
+[ext_resource type="Texture2D" uid="uid://d4jl6nld62r4e" path="res://assets/img/items/gem9.png" id="10_37lgx"]
+[ext_resource type="Texture2D" uid="uid://26p2td5xchyo" path="res://assets/img/items/gem10.png" id="11_8axwl"]
+[ext_resource type="Texture2D" uid="uid://wvnje7xtyb0r" path="res://assets/img/items/gem11.png" id="12_3ibxd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbv6p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_aqqvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gm24i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aalvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rnfkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_og1vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2w12h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_so1k6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_aosns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6j4na")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_37lgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8axwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3ibxd")
+}],
+"loop": true,
+"name": &"gem animation",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6vln"]
+size = Vector2(16, 14)
+
+[node name="Gem" type="Area2D" unique_id=642667019]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=767262706]
+sprite_frames = SubResource("SpriteFrames_nbv6p")
+animation = &"gem animation"
+autoplay = "gem animation"
+frame = 4
+frame_progress = 0.49397156
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1919088895]
+shape = SubResource("RectangleShape2D_n6vln")
