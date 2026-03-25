@@ -28,6 +28,7 @@ var playerBody = self
 
 #ATTACK SYSTEM
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
+const cd_timer := preload("res://scenes/cd_timer.gd")
 var inAttack = false
 
 
@@ -95,7 +96,7 @@ func _physics_process(delta: float) -> void:
 func add_score(amount):
 	score += amount * score_multiplier
 	print("Score: ", score)
-	$CanvasLayer/InGameHUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/ScoreNum.text = str(score)
+	$CanvasLayer/InGameHUD.call("_set_score_val", score)
 
 func activate_score_doubler():
 	score_multiplier = 2

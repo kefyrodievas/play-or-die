@@ -11,6 +11,8 @@ func _process(delta: float) -> void:
 	pass
 	
 func _set_hp_val(value: float) -> void:
-	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HealthBar.set_value_no_signal(value)
-	print($MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HealthBar.value)
+	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HealthBar.set_value_no_signal(value)
+	#print($MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HealthBar.value)
 	#$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HealthBar.
+func _set_score_val(value:int) -> void:
+	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/ScoreNum.text = str(value)
