@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://crklelqujgyx8" path="res://scenes/boss.tscn" id="13_trceg"]
 
 [node name="Main" type="Node2D" unique_id=599958050]
 script = ExtResource("1_jyhfs")
@@ -47,5 +48,8 @@ position = Vector2(1686, 497)
 scale = Vector2(6, 6)
 target_scene = "res://scenes/1_floor.tscn"
 
+[node name="Boss" parent="." unique_id=457228902 instance=ExtResource("13_trceg")]
+position = Vector2(1194, 253)
+
 [node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("7_o6xl0")]
-position = Vector2(1241, 503)
+position = Vector2(884, 323)

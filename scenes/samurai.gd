@@ -14,7 +14,7 @@ var jump_count = 0
 var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
-var damage = 1
+var damage = 6
 var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
@@ -23,14 +23,12 @@ var health = 100
 var is_Alive: bool = true
 var taking_damage: bool = false
 
-#ENEMY SYSTEM
-var playerBody = self
-
 #ATTACK SYSTEM
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
 const cd_timer := preload("res://scenes/cd_timer.gd")
 var inAttack = false
 
+var playerBody = self
 
 func _physics_process(delta: float) -> void:
 	
@@ -155,20 +153,19 @@ func unlock_damage_boost():
 	)
 
 #TAKING DAMAGE FROM ENEMY
-var enemy: CharacterBody2D
+func _on_s_hitbox_area_entered(area):
+	if (area.name == "DealDamageHitbox"):
+		take_damage($"../Enemy".damage_to_deal)
 
-func take_damage(damage):
-	if damage != 0:
+func take_damage(damage_to_take):
+	if damage_to_take != 0:
 		if health > 0:
 			taking_damage = true
-			health -= damage
-			print(str(self), "current healt is ", health)
-			$CanvasLayer/InGameHUD.call("_set_hp_val", health)
-			
-func _on_s_hitbox_area_entered(area):
-	var damage = 10
-	if (area.name == "DealDamageArea"):
-		take_damage(damage)
+			health -= damage_to_take
+			print(str(self), "current health is ", health)
+      $CanvasLayer/InGameHUD.call("_set_hp_val", health)
+
+
 
 
 # ATTACK
