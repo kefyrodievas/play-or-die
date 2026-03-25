@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://be7c70sj1c75o"]
+
+[ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="1_i8koo"]
+[ext_resource type="Script" uid="uid://d1wmd2v6qo01e" path="res://scenes/in_game_hud.gd" id="1_yvlox"]
+[ext_resource type="Texture2D" uid="uid://dqqmp7gikoigl" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_ncaij"]
+[ext_resource type="FontFile" uid="uid://di74pjmfcnoqu" path="res://assets/fonts/monogram.ttf" id="2_yvlox"]
+
+[sub_resource type="Gradient" id="Gradient_yvlox"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ncaij"]
+gradient = SubResource("Gradient_yvlox")
+
+[node name="InGameHUD" type="Control" unique_id=1950831247]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yvlox")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=13709942]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=134821346]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=719685639]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=9242482]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1635012864]
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1692337449]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+texture = ExtResource("2_ncaij")
+region_rect = Rect2(741, 38, 22, 22)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=1863028207]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 41.0
+offset_right = 197.0
+offset_bottom = 46.0
+size_flags_horizontal = 3
+step = 0.01
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_ncaij")
+tint_under = Color(0.8627451, 0, 0, 1)
+tint_over = Color(0.02745098, 0.5568628, 0, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=518517656]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 260.0
+offset_bottom = 15.0
+size_flags_vertical = 0
+
+[node name="ScoreText" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer" unique_id=1340098229]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_i8koo")
+theme_override_fonts/bold_font = ExtResource("1_i8koo")
+text = "Score:  "
+fit_content = true
+autowrap_mode = 0
+
+[node name="ScoreNum" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer" unique_id=697275692]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_yvlox")
+text = "0
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=1867401890]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 65.0
+offset_bottom = 36.0
+
+[node name="HighscoreText" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2" unique_id=115937350]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_i8koo")
+theme_override_fonts/bold_font = ExtResource("1_i8koo")
+text = "Highscore:  "
+fit_content = true
+autowrap_mode = 0
+
+[node name="HighscoreNum" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2" unique_id=988098839]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_yvlox")
+text = "0
+"
+fit_content = true
+autowrap_mode = 0

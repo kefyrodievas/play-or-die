@@ -14,7 +14,7 @@ var jump_count = 0
 var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
-var damage = 1
+var damage = 6
 var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
@@ -23,22 +23,22 @@ var health = 100
 var is_Alive: bool = true
 var taking_damage: bool = false
 
-#ENEMY SYSTEM
-var playerBody = self
-
 #ATTACK SYSTEM
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
+const cd_timer := preload("res://scenes/cd_timer.gd")
 var inAttack = false
+
+var playerBody = self
 
 func _ready():
 	score = GameData.current_score
-	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
+	$CanvasLayer.InGameHUD.call("_set_score_val", score)
 	
 	var highscore = GameData.load_highscore()
 	if score > highscore:
-		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(score)
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", score)
 	else:
-		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(highscore)
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", highscore)
 
 func _physics_process(delta: float) -> void:
 	
@@ -109,11 +109,10 @@ func add_score(amount):
 	score += amount * score_multiplier
 	GameData.current_score = score
 	print("Score: ", score)
-	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
-	
+	$CanvasLayer.InGameHUD.call("_set_score_val", score)
 	var highscore = GameData.load_highscore()
 	if score > highscore:
-		$Camera2D/ScoreDispText/HighscoreLabel1.text = "High Score: " + str(score)
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", score)
 
 func activate_score_doubler():
 	score_multiplier = 2
@@ -123,6 +122,16 @@ func activate_score_doubler():
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
+#Score saving on game close
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save_highscore()
+		
+func _save_highscore():
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		GameData.save_highscore(score)
 
 
 # DOUBLE JUMP
@@ -182,22 +191,21 @@ func unlock_damage_boost():
 	)
 
 #TAKING DAMAGE FROM ENEMY
-var enemy: CharacterBody2D
+func _on_s_hitbox_area_entered(area):
+	if (area.name == "DealDamageHitbox"):
+		take_damage($"../Enemy".damage_to_deal)
 
-func take_damage(damage):
-	if damage != 0:
+func take_damage(damage_to_take):
+	if damage_to_take != 0:
 		if health > 0:
 			taking_damage = true
-			health -= damage
-			print(str(self), "current healt is ", health)
 			if health <= 0:
 				_save_highscore()
 				is_Alive = false
+			health -= damage_to_take
+			print(str(self), "current health is ", health)
+	$CanvasLayer/InGameHUD.call("_set_hp_val", health)
 
-func _on_s_hitbox_area_entered(area):
-	var damage = 10
-	if (area.name == "DealDamageArea"):
-		take_damage(damage)
 
 
 # ATTACK
