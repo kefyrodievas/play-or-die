@@ -184,8 +184,7 @@ func unlock_damage_boost():
 #TAKING DAMAGE FROM ENEMY
 func _on_s_hitbox_area_entered(area):
 	if (area.name == "DealDamageHitbox"):
-		#take_damage($"../Enemy".damage_to_deal)
-		take_damage(15)
+		take_damage(area.owner.damage_to_deal)
 
 func take_damage(damage_to_take):
 	if damage_to_take != 0:
