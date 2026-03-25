@@ -163,7 +163,7 @@ func take_damage(damage_to_take):
 			taking_damage = true
 			health -= damage_to_take
 			print(str(self), "current health is ", health)
-      $CanvasLayer/InGameHUD.call("_set_hp_val", health)
+	$CanvasLayer/InGameHUD.call("_set_hp_val", health)
 
 
 

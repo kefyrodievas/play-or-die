@@ -1183,7 +1183,7 @@ tile_map_data = PackedByteArray("AAD8/woABQAAAAcAAAD9/woABQAAAAUAAAD+/woABQAAAAU
 tile_set = SubResource("TileSet_gb4gt")
 
 [node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("2_1n317")]
-position = Vector2(-0.5, 140.75)
+position = Vector2(-177, 129.75)
 scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_f5vw6")]
