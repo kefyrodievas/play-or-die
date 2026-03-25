@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dk8dua7dnqf45"]
+
+[ext_resource type="Script" uid="uid://ca5hm0lvwaj53" path="res://scenes/cd_timer.gd" id="1_a8tba"]
+[ext_resource type="Texture2D" uid="uid://nvkkjx3so8v0" path="res://assets/img/cd.png" id="2_hantg"]
+
+[node name="cd_timer" type="Control" unique_id=376867768]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8tba")
+
+[node name="p_bar" type="TextureProgressBar" parent="." unique_id=416197661]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 5
+texture_progress = ExtResource("2_hantg")

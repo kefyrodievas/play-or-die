@@ -12,7 +12,7 @@ var health_min = 0
 
 var dead: bool = false
 var taking_damage: bool = false
-var damage_to_deal = 10
+var damage_to_deal = 6
 var is_dealing_damage: bool = false
 
 var direction: Vector2
@@ -20,17 +20,18 @@ const gravity = 900
 var knockback_force = -20
 var is_roaming: bool = true
 
-var player: CharacterBody2D
 var player_in_area = false
+var player: CharacterBody2D
 
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
-	player = $"../Samurai".playerBody
+		player = $"../Samurai".playerBody
 	move(delta)
 	handle_animation()
 	move_and_slide()
+	platform_edge()
 
 func move(delta):
 	if !dead:
@@ -50,12 +51,15 @@ func move(delta):
 
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
+	var character = $"."
 	if !dead and !taking_damage and !is_dealing_damage:
 		anim_sprite.play("walking")
 		if direction.x == -1:
 			anim_sprite.flip_h = true
+			#$RayCast2D.position.x *= -1
 		elif direction.x == 1:
 			anim_sprite.flip_h = false
+			#$RayCast2D.position.x *= -1
 	elif !dead and taking_damage and !is_dealing_damage:
 		anim_sprite.play("hurt")
 		await get_tree().create_timer(0.72).timeout
@@ -71,7 +75,8 @@ func handle_animation():
 func handle_death():
 	self.queue_free()
 	#additional stuff like giving points for killing enemy
-	
+
+#RANDOM MOVEMENT
 func _on_direction_timer_timeout() -> void:
 	$DirectionTimer.wait_time = choose([1.5,2.0,2.5,3.0,3.5])
 	if !is_skeleton_chase:
@@ -83,10 +88,10 @@ func choose(array):
 	array.shuffle()
 	return array.front()
 
+#TAKE DAMAGE
 func _on_hitbox_area_entered(area):
-	#print(area.get_groups())
-	if area.is_in_group("Attack"):
-		take_damage($"../Samurai".damage_multiplier)
+	if area.name == "AttackArea2D":
+		take_damage($"../Samurai".damage)
 		
 func take_damage(damage):
 	health -= damage
@@ -94,11 +99,10 @@ func take_damage(damage):
 	if health <= health_min:
 		health = health_min
 		dead = true
-	print(str(self), "current healt is ", health)
-
-func _on_deal_damage_area_area_entered(area):
-	if area.name == "SHitbox":
-		is_dealing_damage == true
-		await get_tree().create_timer(1.0).timeout
-		is_dealing_damage = false
+	print(str(self), "current health dis ", health)
 	
+#STAY ON PLATFORM
+func platform_edge():
+	if not $RayCast2D.is_colliding():
+		direction = -direction
+		$RayCast2D.position.x *= -1
