@@ -27,6 +27,7 @@ var taking_damage: bool = false
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
 var inAttack = false
 
+var playerBody = self
 
 func _physics_process(delta: float) -> void:
 	
@@ -152,15 +153,14 @@ func unlock_damage_boost():
 
 #TAKING DAMAGE FROM ENEMY
 func _on_s_hitbox_area_entered(area):
-	print(area.name)
 	if (area.name == "DealDamageHitbox"):
 		take_damage($"../Enemy".damage_to_deal)
 
-func take_damage(damage):
-	if damage != 0:
+func take_damage(damage_to_take):
+	if damage_to_take != 0:
 		if health > 0:
 			taking_damage = true
-			health -= damage
+			health -= damage_to_take
 			print(str(self), "current health is ", health)
 
 

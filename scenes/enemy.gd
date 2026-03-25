@@ -21,25 +21,28 @@ var knockback_force = -20
 var is_roaming: bool = true
 
 var player_in_area = false
+var player: CharacterBody2D
 
 func _process(delta):
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
+		player = $"../Samurai".playerBody
 	move(delta)
 	handle_animation()
 	move_and_slide()
+	platform_edge()
 
 func move(delta):
 	if !dead:
 		if !is_skeleton_chase:
 			velocity += direction * speed * delta
 		elif is_skeleton_chase and !taking_damage:
-			var direction_to_player = position.direction_to($"../Samurai".playerBody.position) * speed
+			var direction_to_player = position.direction_to(player.position) * speed
 			velocity.x = direction_to_player.x #not gonna follow it upwards
 			direction.x = abs(velocity.x) / velocity.x
 		elif taking_damage:
-			var knockback_direction = position.direction_to($"../Samurai".playerBody.position) * knockback_force
+			var knockback_direction = position.direction_to(player.position) * knockback_force
 			velocity.x = knockback_direction.x
 		is_roaming = true
 	elif dead:
@@ -48,12 +51,15 @@ func move(delta):
 
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
+	var character = $"."
 	if !dead and !taking_damage and !is_dealing_damage:
 		anim_sprite.play("walking")
 		if direction.x == -1:
 			anim_sprite.flip_h = true
+			#$RayCast2D.position.x *= -1
 		elif direction.x == 1:
 			anim_sprite.flip_h = false
+			#$RayCast2D.position.x *= -1
 	elif !dead and taking_damage and !is_dealing_damage:
 		anim_sprite.play("hurt")
 		await get_tree().create_timer(0.72).timeout
@@ -84,7 +90,6 @@ func choose(array):
 
 #TAKE DAMAGE
 func _on_hitbox_area_entered(area):
-	print(area.name)
 	if area.name == "AttackArea2D":
 		take_damage($"../Samurai".damage)
 		
@@ -95,3 +100,9 @@ func take_damage(damage):
 		health = health_min
 		dead = true
 	print(str(self), "current health dis ", health)
+	
+#STAY ON PLATFORM
+func platform_edge():
+	if not $RayCast2D.is_colliding():
+		direction = -direction
+		$RayCast2D.position.x *= -1

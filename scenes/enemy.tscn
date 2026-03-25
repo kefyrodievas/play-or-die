@@ -391,5 +391,10 @@ autostart = true
 position = Vector2(11, 10)
 shape = SubResource("CapsuleShape2D_xwavj")
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=544444571]
+position = Vector2(70, 63)
+scale = Vector2(2.5, 2.5)
+target_position = Vector2(0, 20.799994)
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="DealDamageHitbox" to="." method="_on_hitbox_area_entered"]
