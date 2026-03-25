@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://wi0ircg0b2l4"]
 
 [ext_resource type="Texture2D" uid="uid://pcu41cnut3or" path="res://assets/img/background/Game_Assets.png" id="1_1n317"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/1_floor.gd" id="1_4cg0v"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_larob"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_1n317"]
 [ext_resource type="Texture2D" uid="uid://bhlxapjdn2rxy" path="res://assets/img/background/oak_woods_tileset.png" id="3_3cf7y"]
@@ -1162,6 +1163,7 @@ sources/1 = SubResource("TileSetAtlasSource_lkryr")
 [node name="1st_floor 1" type="Node2D" unique_id=640446327]
 texture_filter = 1
 scale = Vector2(4, 4)
+script = ExtResource("1_4cg0v")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=745261534]
 position = Vector2(-185.5, 4.25)

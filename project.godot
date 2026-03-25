@@ -15,9 +15,10 @@ run/main_scene="uid://0batdvsrfcqn"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
+[display]
 
-PauseMenu="*uid://ddgbner4d46ex"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -77,3 +78,6 @@ Pause={
 
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/stretch/scale_mode="fractional"
+textures/stretch/aspect="keep"
+textures/stretch/mode="disabled"

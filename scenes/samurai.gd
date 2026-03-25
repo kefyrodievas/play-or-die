@@ -28,6 +28,7 @@ var playerBody = self
 
 #ATTACK SYSTEM
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
+const cd_timer := preload("res://scenes/cd_timer.gd")
 var inAttack = false
 
 
@@ -95,7 +96,7 @@ func _physics_process(delta: float) -> void:
 func add_score(amount):
 	score += amount * score_multiplier
 	print("Score: ", score)
-	$Camera2D/ScoreDispText/ScoreDispNum.text = str(score)
+	$CanvasLayer/InGameHUD.call("_set_score_val", score)
 
 func activate_score_doubler():
 	score_multiplier = 2
@@ -162,7 +163,8 @@ func take_damage(damage):
 			taking_damage = true
 			health -= damage
 			print(str(self), "current healt is ", health)
-
+			$CanvasLayer/InGameHUD.call("_set_hp_val", health)
+			
 func _on_s_hitbox_area_entered(area):
 	var damage = 10
 	if (area.name == "DealDamageArea"):
