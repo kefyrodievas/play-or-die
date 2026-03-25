@@ -92,3 +92,26 @@ text = "0
 "
 fit_content = true
 autowrap_mode = 0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect" unique_id=1867401890]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 17.0
+offset_right = 65.0
+offset_bottom = 36.0
+
+[node name="HighscoreText" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2" unique_id=115937350]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_i8koo")
+theme_override_fonts/bold_font = ExtResource("1_i8koo")
+text = "Highscore:  "
+fit_content = true
+autowrap_mode = 0
+
+[node name="HighscoreNum" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2" unique_id=988098839]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_yvlox")
+text = "0
+"
+fit_content = true
+autowrap_mode = 0

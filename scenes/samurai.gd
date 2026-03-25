@@ -30,6 +30,16 @@ var inAttack = false
 
 var playerBody = self
 
+func _ready():
+	score = GameData.current_score
+	$CanvasLayer.InGameHUD.call("_set_score_val", score)
+	
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", score)
+	else:
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", highscore)
+
 func _physics_process(delta: float) -> void:
 	
 	# ANIMATION
@@ -94,7 +104,9 @@ func _physics_process(delta: float) -> void:
 func add_score(amount):
 	score += amount * score_multiplier
 	print("Score: ", score)
-	$CanvasLayer/InGameHUD.call("_set_score_val", score)
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		$CanvasLayer.InGameHUD.call("_set_highscore_val", score)
 
 func activate_score_doubler():
 	score_multiplier = 2
@@ -104,6 +116,16 @@ func activate_score_doubler():
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1)
+	
+#Score saving on game close
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save_highscore()
+		
+func _save_highscore():
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		GameData.save_highscore(score)
 
 
 # DOUBLE JUMP
