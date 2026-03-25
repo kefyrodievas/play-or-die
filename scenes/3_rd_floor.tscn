@@ -178,4 +178,4 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_gb4gt")]
 position = Vector2(-4, -96)
-target_scene = "res://scenes/main.tscn"
+target_scene = "Main"

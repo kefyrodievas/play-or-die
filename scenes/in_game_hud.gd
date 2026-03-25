@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	pass
 	
 func _set_highscore_val(value) -> void:
-	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/HighscoreNum.text = str(value)
+	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2/HighscoreNum.text = str(value)
 	
 func _set_hp_val(value: float) -> void:
 	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HealthBar.set_value_no_signal(value)

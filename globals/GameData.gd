@@ -10,6 +10,10 @@ func save_highscore(score: int) -> void:
 	
 func load_highscore() -> int:
 	if not FileAccess.file_exists(SAVE_PATH):
+		var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+		file.store_var(0)
+		file.close()
 		return 0
+		
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return file.get_var()

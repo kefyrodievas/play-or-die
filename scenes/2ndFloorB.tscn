@@ -268,7 +268,7 @@ scale = Vector2(0.8, 0.8)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_murvd")]
 position = Vector2(956, -239)
-target_scene = "res://scenes/3_rd_floor.tscn"
+target_scene = "3rdFloor"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_x6jlp")]
 z_index = 1

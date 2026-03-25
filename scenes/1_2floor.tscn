@@ -1859,6 +1859,7 @@ scale = Vector2(0.98, 0.98)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("6_8uovf")]
 position = Vector2(-118.75, -715)
+target_scene = "2ndFloor"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("7_ltq3n")]
 position = Vector2(4.25, -651.25)

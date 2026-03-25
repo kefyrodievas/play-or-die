@@ -46,7 +46,7 @@ texture = ExtResource("11_eb6dy")
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("8_tipki")]
 position = Vector2(1686, 497)
 scale = Vector2(6, 6)
-target_scene = "res://scenes/1_1floor.tscn"
+target_scene = "1_floor"
 
 [node name="Boss" parent="." unique_id=457228902 instance=ExtResource("13_trceg")]
 position = Vector2(1194, 253)
