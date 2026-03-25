@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bhlxapjdn2rxy" path="res://assets/img/background/oak_woods_tileset.png" id="3_3cf7y"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_f5vw6"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_1n317"]
+[ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="7_4cg0v"]
+[ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="8_lkryr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n317"]
 texture = ExtResource("1_1n317")
@@ -1188,8 +1190,14 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_f5vw6")]
 position = Vector2(-136.25, -75)
-target_scene = "res://scenes/2ndFloor.tscn"
+target_scene = "2ndFloor"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_1n317")]
 position = Vector2(500, 67.25)
 scale = Vector2(0.3, 0.3)
+
+[node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("7_4cg0v")]
+position = Vector2(-101, 109)
+scale = Vector2(0.355, 0.355)
+script = ExtResource("8_lkryr")
+

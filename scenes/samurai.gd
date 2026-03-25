@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 400.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -700.0
 
 # SCORE SYSTEM
 var score = 0
@@ -67,6 +67,10 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Jump") and jump_count < max_jumps:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
+		
+			
+	if Input.is_action_just_released("Jump") and velocity.y < -200:
+		velocity.y = -200
 	
 	if Input.is_action_just_pressed("Dash") and canDash:
 		activate_dash()
@@ -103,7 +107,9 @@ func _physics_process(delta: float) -> void:
 # SCORE
 func add_score(amount):
 	score += amount * score_multiplier
+	GameData.current_score = score
 	print("Score: ", score)
+	$CanvasLayer.InGameHUD.call("_set_score_val", score)
 	var highscore = GameData.load_highscore()
 	if score > highscore:
 		$CanvasLayer.InGameHUD.call("_set_highscore_val", score)
@@ -140,6 +146,16 @@ func _on_double_jump_timer_timeout():
 	max_jumps = 1
 	#$AnimatedSprite2D.modulate = Color(1, 1, 1) # Back to normal
 	
+
+#Score saving on game close
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_save_highscore()
+		
+func _save_highscore():
+	var highscore = GameData.load_highscore()
+	if score > highscore:
+		GameData.save_highscore(score)
 
 #DASH
 var canDash = false
@@ -183,10 +199,12 @@ func take_damage(damage_to_take):
 	if damage_to_take != 0:
 		if health > 0:
 			taking_damage = true
+			if health <= 0:
+				_save_highscore()
+				is_Alive = false
 			health -= damage_to_take
 			print(str(self), "current health is ", health)
 	$CanvasLayer/InGameHUD.call("_set_hp_val", health)
-
 
 
 
