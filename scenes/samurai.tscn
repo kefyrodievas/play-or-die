@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ep8lo2jut4xn" path="res://assets/img/characters/samurai/ATTACK 1.png" id="2_s6way"]
 [ext_resource type="Texture2D" uid="uid://8kcbad0pe0im" path="res://assets/img/characters/samurai/RUN.png" id="2_v3kpt"]
 [ext_resource type="Texture2D" uid="uid://csg2bopiu7y47" path="res://assets/img/characters/samurai/HURT.png" id="3_a21b5"]
+[ext_resource type="PackedScene" uid="uid://be7c70sj1c75o" path="res://scenes/in_game_hud.tscn" id="6_a21b5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm0jt"]
 atlas = ExtResource("2_s6way")
@@ -300,6 +301,8 @@ z_index = 1
 scale = Vector2(4, 4)
 script = ExtResource("1_v3kpt")
 
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1701119594]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=240678399]
 texture_filter = 1
 position = Vector2(0, -15)
@@ -317,34 +320,26 @@ one_shot = true
 [node name="DoubleJumpTimer" type="Timer" parent="." unique_id=63298662]
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=96058188]
-position = Vector2(0.5, -5.25)
-scale = Vector2(0.25, 0.25)
-limit_left = -10000128
-limit_top = -1000000
-limit_right = 3455
-limit_bottom = 653
-
-[node name="ScoreDispText" type="Label" parent="Camera2D" unique_id=1824143636]
-offset_left = -542.0
-offset_top = -301.0
-offset_right = -467.0
-offset_bottom = -278.0
-text = "Score:"
-
-[node name="ScoreDispNum" type="Label" parent="Camera2D/ScoreDispText" unique_id=1966831536]
-layout_mode = 0
-offset_left = 56.0
-offset_right = 214.0
-offset_bottom = 23.0
-text = "0"
-
 [node name="SHitbox" type="Area2D" parent="." unique_id=1839130142]
 position = Vector2(0, -15)
 
 [node name="HitboxColl" type="CollisionShape2D" parent="SHitbox" unique_id=957888313]
 position = Vector2(0.5, 16.25)
 shape = SubResource("CapsuleShape2D_s6way")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=96058188]
+position = Vector2(-136.48, -61.36)
+anchor_mode = 0
+limit_left = -9999990
+limit_top = -10000008
+limit_right = 4010
+limit_bottom = 52
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=737005316]
+
+[node name="InGameHUD" parent="CanvasLayer" unique_id=1950831247 instance=ExtResource("6_a21b5")]
+offset_top = -2.0
+offset_bottom = -2.0
 
 [connection signal="timeout" from="ScoreBoostTimer" to="." method="_on_score_boost_timer_timeout"]
 [connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]
