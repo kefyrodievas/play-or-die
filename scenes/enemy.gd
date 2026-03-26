@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name EnemySkeleton
 
 const speed = 50
-var is_skeleton_chase: bool = false
+var is_skeleton_chase: bool
 #if true - following player, false - roaming around randomly
 
 var health = 80
@@ -32,6 +32,7 @@ func _process(delta):
 	handle_animation()
 	move_and_slide()
 	platform_edge()
+	follow_player()
 
 func move(delta):
 	if !dead:
@@ -51,7 +52,6 @@ func move(delta):
 
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
-	var character = $"."
 	if !dead and !taking_damage and !is_dealing_damage:
 		anim_sprite.play("walking")
 		if direction.x == -1:
@@ -106,3 +106,11 @@ func platform_edge():
 	if not $RayCast2D.is_colliding():
 		direction = -direction
 		$RayCast2D.position.x *= -1
+		
+func follow_player():
+	if not $RayCast2D2.is_colliding():
+		is_skeleton_chase = false
+		print(is_skeleton_chase)
+	else:
+		is_skeleton_chase = true 
+		print(is_skeleton_chase)
