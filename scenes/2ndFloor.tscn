@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_vl5is"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_0yuhk"]
 [ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="6_0yuhk"]
+[ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="7_vv7jq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_0yuhk")
@@ -271,10 +272,22 @@ position = Vector2(956, -239)
 target_scene = "3rdFloor"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_vl5is")]
-position = Vector2(96, 102.25)
+position = Vector2(130.25, 101.75)
 scale = Vector2(0.3, 0.3)
 
 [node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("5_0yuhk")]
 position = Vector2(203.75, 54)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("6_0yuhk")
+
+[node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("7_vv7jq")]
+position = Vector2(819, -43)
+scale = Vector2(0.3, 0.3)
+
+[node name="Jump_boost2" parent="." unique_id=558048644 instance=ExtResource("4_vl5is")]
+position = Vector2(-7.75, -217.75)
+scale = Vector2(0.3, 0.3)
+
+[node name="Boots2" parent="." unique_id=1835377063 instance=ExtResource("5_0yuhk")]
+position = Vector2(207, -40)
+scale = Vector2(0.3, 0.3)

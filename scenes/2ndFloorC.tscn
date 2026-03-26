@@ -272,29 +272,24 @@ target_scene = "3rdFloor"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_kfdll")]
 z_index = 1
-position = Vector2(360, 306)
+position = Vector2(182.75, -38)
 scale = Vector2(0.3, 0.3)
 
 [node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("5_kddd8")]
 z_index = 1
 texture_filter = 1
-position = Vector2(423.75, 375.25)
+position = Vector2(471.25, -36.25)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("6_2m0uc")
-
-[node name="Jump_boost2" parent="." unique_id=821232366 instance=ExtResource("4_kfdll")]
-z_index = 1
-position = Vector2(563.25, 314.5)
-scale = Vector2(0.3, 0.3)
 
 [node name="Boots2" parent="." unique_id=141505014 instance=ExtResource("5_kddd8")]
 z_index = 1
 texture_filter = 1
-position = Vector2(454.5, 305.25)
+position = Vector2(434.50003, 169.25)
 scale = Vector2(0.3, 0.3)
 script = ExtResource("6_2m0uc")
 
 [node name="Jump_boost3" parent="." unique_id=1855494672 instance=ExtResource("4_kfdll")]
 z_index = 1
-position = Vector2(514.25, 330.75)
+position = Vector2(479.25, -95.75)
 scale = Vector2(0.3, 0.3)

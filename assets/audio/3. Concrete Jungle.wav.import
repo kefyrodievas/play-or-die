@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bmvftiqynykvf"
+path="res://.godot/imported/3. Concrete Jungle.wav-c77d252e9a4424fa9c1cb59d4e8aa326.sample"
+
+[deps]
+
+source_file="res://assets/audio/3. Concrete Jungle.wav"
+dest_files=["res://.godot/imported/3. Concrete Jungle.wav-c77d252e9a4424fa9c1cb59d4e8aa326.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

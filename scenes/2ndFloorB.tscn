@@ -298,3 +298,7 @@ script = ExtResource("6_admoy")
 z_index = 1
 position = Vector2(684, 135)
 scale = Vector2(0.3, 0.3)
+
+[node name="Boots3" parent="." unique_id=897047608 instance=ExtResource("5_h8dg7")]
+position = Vector2(947.75, 171)
+scale = Vector2(0.3, 0.3)

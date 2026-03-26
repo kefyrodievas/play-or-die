@@ -17,3 +17,17 @@ func load_highscore() -> int:
 		
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return file.get_var()
+
+var music_player : AudioStreamPlayer
+
+func _ready():
+	music_player = AudioStreamPlayer.new()
+	music_player.stream = preload("res://assets/audio/3. Concrete Jungle.wav")
+	add_child(music_player)
+
+func start_music():
+	if not music_player.playing:
+		music_player.play()
+
+func stop_music():
+	music_player.stop()
