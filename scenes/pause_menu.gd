@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 var _is_paused = false:
 	set(value):
