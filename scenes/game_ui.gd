@@ -13,7 +13,7 @@ func _ready():
 	start_menu.show()
 	shop.hide()
 	pause_menu.hide()
-	hud.hide()
+	#hud.hide()
 
 func _on_start_pressed():
 	get_tree().paused = false
@@ -50,3 +50,4 @@ func _on_resume_btn_pressed() -> void:
 
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
+	
