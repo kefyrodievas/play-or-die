@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cee3rcvkg2cf1"]
+
+[ext_resource type="Texture2D" uid="uid://ttijv5c3fosl" path="res://assets/img/dice/six sided die.png" id="1_7yeca"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic6ol"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mws5"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kck76"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ssb4"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x35ey"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wfrs"]
+atlas = ExtResource("1_7yeca")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onnry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic6ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mws5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kck76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ssb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x35ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wfrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Dice" type="CharacterBody2D" unique_id=1545132458]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1265933157]
+texture_filter = 1
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_onnry")
+autoplay = "default"
+frame_progress = 0.1283707
