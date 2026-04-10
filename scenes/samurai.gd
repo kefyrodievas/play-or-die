@@ -183,7 +183,8 @@ func unlock_damage_boost():
 
 #TAKING DAMAGE FROM ENEMY
 func _on_s_hitbox_area_entered(area):
-	if (area.name == "DealDamageHitbox"):
+	#Reiktu dar prideti kad enemy attackina o ne tiesiog prisiliecia
+	if (area.name == "Hitbox"):
 		take_damage(area.owner.damage_to_deal)
 
 func take_damage(damage_to_take):
