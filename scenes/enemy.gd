@@ -74,7 +74,6 @@ func handle_animation():
 		await get_tree().create_timer(1.0).timeout
 		handle_death()
 
-
 func handle_death():
 	self.queue_free()
 	#additional stuff like giving points for killing enemy

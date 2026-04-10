@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dx7ijrxknj3bd"]
 
-[ext_resource type="Texture2D" uid="uid://cxhhsheevpx7d" path="res://assets/img/characters/enemies/Skeleton_01_White_Idle.png" id="1_7p1mj"]
+[ext_resource type="Texture2D" uid="uid://cxhhsheevpx7d" path="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Idle.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://fb5sp6m1p10s" path="res://scenes/enemy.gd" id="1_md0e3"]
-[ext_resource type="Texture2D" uid="uid://citayt7oltse0" path="res://assets/img/characters/enemies/Skeleton_01_White_Attack1.png" id="2_xwavj"]
-[ext_resource type="Texture2D" uid="uid://dfsrx2o8aqa43" path="res://assets/img/characters/enemies/Skeleton_01_White_Die.png" id="3_nenq2"]
-[ext_resource type="Texture2D" uid="uid://b7mpmqkkft30y" path="res://assets/img/characters/enemies/Skeleton_01_White_Hurt.png" id="4_md484"]
-[ext_resource type="Texture2D" uid="uid://bjvp2c1wkas8n" path="res://assets/img/characters/enemies/Skeleton_01_White_Walk.png" id="6_ipns3"]
+[ext_resource type="Texture2D" uid="uid://citayt7oltse0" path="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Attack1.png" id="2_xwavj"]
+[ext_resource type="Texture2D" uid="uid://dfsrx2o8aqa43" path="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Die.png" id="3_nenq2"]
+[ext_resource type="Texture2D" uid="uid://b7mpmqkkft30y" path="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Hurt.png" id="4_md484"]
+[ext_resource type="Texture2D" uid="uid://bjvp2c1wkas8n" path="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Walk.png" id="6_ipns3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
 atlas = ExtResource("2_xwavj")
@@ -372,13 +372,14 @@ script = ExtResource("1_md0e3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=474033608]
 texture_filter = 1
 position = Vector2(8, -20)
-scale = Vector2(3.0520835, 3.3710935)
+scale = Vector2(2.699, 2.981)
 sprite_frames = SubResource("SpriteFrames_8qclf")
 animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772311672]
 position = Vector2(0, 11)
+scale = Vector2(0.885, 0.885)
 shape = SubResource("CapsuleShape2D_e7lhw")
 
 [node name="DirectionTimer" type="Timer" parent="." unique_id=578213721]
@@ -388,15 +389,16 @@ autostart = true
 
 [node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox" unique_id=613777571]
 position = Vector2(11, 10)
+scale = Vector2(0.87, 0.87)
 shape = SubResource("CapsuleShape2D_xwavj")
 
 [node name="ground_left" type="RayCast2D" parent="." unique_id=2026694356]
-position = Vector2(-65, 63)
+position = Vector2(-52.85, 63)
 scale = Vector2(2.5, 2.5)
 target_position = Vector2(0, 20.8)
 
 [node name="ground_right" type="RayCast2D" parent="." unique_id=544444571]
-position = Vector2(70, 63)
+position = Vector2(55.115, 63)
 scale = Vector2(2.5, 2.5)
 target_position = Vector2(0, 20.799994)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfsrx2o8aqa43"
-path="res://.godot/imported/Skeleton_01_White_Die.png-bcef4d1d3eec6f0776b1c51b9f6a87c6.ctex"
+uid="uid://cxhhsheevpx7d"
+path="res://.godot/imported/Skeleton_01_White_Idle.png-892151d90fc0eb47fff48a6ca0287077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/characters/enemies/Skeleton_01_White_Die.png"
-dest_files=["res://.godot/imported/Skeleton_01_White_Die.png-bcef4d1d3eec6f0776b1c51b9f6a87c6.ctex"]
+source_file="res://assets/img/characters/enemies/skeleton/Skeleton_01_White_Idle.png"
+dest_files=["res://.godot/imported/Skeleton_01_White_Idle.png-892151d90fc0eb47fff48a6ca0287077.ctex"]
 
 [params]
 

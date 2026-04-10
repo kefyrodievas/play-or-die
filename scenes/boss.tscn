@@ -328,7 +328,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_o4ffm")
 }],
 "loop": true,
-"name": &"dying",
+"name": &"die",
 "speed": 13.0
 }, {
 "frames": [{
@@ -412,7 +412,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_qbhct")
 }],
 "loop": true,
-"name": &"walking",
+"name": &"walk",
 "speed": 13.0
 }]
 
@@ -426,14 +426,13 @@ height = 100.0
 
 [node name="Boss" type="CharacterBody2D" unique_id=457228902]
 scale = Vector2(1.5, 1.5)
-collision_layer = 8
 script = ExtResource("1_neq0i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655993354]
 position = Vector2(0.9999981, -28.000002)
-scale = Vector2(1, 0.963)
+scale = Vector2(-1, 0.963)
 sprite_frames = SubResource("SpriteFrames_ajbp4")
-animation = &"idle"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686047377]
@@ -443,11 +442,19 @@ shape = SubResource("CapsuleShape2D_neq0i")
 [node name="DirectionTimer" type="Timer" parent="." unique_id=588813911]
 autostart = true
 
-[node name="DealDamageHitbox" type="Area2D" parent="." unique_id=416442914]
+[node name="Hitbox" type="Area2D" parent="." unique_id=416442914]
 
-[node name="HitboxCollision" type="CollisionShape2D" parent="DealDamageHitbox" unique_id=1502466731]
+[node name="HitboxCollision" type="CollisionShape2D" parent="Hitbox" unique_id=1502466731]
 position = Vector2(2, 4.000001)
 shape = SubResource("CapsuleShape2D_jncid")
 
+[node name="ground_left" type="RayCast2D" parent="." unique_id=894459656]
+position = Vector2(-38, 44)
+target_position = Vector2(0, 32)
+
+[node name="ground_right" type="RayCast2D" parent="." unique_id=1427741988]
+position = Vector2(38, 44)
+target_position = Vector2(0, 32)
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
-[connection signal="area_entered" from="DealDamageHitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

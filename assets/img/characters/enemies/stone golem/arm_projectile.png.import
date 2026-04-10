@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0qqjl1k72cmt"
-path="res://.godot/imported/Skeleton_01_White_Attack2.png-839d591ec853eb89d078d71ec2947b0e.ctex"
+uid="uid://bpn1kyf7t4tn4"
+path="res://.godot/imported/arm_projectile.png-e55168da75c115510caf46228cffade1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/characters/enemies/Skeleton_01_White_Attack2.png"
-dest_files=["res://.godot/imported/Skeleton_01_White_Attack2.png-839d591ec853eb89d078d71ec2947b0e.ctex"]
+source_file="res://assets/img/characters/enemies/stone golem/arm_projectile.png"
+dest_files=["res://.godot/imported/arm_projectile.png-e55168da75c115510caf46228cffade1.ctex"]
 
 [params]
 
