@@ -145,7 +145,6 @@ process_mode = 3
 script = ExtResource("1_u2dgd")
 
 [node name="HUD" type="Control" parent="." unique_id=1832089049]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

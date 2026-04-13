@@ -336,6 +336,7 @@ limit_right = 4010
 limit_bottom = 52
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=429229607]
+visible = false
 
 [node name="InGameHUD" parent="CanvasLayer" unique_id=1950831247 instance=ExtResource("6_a21b5")]
 offset_top = -2.0

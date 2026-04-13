@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+# SIGNALS - These broadcast updates to anyone listening (like the UI)
+signal health_changed(new_hp)
+signal score_changed(new_score)
+signal highscore_changed(new_hs)
+
 const SPEED = 400.0
 const JUMP_VELOCITY = -700.0
 
@@ -32,13 +37,16 @@ var playerBody = self
 
 func _ready():
 	score = GameData.current_score
-	$CanvasLayer/InGameHUD.call("_set_score_val", score)
+	score_changed.emit(score)
+	#$CanvasLayer/InGameHUD.call("_set_score_val", score)
 	
 	var highscore = GameData.load_highscore()
-	if score > highscore:
-		$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
-	else:
-		$CanvasLayer/InGameHUD.call("_set_highscore_val", highscore)
+	highscore_changed.emit(max(score, highscore))
+	
+	#if score > highscore:
+	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
+	#else:
+	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", highscore)
 
 func _physics_process(delta: float) -> void:
 	
@@ -108,11 +116,16 @@ func _physics_process(delta: float) -> void:
 func add_score(amount):
 	score += amount * score_multiplier
 	GameData.current_score = score
-	print("Score: ", score)
-	$CanvasLayer/InGameHUD.call("_set_score_val", score)
+	score_changed.emit(score) # Broadcast update
 	var highscore = GameData.load_highscore()
 	if score > highscore:
-		$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
+		highscore_changed.emit(score)
+	
+	print("Score: ", score)
+	#$CanvasLayer/InGameHUD.call("_set_score_val", score)
+	#var highscore = GameData.load_highscore()
+	#if score > highscore:
+	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
 
 func activate_score_doubler():
 	score_multiplier = 2
