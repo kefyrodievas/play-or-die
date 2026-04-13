@@ -9,9 +9,126 @@ extends CanvasLayer
 @onready var start_menu = $StartMenu
 @onready var gamble = $DeathGambleMenu
 
+
 @onready var score_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/ScoreNum
 @onready var highscore_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2/HighscoreNum
-@onready var health_bar = $HUD/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HealthBar
+@onready var health_bar = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HealthBar
+
+#SHOP
+@onready var luck_bar = $Shop/LuckBar
+@onready var luck_cost_label = $Shop/LuckCost
+@onready var luck_button = $Shop/Luck
+
+@onready var health_bar_shop = $Shop/HealthBar
+@onready var health_cost_label = $Shop/HealthCost
+@onready var health_button = $Shop/Health
+
+@onready var speed_bar = $Shop/SpeedBar
+@onready var speed_cost_label = $Shop/SpeedCost
+@onready var speed_button = $Shop/Speed
+
+@onready var defense_bar = $Shop/DefenseBar
+@onready var defense_cost_label = $Shop/DefenseCost
+@onready var defense_button = $Shop/Defense
+
+@onready var strenght_bar = $Shop/StrenghtBar
+@onready var strenght_cost_label = $Shop/StrenghtCost
+@onready var strenght_button = $Shop/Strenght
+
+@onready var jump_height_bar = $Shop/JumpHeightBar
+@onready var jump_height_cost_label = $Shop/Jump_HeightCost
+@onready var jump_height_button = $Shop/Jump_Height
+
+
+var luck_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/luck/01.png"),
+		preload("res://assets/img/Shop bars/luck/02.png"),
+		preload("res://assets/img/Shop bars/luck/03.png"),
+		preload("res://assets/img/Shop bars/luck/04.png"),
+		preload("res://assets/img/Shop bars/luck/05.png")
+	],
+	"costs": [ 200, 300, 500, 1000],
+	"level": 0
+}
+
+var health_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/health/01.png"),
+		preload("res://assets/img/Shop bars/health/02.png"),
+		preload("res://assets/img/Shop bars/health/03.png"),
+		preload("res://assets/img/Shop bars/health/04.png"),
+		preload("res://assets/img/Shop bars/health/05.png")
+	],
+	"costs": [200, 300, 500, 1000],
+	"level": 0
+}
+
+var speed_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/speed/01.png"),
+		preload("res://assets/img/Shop bars/speed/02.png"),
+		preload("res://assets/img/Shop bars/speed/03.png"),
+		preload("res://assets/img/Shop bars/speed/04.png"),
+		preload("res://assets/img/Shop bars/speed/05.png")
+	],
+	"costs": [200, 300, 500, 1000],
+	"level": 0
+}
+
+var defense_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/defense/01.png"),
+		preload("res://assets/img/Shop bars/defense/02.png"),
+		preload("res://assets/img/Shop bars/defense/03.png"),
+		preload("res://assets/img/Shop bars/defense/04.png"),
+		preload("res://assets/img/Shop bars/defense/05.png")
+	],
+	"costs": [250, 400, 1000, 2000],
+	"level": 0
+}
+
+var strenght_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/strenght/01.png"),
+		preload("res://assets/img/Shop bars/strenght/02.png"),
+		preload("res://assets/img/Shop bars/strenght/03.png"),
+		preload("res://assets/img/Shop bars/strenght/04.png"),
+		preload("res://assets/img/Shop bars/strenght/05.png")
+	],
+	"costs": [240, 450, 900, 1500],
+	"level": 0
+}
+
+var jump_height_data = {
+	"bar": null,
+	"label": null,
+	"button": null,
+	"textures": [
+		preload("res://assets/img/Shop bars/Jump height/01.png"),
+		preload("res://assets/img/Shop bars/Jump height/02.png"),
+		preload("res://assets/img/Shop bars/Jump height/03.png"),
+		preload("res://assets/img/Shop bars/Jump height/04.png"),
+		preload("res://assets/img/Shop bars/Jump height/05.png")
+	],
+	"costs": [200, 350, 700, 1200],
+	"level": 0
+}
 
 func _ready():
 	# 1. Ensure the UI itself can process even when the game is paused
@@ -32,6 +149,44 @@ func _ready():
 	if not samurai:
 		await get_tree().create_timer(0.1).timeout
 		_connect_samurai_signals()
+	#SHOP
+	luck_data["bar"] = luck_bar
+	luck_data["label"] = luck_cost_label
+	luck_data["button"] = luck_button
+
+	health_data["bar"] = health_bar_shop
+	health_data["label"] = health_cost_label
+	health_data["button"] = health_button
+
+	speed_data["bar"] = speed_bar
+	speed_data["label"] = speed_cost_label
+	speed_data["button"] = speed_button
+
+	defense_data["bar"] = defense_bar
+	defense_data["label"] = defense_cost_label
+	defense_data["button"] = defense_button
+
+	strenght_data["bar"] = strenght_bar
+	strenght_data["label"] = strenght_cost_label
+	strenght_data["button"] = strenght_button
+
+	jump_height_data["bar"] = jump_height_bar
+	jump_height_data["label"] = jump_height_cost_label
+	jump_height_data["button"] = jump_height_button
+
+	update_upgrade_ui(luck_data)
+	update_upgrade_ui(health_data)
+	update_upgrade_ui(speed_data)
+	update_upgrade_ui(defense_data)
+	update_upgrade_ui(strenght_data)
+	update_upgrade_ui(jump_height_data)
+
+	luck_button.pressed.connect(func(): buy_upgrade(luck_data))
+	health_button.pressed.connect(func(): buy_upgrade(health_data))
+	speed_button.pressed.connect(func(): buy_upgrade(speed_data))
+	defense_button.pressed.connect(func(): buy_upgrade(defense_data))
+	strenght_button.pressed.connect(func(): buy_upgrade(strenght_data))
+	jump_height_button.pressed.connect(func(): buy_upgrade(jump_height_data))
 	
 # CONNECT TO SAMURAI SIGNALS
 func _connect_samurai_signals():
@@ -148,3 +303,27 @@ func _on_gamble_pressed() -> void:
 	# 3. Stop the AnimatedSprite
 	$DeathGambleMenu/Dice/AnimatedSprite2D.pause()
 	print("Sprite stopped!")
+	
+func update_upgrade_ui(data: Dictionary) -> void:
+	data["bar"].texture = data["textures"][data["level"]]
+
+	if data["level"] >= data["textures"].size() - 1:
+		data["label"].text = " MAX"
+		data["button"].disabled = true
+	else:
+		data["label"].text = str(' ',data["costs"][data["level"]])
+		data["button"].disabled = false
+
+func buy_upgrade(data: Dictionary) -> void:
+	if data["level"] >= data["textures"].size() - 1:
+		return
+
+	var cost = data["costs"][data["level"]]
+
+	if 10000 < cost: #Player's Money = 10000
+		print("Not enough score")
+		return
+
+	data["level"] += 1
+	update_upgrade_ui(data)
+	#_set_score_val(samurai.score)

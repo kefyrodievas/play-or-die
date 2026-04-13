@@ -144,10 +144,10 @@ color = Color(0.26658326, 0.28012422, 0.28823456, 1)
 
 [node name="Exit" type="TextureButton" parent="Control" unique_id=1848834744]
 layout_mode = 0
-offset_left = 833.0
-offset_top = 576.0
-offset_right = 1353.0
-offset_bottom = 678.0
+offset_left = 273.0
+offset_top = 533.0
+offset_right = 793.0
+offset_bottom = 635.0
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("1_xfvoa")
 texture_hover = ExtResource("2_1l46r")
