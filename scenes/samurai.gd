@@ -36,9 +36,11 @@ var inAttack = false
 var playerBody = self
 
 func _ready():
+	GameUi._connect_samurai_signals()
 	score = GameData.current_score
 	score_changed.emit(score)
 	#$CanvasLayer/InGameHUD.call("_set_score_val", score)
+	#health_changed.connect(GameUi._on_score_changed)
 	
 	var highscore = GameData.load_highscore()
 	highscore_changed.emit(max(score, highscore))
@@ -209,7 +211,8 @@ func take_damage(damage_to_take):
 				is_Alive = false
 			health -= damage_to_take
 			print(str(self), "current health is ", health)
-	$CanvasLayer/InGameHUD.call("_set_hp_val", health)
+			health_changed.emit(health)
+	#$CanvasLayer/InGameHUD.call("_set_hp_val", health)
 
 
 

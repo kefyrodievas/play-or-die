@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ep8lo2jut4xn" path="res://assets/img/characters/samurai/ATTACK 1.png" id="2_s6way"]
 [ext_resource type="Texture2D" uid="uid://8kcbad0pe0im" path="res://assets/img/characters/samurai/RUN.png" id="2_v3kpt"]
 [ext_resource type="Texture2D" uid="uid://csg2bopiu7y47" path="res://assets/img/characters/samurai/HURT.png" id="3_a21b5"]
-[ext_resource type="PackedScene" uid="uid://be7c70sj1c75o" path="res://scenes/in_game_hud.tscn" id="6_a21b5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qm0jt"]
 atlas = ExtResource("2_s6way")
@@ -336,11 +335,6 @@ limit_right = 4010
 limit_bottom = 52
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=429229607]
-visible = false
-
-[node name="InGameHUD" parent="CanvasLayer" unique_id=1950831247 instance=ExtResource("6_a21b5")]
-offset_top = -2.0
-offset_bottom = -2.0
 
 [connection signal="timeout" from="ScoreBoostTimer" to="." method="_on_score_boost_timer_timeout"]
 [connection signal="timeout" from="DoubleJumpTimer" to="." method="_on_double_jump_timer_timeout"]

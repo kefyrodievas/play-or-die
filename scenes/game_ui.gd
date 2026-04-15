@@ -145,10 +145,10 @@ func _ready():
 	# Wait until the next frame AND until the scene tree actually has the new nodes
 	await get_tree().process_frame
 	# Try to connect. If it fails, wait one more frame and try again.
-	_connect_samurai_signals()
-	if not samurai:
-		await get_tree().create_timer(0.1).timeout
-		_connect_samurai_signals()
+	#_connect_samurai_signals()
+	#if not samurai:
+		#await get_tree().create_timer(0.1).timeout
+		#_connect_samurai_signals()
 	#SHOP
 	luck_data["bar"] = luck_bar
 	luck_data["label"] = luck_cost_label

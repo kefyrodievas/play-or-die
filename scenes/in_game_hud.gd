@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#SignalBus.connect("score_changed", _on_hit)
 	pass # Replace with function body.
 
 
@@ -19,3 +20,5 @@ func _set_hp_val(value: float) -> void:
 	#$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/HealthBar.
 func _set_score_val(value:int) -> void:
 	$MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/ScoreNum.text = str(value)
+func _on_score_changed(new_score) -> void:
+	_set_score_val(new_score)
