@@ -25,6 +25,7 @@ var player: CharacterBody2D
 
 var attack_range = 80
 var chase_speed = 150
+var points = 1
 
 func _process(delta):
 	player = $"../Samurai".playerBody
@@ -74,7 +75,9 @@ func handle_animation():
 		await get_tree().create_timer(1.0).timeout
 		handle_death()
 
+
 func handle_death():
+	$"../Samurai".call_deferred("add_score", points)
 	self.queue_free()
 	#additional stuff like giving points for killing enemy
 
