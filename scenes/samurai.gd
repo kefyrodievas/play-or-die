@@ -213,6 +213,7 @@ func take_damage(damage_to_take):
 			print(str(self), "current health is ", health)
 			health_changed.emit(health)
 	#$CanvasLayer/InGameHUD.call("_set_hp_val", health)
+	
 
 
 

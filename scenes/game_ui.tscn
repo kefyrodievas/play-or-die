@@ -1830,7 +1830,6 @@ text = "Quit"
 
 [node name="DeathGambleMenu" type="Control" parent="." unique_id=1663239494]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1888,6 +1887,16 @@ text = "GAMBLE"
 [node name="Dice" parent="DeathGambleMenu" unique_id=1545132458 instance=ExtResource("12_g2v8e")]
 position = Vector2(576, 350)
 
+[node name="Return" type="Button" parent="DeathGambleMenu" unique_id=368119778]
+visible = false
+layout_mode = 0
+offset_left = 899.0
+offset_top = 568.0
+offset_right = 1049.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+
 [connection signal="pressed" from="Shop/Exit" to="." method="_on_shop_exit_pressed"]
 [connection signal="pressed" from="StartMenu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="StartMenu/Exit" to="." method="_on_exit_pressed"]
@@ -1895,3 +1904,4 @@ position = Vector2(576, 350)
 [connection signal="pressed" from="PauseMenu/GridContainer/ResumeBtn" to="." method="_on_resume_btn_pressed"]
 [connection signal="pressed" from="PauseMenu/GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="DeathGambleMenu/Gamble" to="." method="_on_gamble_pressed"]
+[connection signal="pressed" from="DeathGambleMenu/Return" to="." method="_on_return_pressed"]

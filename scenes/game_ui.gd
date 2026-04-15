@@ -303,6 +303,9 @@ func _on_gamble_pressed() -> void:
 	# 3. Stop the AnimatedSprite
 	$DeathGambleMenu/Dice/AnimatedSprite2D.pause()
 	print("Sprite stopped!")
+	$DeathGambleMenu/Return.show()
+	
+	
 	
 func update_upgrade_ui(data: Dictionary) -> void:
 	data["bar"].texture = data["textures"][data["level"]]
@@ -327,3 +330,16 @@ func buy_upgrade(data: Dictionary) -> void:
 	data["level"] += 1
 	update_upgrade_ui(data)
 	#_set_score_val(samurai.score)
+
+
+func _on_return_pressed() -> void:
+	GameData.current_score = 0;	
+	$DeathGambleMenu/Dice/AnimatedSprite2D.play()
+	$DeathGambleMenu/Return.hide()
+	get_tree().paused = true
+	start_menu.show()
+	shop.hide()
+	pause_menu.hide()
+	#hud.hide()
+	gamble.hide()
+	pass # Replace with function body.
