@@ -203,17 +203,22 @@ func _on_s_hitbox_area_entered(area):
 		take_damage(area.owner.damage_to_deal)
 
 func take_damage(damage_to_take):
-	if damage_to_take != 0:
-		if health > 0:
-			taking_damage = true
-			if health <= 0:
-				_save_highscore()
-				is_Alive = false
-			health -= damage_to_take
-			print(str(self), "current health is ", health)
-			health_changed.emit(health)
-	#$CanvasLayer/InGameHUD.call("_set_hp_val", health)
-	
+	if damage_to_take == 0:
+		return
+
+	if not is_Alive:
+		return
+
+	health -= damage_to_take
+	$DamageSFX.play()
+
+	print(str(self), " current health is ", health)
+	health_changed.emit(health)
+
+	if health <= 0:
+		health = 0
+		is_Alive = false
+		_save_highscore()
 
 
 
