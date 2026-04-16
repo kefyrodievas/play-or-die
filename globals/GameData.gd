@@ -18,16 +18,47 @@ func load_highscore() -> int:
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	return file.get_var()
 
-var music_player : AudioStreamPlayer
+
+# -------------------------------------
+#			MUSIC
+#--------------------------------------
+var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 func _ready():
 	music_player = AudioStreamPlayer.new()
-	music_player.stream = preload("res://assets/audio/3. Concrete Jungle.wav")
 	add_child(music_player)
 
-func start_music():
-	if not music_player.playing:
-		music_player.play()
+func play_music(path: String) -> void:
+	var new_stream: AudioStream = load(path)
+	if new_stream == null:
+		push_warning("Invalid music path: " + path)
+		return
 
-func stop_music():
+	if music_player.stream == new_stream:
+		if not music_player.playing:
+			music_player.play()
+		return
+
 	music_player.stop()
+	music_player.stream = new_stream
+	music_player.play()
+
+func stop_music() -> void:
+	if music_player.playing:
+		music_player.stop()
+
+func play_floor_music(floor_name: String) -> void:
+	if not floor_music.has(floor_name):
+		push_warning("No music assigned for floor: " + floor_name)
+		return
+	
+	play_music(floor_music[floor_name])
+
+var floor_music = {
+	"menu": "res://assets/audio/menu_soundtrack_by_chiphead64.wav",
+	"shop": "res://assets/audio/Shop Theme.wav",
+	"main": "res://assets/audio/3. Concrete Jungle.wav",
+	"1_floor": "res://assets/audio/Through Mountains.wav",
+	"2ndFloor": "res://assets/audio/Ambush.wav",
+	"3rdFloor": "res://assets/audio/Time To Get Serious Bass.wav",
+}

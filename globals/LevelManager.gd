@@ -23,6 +23,8 @@ var floor_variants = {
 var last_variant = {}
 
 func get_random_variant(floor_name: String) -> String:
+	GameData.play_floor_music(floor_name)
+	
 	var variants = floor_variants[floor_name]
 	if variants.size() == 1:
 		return variants[0]

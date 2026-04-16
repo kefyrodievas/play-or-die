@@ -11,9 +11,8 @@ var screen_size : Vector2i
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_window().size
+	GameData.play_floor_music("main")
 	new_game()
-	GameData.start_music()
-	
 
 func new_game():
 	$Samurai.position = START_POS

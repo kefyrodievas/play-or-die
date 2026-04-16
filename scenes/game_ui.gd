@@ -137,6 +137,7 @@ func _ready():
 	get_tree().paused = true
 	start_menu.show()
 	shop.hide()
+	GameData.play_floor_music("menu")
 	pause_menu.hide()
 	#hud.hide()
 	gamble.hide()
@@ -249,6 +250,7 @@ func _on_start_pressed():
 	get_tree().paused = false
 	start_menu.hide()
 	hud.show()
+	GameData.play_floor_music("main")
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 	
@@ -256,10 +258,12 @@ func _on_start_pressed():
 func _on_shop_open_pressed():
 	start_menu.hide()
 	shop.show()
+	GameData.play_floor_music("shop")
 
 func _on_shop_exit_pressed():
 	shop.hide()
 	start_menu.show()
+	GameData.play_floor_music("menu")
 	
 func _on_exit_pressed():
 	get_tree().quit()
