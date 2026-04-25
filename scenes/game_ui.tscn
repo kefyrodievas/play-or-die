@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cxjq18juosb1j"]
 
-[ext_resource type="Script" uid="uid://c66wsgxtyjb7t" path="res://scenes/game_ui.gd" id="1_u2dgd"]
+[ext_resource type="Script" uid="uid://c66wsgxtyjb7t" path="res://globals/game_ui.gd" id="1_u2dgd"]
 [ext_resource type="Texture2D" uid="uid://dqqmp7gikoigl" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_e0pfi"]
 [ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="3_o3bws"]
 [ext_resource type="FontFile" uid="uid://di74pjmfcnoqu" path="res://assets/fonts/monogram.ttf" id="4_3huio"]
@@ -1735,6 +1735,33 @@ offset_bottom = 457.0
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("16_36vcn")
 
+[node name="Money" type="TextEdit" parent="Shop" unique_id=1713842785]
+clip_children = 1
+texture_filter = 1
+layout_mode = 0
+offset_left = 828.0
+offset_top = 17.0
+offset_right = 1137.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = 2
+theme_override_constants/wrap_offset = 0
+theme_override_fonts/font = ExtResource("4_3huio")
+theme_override_font_sizes/font_size = 58
+theme_override_styles/normal = SubResource("StyleBoxFlat_g2v8e")
+text = "Score: "
+backspace_deletes_composite_character_enabled = true
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+tab_input_mode = false
+virtual_keyboard_enabled = false
+caret_blink_interval = 2.5
+text_direction = 1
+
 [node name="StartMenu" type="Control" parent="." unique_id=332742946]
 visible = false
 layout_mode = 3
@@ -1830,6 +1857,7 @@ text = "Quit"
 
 [node name="DeathGambleMenu" type="Control" parent="." unique_id=1663239494]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

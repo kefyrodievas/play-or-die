@@ -189,6 +189,29 @@ func _ready():
 	strenght_button.pressed.connect(func(): buy_upgrade(strenght_data))
 	jump_height_button.pressed.connect(func(): buy_upgrade(jump_height_data))
 	
+	_sync_initial_data()
+	
+
+func _sync_initial_data():
+	# 1. Sync the local dictionary levels with the loaded GameData
+	luck_data["level"] = GameData.luck_level
+	health_data["level"] = GameData.health_level
+	speed_data["level"] = GameData.speed_level
+	defense_data["level"] = GameData.defense_level
+	strenght_data["level"] = GameData.strength_level
+	jump_height_data["level"] = GameData.jump_level
+	# 2. Refresh all visual bars and costs
+	update_upgrade_ui(luck_data)
+	update_upgrade_ui(health_data)
+	update_upgrade_ui(speed_data)
+	update_upgrade_ui(defense_data)
+	update_upgrade_ui(strenght_data)
+	update_upgrade_ui(jump_height_data)
+	
+	# 3. Update the money display
+	$Shop/Money.text = "Score: " + str(GameData.total_bank_score)
+
+	
 # CONNECT TO SAMURAI SIGNALS
 func _connect_samurai_signals():
 	# Look for the Samurai everywhere in the root
@@ -218,6 +241,8 @@ func _on_samurai_health_changed(new_hp):
 		get_tree().paused = true
 		hud.hide()
 		gamble.show()
+		$DeathGambleMenu/Gamble.disabled = false
+		$DeathGambleMenu/Return.hide()
 		$DeathGambleMenu/Score.text = "Score: " + str(samurai.score)
 
 func _on_samurai_score_changed(new_score):
@@ -257,6 +282,7 @@ func _on_start_pressed():
 
 func _on_shop_open_pressed():
 	start_menu.hide()
+	$Shop/Money.text="Score: "+ str(GameData.total_bank_score);
 	shop.show()
 	GameData.play_floor_music("shop")
 
@@ -297,19 +323,89 @@ func _on_quit_btn_pressed() -> void:
 
 
 func _on_gamble_pressed() -> void:
-	# 1. Pick a random number between 0 and 2
-	var wait_time = randi_range(0, 2)
-	print("Waiting for ", wait_time, " seconds...")
-	
-	# 2. Wait for that amount of time
+	# Disable the button immediately so they can't spam it
+	$DeathGambleMenu/Gamble.disabled = true
+	# 1. Start the animation
+	$DeathGambleMenu/Dice/AnimatedSprite2D.play()
+	# 2. Wait for a random amount of time (1 to 2.5 seconds)
+	#var wait_time = randf_range(1.0, 2.5)
+	var wait_time = 1;
 	await get_tree().create_timer(wait_time).timeout
 	
-	# 3. Stop the AnimatedSprite
+	# 3. Stop the animation
 	$DeathGambleMenu/Dice/AnimatedSprite2D.pause()
-	print("Sprite stopped!")
-	$DeathGambleMenu/Return.show()
+	# 4. Roll the logic (1 to 6)
+	var roll = randi_range(1, 6)
+	_process_gamble_result(roll)
 	
+	# Show return button ONLY if they didn't resurrect
+	if roll != 1:
+		$DeathGambleMenu/Return.show()
 	
+func _process_gamble_result(roll: int):
+	var msg_label = $DeathGambleMenu/Score # We use this to show the result text
+	
+	match roll:
+		1: # CONTINUE GAME
+			msg_label.text = "RESULT: RESURRECTION!"
+			if samurai:
+				samurai.health = 100 + (GameData.health_level * 20)
+				samurai.is_Alive = true
+				samurai.health_changed.emit(100)
+			get_tree().paused = false
+			gamble.hide()
+			hud.show()
+			return # Exit function early so gamble menu disappears
+			
+		2: # LOSE ALL SCORE
+			msg_label.text = "RESULT: LOST ALL SCORE"
+			GameData.current_score = 0
+			_set_score_val(0)
+			
+		3: # LOSE 1 LEVEL OF ONE RANDOM POWERUP
+			var key = GameData.upgrade_keys.pick_random()
+			_modify_upgrade_level(key, -1)
+			msg_label.text = "RESULT: LOST 1 LEVEL OF " + key.to_upper()
+			
+		4: # LOSE 1 LEVEL OF EVERY POWERUP
+			msg_label.text = "RESULT: ALL POWERUPS -1 LEVEL"
+			for key in GameData.upgrade_keys:
+				_modify_upgrade_level(key, -1)
+				
+		5: # LOSE ALL LEVELS OF ALL POWERUPS
+			msg_label.text = "RESULT: ALL POWERUPS RESET TO 0"
+			for key in GameData.upgrade_keys:
+				_modify_upgrade_level(key, -99) # Forces it to 0
+				
+		6: # GAIN 1 LEVEL FOR ONE RANDOM POWERUP
+			var key = GameData.upgrade_keys.pick_random()
+			_modify_upgrade_level(key, 1)
+			msg_label.text = "RESULT: POWERUP +1 LEVEL " + key.to_upper()
+
+	# After changing levels, update the Shop visual bars
+	_sync_shop_with_gamedata()
+	
+# Helper function to safely change levels in GameData
+func _modify_upgrade_level(upgrade_name: String, amount: int):
+	var current = GameData.get(upgrade_name + "_level")
+	var new_val = clamp(current + amount, 0, 4) # Max level is 4 (5 textures)
+	GameData.set(upgrade_name + "_level", new_val)
+
+# Helper to make sure the Shop bars match the new levels
+func _sync_shop_with_gamedata():
+	luck_data["level"] = GameData.luck_level
+	health_data["level"] = GameData.health_level
+	speed_data["level"] = GameData.speed_level
+	defense_data["level"] = GameData.defense_level
+	strenght_data["level"] = GameData.strength_level
+	jump_height_data["level"] = GameData.jump_level
+	
+	update_upgrade_ui(luck_data)
+	update_upgrade_ui(health_data)
+	update_upgrade_ui(speed_data)
+	update_upgrade_ui(defense_data)
+	update_upgrade_ui(strenght_data)
+	update_upgrade_ui(jump_height_data)
 	
 func update_upgrade_ui(data: Dictionary) -> void:
 	data["bar"].texture = data["textures"][data["level"]]
@@ -327,23 +423,38 @@ func buy_upgrade(data: Dictionary) -> void:
 
 	var cost = data["costs"][data["level"]]
 
-	if 10000 < cost: #Player's Money = 10000
+	if GameData.total_bank_score < cost: #Player's Money = 10000
 		print("Not enough score")
 		return
-
+	# Subtract cost
+	GameData.total_bank_score -= cost
+	# Update the Shop Money Label immediately
+	$Shop/Money.text = "Score: " + str(GameData.total_bank_score)
+	# Increase level locally
 	data["level"] += 1
+	
+	# SAVE the level to GameData immediately
+	if data == luck_data: GameData.luck_level = data["level"]
+	elif data == health_data: GameData.health_level = data["level"]
+	elif data == speed_data: GameData.speed_level = data["level"]
+	elif data == defense_data: GameData.defense_level = data["level"]
+	elif data == strenght_data: GameData.strength_level = data["level"]
+	elif data == jump_height_data: GameData.jump_level = data["level"]
+	
 	update_upgrade_ui(data)
+	GameData.save_game_data()
 	#_set_score_val(samurai.score)
+	# _set_score_val(GameData.current_score)
 
 
 func _on_return_pressed() -> void:
-	GameData.current_score = 0;	
+	# 1. Transfer run points to permanent money
+	GameData.add_run_to_bank()
+	
+	# 2. Reset UI
 	$DeathGambleMenu/Dice/AnimatedSprite2D.play()
 	$DeathGambleMenu/Return.hide()
-	get_tree().paused = true
-	start_menu.show()
-	shop.hide()
-	pause_menu.hide()
-	#hud.hide()
+	
+	# 3. Go to Start Menu
 	gamble.hide()
-	pass # Replace with function body.
+	start_menu.show()

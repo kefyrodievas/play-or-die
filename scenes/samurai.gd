@@ -45,6 +45,7 @@ func _ready():
 	var highscore = GameData.load_highscore()
 	highscore_changed.emit(max(score, highscore))
 	
+	apply_upgrades()
 	#if score > highscore:
 	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
 	#else:
@@ -128,6 +129,21 @@ func add_score(amount):
 	#var highscore = GameData.load_highscore()
 	#if score > highscore:
 	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
+
+
+func apply_upgrades():
+	# Example: Increase health by 20 per level
+	self.health = 100 + (GameData.health_level * 20)
+	
+	# Example: Increase speed by 50 per level
+	# (Note: Use a local modified_speed variable or update the SPEED constant logic)
+	
+	# Example: Strength increases damage
+	self.damage = 6 + (GameData.strength_level * 2)
+	
+	# Update UI to show the new max health
+	health_changed.emit(health)
+
 
 func activate_score_doubler():
 	score_multiplier = 2
