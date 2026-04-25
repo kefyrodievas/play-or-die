@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="7_dnahn"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="9_ds51n"]
 [ext_resource type="PackedScene" uid="uid://crklelqujgyx8" path="res://scenes/boss.tscn" id="11_40b28"]
+[ext_resource type="PackedScene" uid="uid://cmh1wf6w5jc2l" path="res://scenes/necromanx.tscn" id="12_ds51n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qatpg"]
 texture = ExtResource("1_b1oud")
@@ -1325,3 +1326,6 @@ target_scene = "2ndFloor"
 [node name="Boss" parent="." unique_id=457228902 instance=ExtResource("11_40b28")]
 position = Vector2(421.50003, 98.75)
 scale = Vector2(0.7, 0.7)
+
+[node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("12_ds51n")]
+position = Vector2(738.25, 9.25)
