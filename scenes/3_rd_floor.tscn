@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://by6bwcvt3gw1n"]
 
-[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_cmou1"]
+[ext_resource type="Script" path="res://scenes/Gambler_spawner.gd" id="1_cmou1"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_dt8he"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_25dbv"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_gb4gt"]
@@ -181,7 +181,7 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_gb4gt")]
 position = Vector2(-4, -96)
-target_scene = "Main"
+target_scene = "Boss3"
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("5_l2cjj")]
 position = Vector2(304.25, -98.75)

@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bjjp054a0pr4i"]
 
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_86t0d"]
-[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_opck3"]
+[ext_resource type="Script" path="res://scenes/Gambler_spawner.gd" id="1_opck3"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="2_eom7e"]
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="3_86t0d"]
 [ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="4_86t0d"]
