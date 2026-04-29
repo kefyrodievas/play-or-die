@@ -60,8 +60,10 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("attack")
 	elif is_Alive and taking_damage:
 		#velocity = Vector2.ZERO
+		set_physics_process(false)
 		$AnimatedSprite2D.play("hurt")
 		await get_tree().create_timer(0.3).timeout
+		set_physics_process(true)
 		taking_damage = false
 	else:
 		$AnimatedSprite2D.play("idle")
@@ -227,6 +229,7 @@ func take_damage(damage_to_take):
 
 	health -= damage_to_take
 	$DamageSFX.play()
+	taking_damage = true
 
 	print(str(self), " current health is ", health)
 	health_changed.emit(health)
