@@ -35,7 +35,7 @@ func _on_body_entered(body):
 		
 		# 4. Feedback Animation (Moving up + Fading)
 		# We set monitoring to false so it can't be triggered again during the tween
-		monitoring = false
+		#monitoring = false
 		
 		var tween = create_tween()
 		tween.tween_property(self, "position",

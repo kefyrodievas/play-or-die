@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dgh2aff2ef4wf" path="res://scenes/traveling_gambler.gd" id="1_7a5t4"]
 [ext_resource type="Texture2D" uid="uid://di2711tn8ou0m" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/speech_bubble_grey.png" id="1_k4810"]
 [ext_resource type="Texture2D" uid="uid://plgxwy2pov80" path="res://assets/img/characters/NPC/Traveling gambler/DarkSamurai (64x64).png" id="1_ym2io"]
-[ext_resource type="Texture2D" uid="uid://bpkdm78wq6hme" path="res://assets/img/characters/NPC/Traveling gambler/gabble?.png" id="2_cbj0x"]
+[ext_resource type="Texture2D" uid="uid://bpkdm78wq6hme" path="res://assets/img/characters/NPC/Traveling gambler/gabble.png" id="2_cbj0x"]
 [ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="5_yelti"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k4810"]

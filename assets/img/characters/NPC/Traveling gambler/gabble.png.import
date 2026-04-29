@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpkdm78wq6hme"
-path="res://.godot/imported/gabble?.png-3cea5cd376e8d35fd41e9ff3fbfb0b6d.ctex"
+path="res://.godot/imported/gabble.png-2378f0b8a04a6443fdcc18463a0cd969.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/characters/NPC/Traveling gambler/gabble?.png"
-dest_files=["res://.godot/imported/gabble?.png-3cea5cd376e8d35fd41e9ff3fbfb0b6d.ctex"]
+source_file="res://assets/img/characters/NPC/Traveling gambler/gabble.png"
+dest_files=["res://.godot/imported/gabble.png-2378f0b8a04a6443fdcc18463a0cd969.ctex"]
 
 [params]
 
