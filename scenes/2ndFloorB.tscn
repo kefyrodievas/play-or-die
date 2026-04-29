@@ -271,7 +271,7 @@ scale = Vector2(0.85, 0.85)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_murvd")]
 position = Vector2(956, -239)
-target_scene = "3rdFloor"
+target_scene = "Boss2"
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_x6jlp")]
 z_index = 1

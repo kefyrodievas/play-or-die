@@ -182,7 +182,7 @@ scale = Vector2(0.9, 0.9)
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_mdy7f")]
 position = Vector2(192, -96)
-target_scene = "Main"
+target_scene = "Boss3"
 
 [node name="Random" parent="." unique_id=127800719 instance=ExtResource("4_qcwrb")]
 position = Vector2(100, 52)

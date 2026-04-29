@@ -13,11 +13,21 @@ var floor_variants = {
 	],
 	"3rdFloor": [
 		"res://scenes/3_rd_floor.tscn",
-		"res://scenes/3_rd_floorB.tscn"
+		"res://scenes/3_rd_floorB.tscn",
+		"res://scenes/3_rd_floorC.tscn"
 	],
 	"Main": [
 		"res://scenes/main.tscn",
-	]
+	],
+	"Boss1": [
+		"res://scenes/Boss_scene1.tscn",
+	],
+	"Boss2": [
+		"res://scenes/Boss_scene2.tscn",
+	],
+	"Boss3": [
+		"res://scenes/Boss_scene3.tscn",
+	],
 }
 
 var last_variant = {}

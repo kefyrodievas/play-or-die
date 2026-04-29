@@ -206,6 +206,7 @@ tile_set = SubResource("TileSet_gb4gt")
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("2_eom7e")]
 position = Vector2(544, -128)
+target_scene = "Boss3"
 
 [node name="Necromancer" parent="." unique_id=1219581124 instance=ExtResource("3_86t0d")]
 position = Vector2(398, -136)

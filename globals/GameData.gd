@@ -35,6 +35,9 @@ var floor_music = {
 	"1_floor": "res://assets/audio/Through Mountains.wav",
 	"2ndFloor": "res://assets/audio/Ambush.wav",
 	"3rdFloor": "res://assets/audio/Time To Get Serious Bass.wav",
+	"Boss1": "res://assets/audio/Time To Get Serious.wav",
+	"Boss2": "res://assets/audio/Incoming Boss.wav",
+	"Boss3": "res://assets/audio/Bowser Returns.wav",
 }
 
 # --- Core Logic ---
