@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal health_changed(new_hp)
 signal score_changed(new_score)
 signal highscore_changed(new_hs)
+signal got_powerup(timer)
 
 const SPEED = 400.0
 const JUMP_VELOCITY = -700.0
@@ -151,6 +152,7 @@ func activate_score_doubler():
 	score_multiplier = 2
 	#$AnimatedSprite2D.modulate = Color(1, 1, 0)
 	$ScoreBoostTimer.start(multiplier_time)
+	got_powerup.emit($ScoreBoostTimer)
 
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
@@ -173,6 +175,8 @@ func activate_double_jump():
 	$DoubleJumpTimer.wait_time = double_jump_duration
 	#$AnimatedSprite2D.modulate = Color(0, 1, 0) # GREEN for score boost
 	$DoubleJumpTimer.start()
+	got_powerup.emit($DoubleJumpTimer)
+	
 
 func _on_double_jump_timer_timeout():
 	#print("Double jump ended")
@@ -209,10 +213,10 @@ func activate_dash():
 	
 func unlock_damage_boost():
 	damage_multiplier *= 2
-	var timer = get_tree().create_timer(damage_boost_duration)
-	timer.timeout.connect(func():
-		damage_multiplier /= 2 
-	)
+	$DamageBoostTimer.wait_time = damage_boost_duration
+	$DamageBoostTimer.start()
+	got_powerup.emit($DamageBoostTimer)
+	
 
 #TAKING DAMAGE FROM ENEMY
 func _on_s_hitbox_area_entered(area):
@@ -272,3 +276,7 @@ func attack_timers():
 		inAttack = false
 		)
 	
+
+
+func _on_damage_boost_timer_timeout() -> void:
+	damage_multiplier /= 2

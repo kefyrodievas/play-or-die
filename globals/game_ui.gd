@@ -39,6 +39,8 @@ extends CanvasLayer
 @onready var jump_height_cost_label = $Shop/Jump_HeightCost
 @onready var jump_height_button = $Shop/Jump_Height
 
+var cd_timer = preload("res://scenes/cd_timer.tscn")
+
 
 var luck_data = {
 	"bar": null,
@@ -226,6 +228,8 @@ func _connect_samurai_signals():
 			samurai.score_changed.connect(_on_samurai_score_changed)
 		if not samurai.highscore_changed.is_connected(_on_samurai_highscore_changed):
 			samurai.highscore_changed.connect(_on_samurai_highscore_changed)
+		if not samurai.got_powerup.is_connected(_on_samurai_get_powerup):
+			samurai.got_powerup.connect(_on_samurai_get_powerup)
 		
 		# Sync the UI immediately
 		_set_score_val(samurai.score)
@@ -234,6 +238,11 @@ func _connect_samurai_signals():
 	else:
 		print("Connection Failed: Samurai not found in the current scene tree.")
 # --- SIGNAL CALLBACKS (From Samurai) ---
+
+func _on_samurai_get_powerup(timer):
+	var cd = cd_timer.instantiate();
+	cd.call("set_timer", timer)
+	$HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer.add_child(cd)
 
 func _on_samurai_health_changed(new_hp):
 	_set_hp_val(new_hp)

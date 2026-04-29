@@ -8,13 +8,18 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1108.0
+offset_bottom = -604.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.25, 0.25)
 script = ExtResource("1_a8tba")
 
 [node name="p_bar" type="TextureProgressBar" parent="." unique_id=416197661]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 200.0
+offset_bottom = 200.0
+scale = Vector2(0.21, 0.21)
+value = 100.0
 fill_mode = 5
 texture_progress = ExtResource("2_hantg")

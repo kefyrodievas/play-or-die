@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cntkojaf7bkoh" path="res://assets/img/background/background_layer_1.png" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="7_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 
@@ -211,3 +213,9 @@ tile_set = SubResource("TileSet_trceg")
 
 [node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("7_o6xl0")]
 position = Vector2(410, 548)
+
+[node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("8_85g3d")]
+position = Vector2(-234, 584)
+
+[node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("9_choun")]
+position = Vector2(-349, 567)
