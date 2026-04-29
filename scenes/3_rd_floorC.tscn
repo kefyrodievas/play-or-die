@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://bjjp054a0pr4i"]
 
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_86t0d"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_opck3"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="2_eom7e"]
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="3_86t0d"]
 [ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="4_86t0d"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="5_jkj16"]
 [ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="6_dhito"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_xoeh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
 texture = ExtResource("1_86t0d")
@@ -188,6 +190,7 @@ sources/1 = SubResource("TileSetAtlasSource_25dbv")
 [node name="3rdFloorC" type="Node2D" unique_id=640446327]
 texture_filter = 1
 scale = Vector2(4, 4)
+script = ExtResource("1_opck3")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=524758739]
 texture_filter = 1
@@ -216,3 +219,6 @@ scale = Vector2(1, 1)
 
 [node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("6_dhito")]
 position = Vector2(18, -126)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("8_xoeh5")]
+position = Vector2(463.75, 41.75)

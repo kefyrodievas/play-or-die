@@ -1058,6 +1058,7 @@ process_mode = 3
 script = ExtResource("1_u2dgd")
 
 [node name="HUD" type="Control" parent="." unique_id=1832089049]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1949,6 +1950,44 @@ offset_bottom = 628.0
 theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
+[node name="Gamble" type="Control" parent="." unique_id=82343496]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Gamble" unique_id=1520073848]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.39014673, 0.49225795, 0.5176919, 1)
+
+[node name="YouDied" type="Label" parent="Gamble" unique_id=856072995]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 328.0
+offset_top = 139.0
+offset_right = 678.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Gamble"
+horizontal_alignment = 1
+
+[node name="Return_game" type="Button" parent="Gamble" unique_id=496327630]
+layout_mode = 0
+offset_left = 899.0
+offset_top = 568.0
+offset_right = 1049.0
+offset_bottom = 628.0
+theme_override_font_sizes/font_size = 32
+text = "RETURN"
+
 [connection signal="pressed" from="Shop/Exit" to="." method="_on_shop_exit_pressed"]
 [connection signal="pressed" from="StartMenu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="StartMenu/Exit" to="." method="_on_exit_pressed"]
@@ -1957,3 +1996,4 @@ text = "RETURN"
 [connection signal="pressed" from="PauseMenu/GridContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="DeathGambleMenu/Gamble" to="." method="_on_gamble_pressed"]
 [connection signal="pressed" from="DeathGambleMenu/Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Gamble/Return_game" to="." method="_on_return_game_pressed"]

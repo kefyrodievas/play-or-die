@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://7jxrndqdfoyw"]
 
 [ext_resource type="Texture2D" uid="uid://coa030uwrchkn" path="res://assets/img/background/Cave Tiles.png" id="1_b1oud"]
-[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/1_floor.gd" id="1_v6bwh"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_v6bwh"]
 [ext_resource type="Texture2D" uid="uid://pcu41cnut3or" path="res://assets/img/background/Game_Assets.png" id="2_dktqp"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="3_drvtq"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="5_40b28"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="9_ds51n"]
 [ext_resource type="PackedScene" uid="uid://crklelqujgyx8" path="res://scenes/boss.tscn" id="11_40b28"]
 [ext_resource type="PackedScene" uid="uid://cmh1wf6w5jc2l" path="res://scenes/necromanx.tscn" id="12_ds51n"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="13_dnahn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qatpg"]
 texture = ExtResource("1_b1oud")
@@ -1329,3 +1330,6 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("12_ds51n")]
 position = Vector2(738.25, 9.25)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("13_dnahn")]
+position = Vector2(-314.5, -51)

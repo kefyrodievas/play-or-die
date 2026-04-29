@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://cdua2kgbef877"]
 
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_ipd80"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_k3liy"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_qcwrb"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_mdy7f"]
 [ext_resource type="PackedScene" uid="uid://cjke7jdmrnthd" path="res://scenes/random.tscn" id="4_qcwrb"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="6_fjaiv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
 texture = ExtResource("1_ipd80")
@@ -166,6 +168,7 @@ sources/1 = SubResource("TileSetAtlasSource_25dbv")
 [node name="3rdFloorB" type="Node2D" unique_id=640446327]
 texture_filter = 1
 scale = Vector2(4, 4)
+script = ExtResource("1_k3liy")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=524758739]
 texture_filter = 1
@@ -184,3 +187,6 @@ target_scene = "Main"
 [node name="Random" parent="." unique_id=127800719 instance=ExtResource("4_qcwrb")]
 position = Vector2(100, 52)
 scale = Vector2(0.25, 0.25)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("6_fjaiv")]
+position = Vector2(3.5, -120)

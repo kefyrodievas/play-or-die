@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://y4l85m4f480k"]
 
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_ga2eh"]
 [ext_resource type="Texture2D" uid="uid://chh58e5on4ndf" path="res://assets/img/background/desert-ruins-1.png(1).png" id="1_meu6x"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_umwrx"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_ga2eh"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_kfdll"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_kddd8"]
 [ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="6_2m0uc"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_kfdll"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_meu6x")
@@ -247,6 +249,7 @@ sources/2 = SubResource("TileSetAtlasSource_xreed")
 
 [node name="2NdFloor" type="Node2D" unique_id=883792203]
 scale = Vector2(4, 4)
+script = ExtResource("1_ga2eh")
 
 [node name="Platforms" type="TileMapLayer" parent="." unique_id=1877793608]
 top_level = true
@@ -293,3 +296,7 @@ script = ExtResource("6_2m0uc")
 z_index = 1
 position = Vector2(479.25, -95.75)
 scale = Vector2(0.3, 0.3)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("8_kfdll")]
+visible = false
+position = Vector2(415.75, 62.25)

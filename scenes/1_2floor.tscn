@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bv327t7d6o5tq"]
 
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_0y2v4"]
 [ext_resource type="Texture2D" uid="uid://coa030uwrchkn" path="res://assets/img/background/Cave Tiles.png" id="1_v58oy"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="2_2fo4a"]
 [ext_resource type="Texture2D" uid="uid://pcu41cnut3or" path="res://assets/img/background/Game_Assets.png" id="3_0y2v4"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="6_8uovf"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="7_ltq3n"]
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="8_2fo4a"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_v4pdv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6u0c"]
 texture = ExtResource("1_v58oy")
@@ -1821,6 +1823,7 @@ sources/2 = SubResource("TileSetAtlasSource_0y2v4")
 [node name="1st_1floor" type="Node2D" unique_id=640446327]
 texture_filter = 1
 scale = Vector2(4, 4)
+script = ExtResource("1_0y2v4")
 
 [node name="TileMapLayerBackground" type="TileMapLayer" parent="." unique_id=745261534]
 modulate = Color(0.4725, 0.4725, 0.4725, 1)
@@ -1871,3 +1874,6 @@ scale = Vector2(0.35, 0.35)
 
 [node name="Gem" parent="." unique_id=642667019 instance=ExtResource("8_2fo4a")]
 position = Vector2(-137.5, -56)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("10_v4pdv")]
+position = Vector2(128.25, -384)

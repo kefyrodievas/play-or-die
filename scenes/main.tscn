@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="9_choun"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_choun"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 
@@ -219,3 +220,7 @@ position = Vector2(-234, 584)
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("9_choun")]
 position = Vector2(-349, 567)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("10_choun")]
+position = Vector2(-702, 544)
+scale = Vector2(5, 5)

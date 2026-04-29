@@ -1,12 +1,14 @@
 [gd_scene format=4 uid="uid://b7gn7ty6t7bjk"]
 
 [ext_resource type="Texture2D" uid="uid://chh58e5on4ndf" path="res://assets/img/background/desert-ruins-1.png(1).png" id="1_0yuhk"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_u7vwp"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_7hfq4"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_53thu"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_vl5is"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_0yuhk"]
 [ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="6_0yuhk"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="7_vv7jq"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="9_gwb0a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_0yuhk")
@@ -248,6 +250,7 @@ sources/2 = SubResource("TileSetAtlasSource_xreed")
 
 [node name="2NdFloor" type="Node2D" unique_id=883792203]
 scale = Vector2(4, 4)
+script = ExtResource("1_u7vwp")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=1877793608]
 top_level = true
@@ -291,3 +294,7 @@ scale = Vector2(0.3, 0.3)
 [node name="Boots2" parent="." unique_id=1835377063 instance=ExtResource("5_0yuhk")]
 position = Vector2(207, -40)
 scale = Vector2(0.3, 0.3)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("9_gwb0a")]
+visible = false
+position = Vector2(937, 16.25)

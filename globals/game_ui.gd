@@ -8,7 +8,7 @@ extends CanvasLayer
 @onready var shop = $Shop
 @onready var start_menu = $StartMenu
 @onready var gamble = $DeathGambleMenu
-
+@onready var gambler_menu = $Gamble
 
 @onready var score_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/ScoreNum
 @onready var highscore_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2/HighscoreNum
@@ -139,6 +139,7 @@ func _ready():
 	get_tree().paused = true
 	start_menu.show()
 	shop.hide()
+	gambler_menu.hide()
 	GameData.play_floor_music("menu")
 	pause_menu.hide()
 	#hud.hide()
@@ -467,3 +468,18 @@ func _on_return_pressed() -> void:
 	# 3. Go to Start Menu
 	gamble.hide()
 	start_menu.show()
+	
+# Traveling Gambler opening and closing gambling screen
+#Gamble node start
+func open_gambler_menu():
+	get_tree().paused = true
+	hud.hide()
+	pause_menu.hide()
+	gambler_menu.show()
+func close_gambler_menu():
+	gambler_menu.hide()
+	hud.show()
+	get_tree().paused = false
+func _on_return_game_pressed() -> void:
+	close_gambler_menu()
+#Gamble node end

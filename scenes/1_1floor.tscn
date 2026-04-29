@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://wi0ircg0b2l4"]
 
 [ext_resource type="Texture2D" uid="uid://pcu41cnut3or" path="res://assets/img/background/Game_Assets.png" id="1_1n317"]
-[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/1_floor.gd" id="1_4cg0v"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_4cg0v"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_larob"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_1n317"]
 [ext_resource type="Texture2D" uid="uid://bhlxapjdn2rxy" path="res://assets/img/background/oak_woods_tileset.png" id="3_3cf7y"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="10_ht8m2"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="11_vj7ex"]
 [ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="12_lk8xb"]
+[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="13_linml"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1n317"]
 texture = ExtResource("1_1n317")
@@ -1218,3 +1219,6 @@ position = Vector2(244.5, 48.25)
 
 [node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("12_lk8xb")]
 position = Vector2(66, 31)
+
+[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("13_linml")]
+position = Vector2(830.5, 74.75)
