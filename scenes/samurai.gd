@@ -39,10 +39,29 @@ var playerBody = self
 func _ready():
 	GameUi._connect_samurai_signals()
 	score = GameData.current_score
-	score_changed.emit(score)
+	if GameData.double_jump_time_left > 0:
+		max_jumps = 2
+		$DoubleJumpTimer.start(GameData.double_jump_time_left)
+		got_powerup.emit($DoubleJumpTimer)
+	
+	if GameData.damage_boost_time_left > 0:
+		damage_multiplier = 2
+		$DamageBoostTimer.start(GameData.damage_boost_time_left)
+		got_powerup.emit($DamageBoostTimer)
+	
+	if GameData.score_boost_time_left > 0:
+		score_multiplier = 2
+		$ScoreBoostTimer.start(GameData.score_boost_time_left)
+		got_powerup.emit($ScoreBoostTimer)
+	
+	if GameData.dash_time_left > 0:
+		canDash = true
+		$DashTimer.start(GameData.dash_time_left)
+		got_powerup.emit($DashTimer)
 	#$CanvasLayer/InGameHUD.call("_set_score_val", score)
 	#health_changed.connect(GameUi._on_score_changed)
 	
+	score_changed.emit(score)
 	var highscore = GameData.load_highscore()
 	highscore_changed.emit(max(score, highscore))
 	
@@ -168,6 +187,13 @@ func _save_highscore():
 	if score > highscore:
 		GameData.save_highscore(score)
 
+func save_player_state():
+	GameData.current_score = score
+	GameData.player_health = health
+	GameData.dash_time_left = $DashTimer.time_left
+	GameData.double_jump_time_left = $DoubleJumpTimer.time_left
+	GameData.damage_boost_time_left = $DamageBoostTimer.time_left
+	GameData.score_boost_time_left = $ScoreBoostTimer.time_left
 
 # DOUBLE JUMP
 func activate_double_jump():
@@ -194,6 +220,8 @@ var dashCooldown = 1.0
 
 func unlock_dash():
 	canDash = true
+	$DashTimer.start(20.0)
+	got_powerup.emit($DashTimer)
 
 func activate_dash():
 	canDash = false
@@ -241,6 +269,7 @@ func take_damage(damage_to_take):
 	if health <= 0:
 		health = 0
 		is_Alive = false
+		$DeathSFX.play()
 		_save_highscore()
 
 
@@ -280,3 +309,7 @@ func attack_timers():
 
 func _on_damage_boost_timer_timeout() -> void:
 	damage_multiplier /= 2
+
+
+func _on_dash_timer_timeout() -> void:
+	canDash = false

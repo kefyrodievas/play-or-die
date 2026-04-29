@@ -13,6 +13,15 @@ var speed_level = 0
 var defense_level = 0
 var strength_level = 0
 var jump_level = 0
+var player_health = 100
+var player_can_dash = false
+var player_max_jumps = 1
+var player_damage_multiplier = 1
+var player_score_multiplier = 1
+var dash_time_left = 0.0
+var double_jump_time_left = 0.0
+var damage_boost_time_left = 0.0
+var score_boost_time_left = 0.0
 
 # This list allows the Gamble logic to pick one at random
 var upgrade_keys = ["luck", "health", "speed", "defense", "strength", "jump"]
@@ -107,7 +116,8 @@ func save_highscore(new_score: int) -> void:
 	if new_score > current_hs:
  		# We don't just save the number; we update the bank and levels too
 		save_game_data()
-	
+
+
 
 # --- Music System ---
 

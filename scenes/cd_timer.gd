@@ -11,6 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if timer == null or not is_instance_valid(timer):
+		queue_free()
+		return
 	$p_bar.value = timer.time_left
 	#print(timer.time_left)
 	if timer.time_left == 0:

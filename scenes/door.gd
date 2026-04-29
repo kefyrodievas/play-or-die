@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body) -> void:
 	if body.name == "Samurai":
+		body.save_player_state()
 		var next_scene = LevelManager.get_random_variant(target_scene)
 		get_tree().call_deferred("change_scene_to_file", next_scene)
