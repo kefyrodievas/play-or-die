@@ -4,7 +4,7 @@ extends Area2D
 var opened := false
 var player_in_range := false
 var player = null
-var text = false;
+var text := false;
 func _ready():
 	$AnimatedSprite2D.play("closed")
 	
@@ -29,8 +29,9 @@ func open_chest():
 func _on_body_entered(body):
 	if body.name == "Samurai":
 		player = body
-		player_in_range = true
-		text = true
+		if(!opened):
+			player_in_range = true
+			text = true
 
 func _on_body_exited(body):
 	if body.name == "Samurai":

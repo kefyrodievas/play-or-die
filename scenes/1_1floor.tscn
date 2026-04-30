@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bhlxapjdn2rxy" path="res://assets/img/background/oak_woods_tileset.png" id="3_3cf7y"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_f5vw6"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_1n317"]
-[ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="8_mo4nq"]
 [ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="9_b8pby"]
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="10_ht8m2"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="11_vj7ex"]
@@ -1201,22 +1200,14 @@ target_scene = "Boss1"
 position = Vector2(500, 67.25)
 scale = Vector2(0.3, 0.3)
 
-[node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("8_mo4nq")]
-position = Vector2(406.75, -81.75)
-scale = Vector2(0.25, 0.25)
-
-[node name="Enemy2" parent="." unique_id=1065728491 instance=ExtResource("8_mo4nq")]
-position = Vector2(53.25, -82.25)
-scale = Vector2(0.25, 0.25)
-
 [node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("9_b8pby")]
-position = Vector2(391.25, 69.25)
+position = Vector2(294, -79)
 
 [node name="Necromancer" parent="." unique_id=1219581124 instance=ExtResource("10_ht8m2")]
 position = Vector2(635.5, -83.75)
 
 [node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("11_vj7ex")]
-position = Vector2(244.5, 48.25)
+position = Vector2(52.75, -72.5)
 
 [node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("12_lk8xb")]
 position = Vector2(66, 31)
