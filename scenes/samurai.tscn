@@ -180,7 +180,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w42lg")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 15.0
 }, {
@@ -197,9 +197,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xfno5")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 10.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -308,8 +308,10 @@ script = ExtResource("1_v3kpt")
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_qm0jt")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=647481060]
 position = Vector2(0.5, 1.25)

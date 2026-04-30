@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c1el2cchn7dsm"]
+
+[ext_resource type="Script" uid="uid://dqjfkh5adyg7j" path="res://scenes/spike.gd" id="1_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://cclhss2rnklms" path="res://assets/img/background/spikes/BbehingSpike.tres" id="2_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://cfnurxm3p2p03" path="res://assets/img/background/spikes/CbehingSpike.tres" id="2_60m7a"]
+[ext_resource type="Texture2D" uid="uid://b8wne7ghjkeci" path="res://assets/img/background/spikes/Cspike.tres" id="3_b8th5"]
+[ext_resource type="Texture2D" uid="uid://b8dxcvfqs5b6c" path="res://assets/img/background/spikes/Bspike.tres" id="5_516m6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mj4vg"]
+size = Vector2(13.25, 4)
+
+[node name="Spike" type="Area2D" unique_id=870259076]
+script = ExtResource("1_7a7y0")
+clean_behind = ExtResource("2_60m7a")
+clean_top = ExtResource("3_b8th5")
+bloody_behind = ExtResource("2_7a7y0")
+bloody_top = ExtResource("5_516m6")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=176103082]
+texture_filter = 1
+texture = ExtResource("2_60m7a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=180153934]
+texture_filter = 1
+scale = Vector2(1, 0.93599)
+texture = ExtResource("3_b8th5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=641605834]
+position = Vector2(-0.375, 6)
+shape = SubResource("RectangleShape2D_mj4vg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

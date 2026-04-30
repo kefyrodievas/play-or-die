@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://c1el2cchn7dsm" path="res://scenes/spike.tscn" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
@@ -224,4 +225,8 @@ scale = Vector2(5, 5)
 
 [node name="Chest" parent="." unique_id=275545822 instance=ExtResource("10_ya4ey")]
 position = Vector2(927.9999, 607)
+scale = Vector2(4, 4)
+
+[node name="Spike" parent="." unique_id=870259076 instance=ExtResource("11_ya4ey")]
+position = Vector2(802, 608)
 scale = Vector2(4, 4)

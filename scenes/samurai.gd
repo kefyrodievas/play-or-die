@@ -29,6 +29,11 @@ var health = 100
 var is_Alive: bool = true
 var taking_damage: bool = false
 
+#invincibility frame for ticks
+@export var i_frame_time := 0.5
+var invincibility := false
+@export var stun_time := 0.08
+
 #ATTACK SYSTEM
 const hitbox := preload("res://scenes/attack_hitbox.tscn")
 const cd_timer := preload("res://scenes/cd_timer.gd")
@@ -74,17 +79,13 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	
 	# ANIMATION
-	if velocity.x > 1 or velocity.x < -1:
+	if is_Alive and taking_damage:
+		$AnimatedSprite2D.play("hurt")
+	elif abs(velocity.x) > 1:
 		$AnimatedSprite2D.play("run")
 	elif inAttack:
 		$AnimatedSprite2D.play("attack")
-	elif is_Alive and taking_damage:
-		#velocity = Vector2.ZERO
-		set_physics_process(false)
-		$AnimatedSprite2D.play("hurt")
-		await get_tree().create_timer(0.3).timeout
-		set_physics_process(true)
-		taking_damage = false
+
 	else:
 		$AnimatedSprite2D.play("idle")
 		
@@ -252,25 +253,39 @@ func _on_s_hitbox_area_entered(area):
 	if (area.name == "Hitbox"):
 		take_damage(area.owner.damage_to_deal)
 
+
+#Pakeistas scrip kad veiktu su tick ir invincibility frames kad nenumirtu Samurai iskarto.
 func take_damage(damage_to_take):
 	if damage_to_take == 0:
 		return
-
 	if not is_Alive:
+		return
+	if invincibility:
 		return
 
 	health -= damage_to_take
-	$DamageSFX.play()
-	taking_damage = true
-
 	print(str(self), " current health is ", health)
 	health_changed.emit(health)
+	$DamageSFX.play()
 
+	invincibility = true
+	taking_damage = true
+	set_physics_process(false)
+	$AnimatedSprite2D.play("hurt")
+	await get_tree().create_timer(stun_time).timeout
+	set_physics_process(true)
+	
 	if health <= 0:
 		health = 0
 		is_Alive = false
 		$DeathSFX.play()
 		_save_highscore()
+		return
+
+	await get_tree().create_timer(i_frame_time).timeout
+
+	invincibility = false
+	taking_damage = false
 
 
 
