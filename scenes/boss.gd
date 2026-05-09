@@ -77,6 +77,7 @@ func handle_animation():
 		handle_death()
 
 func handle_death():
+	drop_loot()
 	$"../Samurai".call_deferred("add_score", points)
 	self.queue_free()
 	#additional stuff like giving points for killing enemy
@@ -141,3 +142,31 @@ func _attack():
 	is_roaming = false
 	$AnimatedSprite2D.play("attack")
 	await get_tree().create_timer(1.0).timeout
+
+
+func drop_loot():
+	# Base 30% chance + 5% per Luck Level (up to 50% at level 4)
+	var drop_chance = 0.3 + (GameData.luck_level * 0.05)
+	if randf() <= drop_chance:
+		spawn_random_powerup()
+		
+func spawn_random_powerup():
+	var items = [ preload("res://scenes/jump_boost.tscn"), 
+	preload("res://scenes/Damage_boost.tscn"), 
+	preload("res://scenes/Boots.tscn"),
+	preload("res://scenes/random.tscn"),
+	preload("res://scenes/star.tscn")
+	]
+	var item_instance = items.pick_random().instantiate()
+	# 1. Get the current scale of this enemy (the boss)
+	var boss_size = global_scale.x 
+	# 2. Calculate the new scale for the item
+	# This maps boss scale (0.7 to 4.0) to item scale (0.3 to 1.0)
+	var item_scale_val = remap(boss_size, 0.7, 4.0, 0.3, 1.0)
+	
+	# Optional: Clamp the value so it doesn't get too tiny or too huge if the boss is 0.1 or 10.0
+	item_scale_val = clamp(item_scale_val, 0.3, 1.0)
+	# 3. Apply the scale
+	item_instance.scale = Vector2(item_scale_val, item_scale_val)
+	get_parent().add_child(item_instance)
+	item_instance.global_position = global_position

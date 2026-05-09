@@ -1,15 +1,19 @@
 [gd_scene format=4 uid="uid://bjjp054a0pr4i"]
 
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_86t0d"]
-[ext_resource type="Script" path="res://scenes/Gambler_spawner.gd" id="1_opck3"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_opck3"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="2_eom7e"]
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="3_86t0d"]
 [ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="4_86t0d"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="5_jkj16"]
 [ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="6_dhito"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_xoeh5"]
+[ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="9_w3kdh"]
+[ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="10_q2mx1"]
+[ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="11_fy1we"]
+[ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="12_1pic2"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fy1we"]
 texture = ExtResource("1_86t0d")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -185,7 +189,7 @@ texture = ExtResource("1_86t0d")
 
 [sub_resource type="TileSet" id="TileSet_gb4gt"]
 physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_25dbv")
+sources/1 = SubResource("TileSetAtlasSource_fy1we")
 
 [node name="3rdFloorC" type="Node2D" unique_id=640446327]
 texture_filter = 1
@@ -223,3 +227,23 @@ position = Vector2(18, -126)
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("8_xoeh5")]
 position = Vector2(463.75, 41.75)
+
+[node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("9_w3kdh")]
+position = Vector2(80, 144)
+scale = Vector2(0.3, 0.3)
+
+[node name="Star" parent="." unique_id=2096763841 instance=ExtResource("10_q2mx1")]
+position = Vector2(28, -32)
+scale = Vector2(0.3, 0.3)
+
+[node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("11_fy1we")]
+position = Vector2(266, -128)
+scale = Vector2(0.3, 0.3)
+
+[node name="Star2" parent="." unique_id=482274172 instance=ExtResource("10_q2mx1")]
+position = Vector2(474, 136)
+scale = Vector2(0.3, 0.3)
+
+[node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("12_1pic2")]
+position = Vector2(648, -14)
+scale = Vector2(0.3, 0.3)

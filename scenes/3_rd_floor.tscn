@@ -1,10 +1,14 @@
 [gd_scene format=4 uid="uid://by6bwcvt3gw1n"]
 
-[ext_resource type="Script" path="res://scenes/Gambler_spawner.gd" id="1_cmou1"]
+[ext_resource type="Script" uid="uid://drb5lf487pexd" path="res://scenes/Gambler_spawner.gd" id="1_cmou1"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_dt8he"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="2_25dbv"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_gb4gt"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="5_l2cjj"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="6_0eu3a"]
+[ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="7_kt8d2"]
+[ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="8_ta78h"]
+[ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="9_kt8d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
 texture = ExtResource("1_dt8he")
@@ -185,3 +189,16 @@ target_scene = "Boss3"
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("5_l2cjj")]
 position = Vector2(304.25, -98.75)
+
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("6_0eu3a")]
+position = Vector2(200, 132)
+
+[node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("7_kt8d2")]
+position = Vector2(2, 64)
+
+[node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("8_ta78h")]
+position = Vector2(172, -74)
+
+[node name="Star" parent="." unique_id=2096763841 instance=ExtResource("9_kt8d2")]
+position = Vector2(56, 138)
+scale = Vector2(0.3, 0.3)
