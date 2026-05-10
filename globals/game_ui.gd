@@ -233,8 +233,10 @@ func _connect_samurai_signals():
 			samurai.got_powerup.connect(_on_samurai_get_powerup)
 		
 		# Sync the UI immediately
+		var current_max_hp = 100 + (GameData.health_level * 20)
+		_set_hp_val(samurai.health, current_max_hp)
 		_set_score_val(samurai.score)
-		_set_hp_val(samurai.health)
+		#_set_hp_val(samurai.health)
 		_set_highscore_val(GameData.load_highscore())
 	else:
 		print("Connection Failed: Samurai not found in the current scene tree.")
@@ -245,8 +247,10 @@ func _on_samurai_get_powerup(timer):
 	cd.call("set_timer", timer)
 	$HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer.add_child(cd)
 
-func _on_samurai_health_changed(new_hp):
-	_set_hp_val(new_hp)
+func _on_samurai_health_changed(new_hp, max_hp = 100):
+	
+	_set_hp_val(new_hp, max_hp)
+	
 	if new_hp <= 0: # death screen
 		get_tree().paused = true
 		hud.hide()
@@ -274,14 +278,18 @@ func _set_highscore_val(val):
 	if highscore_label:
 		highscore_label.text = str(val)
 
-func _set_hp_val(val):
+func _set_hp_val(val, max_val = 100):
 	if health_bar:
+		# Pirmiausia pakeičiame max_value, tik tada value!
+		health_bar.max_value = max_val
 		health_bar.value = val
-
-
+		print("UI atnaujintas: ", val, "/", max_val) # Skirta patikrai console lange
 # --- START MENU BUTTONS ---
 
 func _on_start_pressed():
+	# Svarbu: nunuliname išsaugotą HP, kad Samurai apply_upgrades nustatytų MAX HP
+	GameData.player_health = 0
+	
 	get_tree().paused = false
 	start_menu.hide()
 	hud.show()
@@ -369,7 +377,8 @@ func _process_gamble_result(roll: int):
 		1: # CONTINUE GAME
 			msg_label.text = "RESULT: RESURRECTION!"
 			if samurai:
-				samurai.health = 100 + (GameData.health_level * 20)
+				var max_hp = 100 + (GameData.health_level * 20) # Paskaičiuojame limitą
+				samurai.health = max_hp
 				samurai.is_Alive = true
 				
 				samurai.taking_damage = false # po to kai resurrectina uzluzta
@@ -379,8 +388,8 @@ func _process_gamble_result(roll: int):
 				if sprite:
 					sprite.play("idle")
 				
-				
-				samurai.health_changed.emit(samurai.health) # buvo 100
+				_on_samurai_health_changed(samurai.health, max_hp)
+				#samurai.health_changed.emit(samurai.health) # buvo 100
 			get_tree().paused = false
 			gamble.hide()
 			hud.show()

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # SIGNALS - These broadcast updates to anyone listening (like the UI)
-signal health_changed(new_hp)
+signal health_changed(new_hp, max_hp) # Pridėtas max_hp
 signal score_changed(new_score)
 signal highscore_changed(new_hs)
 signal got_powerup(timer)
@@ -156,7 +156,18 @@ func add_score(amount):
 
 func apply_upgrades():
 	# Health increases by 20 for every level
-	self.health = 100 + (GameData.health_level * 20)
+	var max_hp = 100 + (GameData.health_level * 20)
+	
+	# Jei GameData.player_health yra 0 (naujas žaidimas), duodame max_hp
+	# Jei > 0, vadinasi žaidėjas perėjo į kitą lygį sužeistas, tad paliekame tiek, kiek turėjo
+	if GameData.player_health > 0:
+		self.health = GameData.player_health
+	else:
+		self.health = max_hp
+	
+	# Išsiunčiame signalą UI, perduodami abu skaičius
+	health_changed.emit(self.health, max_hp)
+	
 	
 	# Strength increases damage by 2 for every level
 	self.damage = 6 + (GameData.strength_level * 2)
@@ -169,6 +180,7 @@ func apply_upgrades():
 	
 	# Update UI to show the new max health
 	health_changed.emit(health)
+	
 
 
 func activate_score_doubler():
@@ -269,7 +281,10 @@ func take_damage(damage_to_take):
 	# Defense increases by 1 for every level
 	health -= (damage_to_take - GameData.defense_level)
 	print(str(self), " current health is ", health)
-	health_changed.emit(health)
+	var max_hp = 100 + (GameData.health_level * 20)
+	
+	# BŪTINA: Siųsti abu parametrus kaskart pasikeitus gyvybėms
+	health_changed.emit(health, max_hp)
 	$DamageSFX.play()
 
 	invincibility = true
