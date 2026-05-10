@@ -345,7 +345,17 @@ func _on_gamble_pressed() -> void:
 	# 3. Stop the animation
 	$DeathGambleMenu/Dice/AnimatedSprite2D.pause()
 	# 4. Roll the logic (1 to 6)
-	var roll = randi_range(1, 6)
+	#var roll = randi_range(1, 6)
+	var outcomes = [1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6] # 11% good
+	
+	# For each luck level adds more 1 and 6 outcomes (max 10/26 (around 38%) of good outcomes)
+	for i in range(GameData.luck_level):
+		outcomes.append(1) # Adds more possibilities to ressurect
+		outcomes.append(6) # Adds more possibilities to gain one level
+	
+	# Pick one random out of the given 18 + 2 * luck
+	var roll = outcomes.pick_random()
+	print(outcomes)
 	_process_gamble_result(roll)
 	
 	# Show return button ONLY if they didn't resurrect
