@@ -6,8 +6,8 @@ signal score_changed(new_score)
 signal highscore_changed(new_hs)
 signal got_powerup(timer)
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -700.0
+var SPEED = 400.0
+var JUMP_VELOCITY = -700.0
 
 # SCORE SYSTEM
 var score = 0
@@ -155,14 +155,17 @@ func add_score(amount):
 
 
 func apply_upgrades():
-	# Example: Increase health by 20 per level
+	# Health increases by 20 for every level
 	self.health = 100 + (GameData.health_level * 20)
 	
-	# Example: Increase speed by 50 per level
-	# (Note: Use a local modified_speed variable or update the SPEED constant logic)
-	
-	# Example: Strength increases damage
+	# Strength increases damage by 2 for every level
 	self.damage = 6 + (GameData.strength_level * 2)
+	
+	# Jump increases jump velocity by 20 for every level
+	self.JUMP_VELOCITY = -700.0 - (GameData.jump_level * 20)
+	
+	# Speed increases by 40 for every level
+	self.SPEED = 400 + (GameData.speed_level * 40)
 	
 	# Update UI to show the new max health
 	health_changed.emit(health)
@@ -262,8 +265,9 @@ func take_damage(damage_to_take):
 		return
 	if invincibility:
 		return
-
-	health -= damage_to_take
+	
+	# Defense increases by 1 for every level
+	health -= (damage_to_take - GameData.defense_level)
 	print(str(self), " current health is ", health)
 	health_changed.emit(health)
 	$DamageSFX.play()

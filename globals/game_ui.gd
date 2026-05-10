@@ -371,7 +371,16 @@ func _process_gamble_result(roll: int):
 			if samurai:
 				samurai.health = 100 + (GameData.health_level * 20)
 				samurai.is_Alive = true
-				samurai.health_changed.emit(100)
+				
+				samurai.taking_damage = false # po to kai resurrectina uzluzta
+				samurai.invincibility = false
+				samurai.set_physics_process(true) # nes take damage isjungia
+				var sprite = samurai.get_node_or_null("AnimatedSprite2D")
+				if sprite:
+					sprite.play("idle")
+				
+				
+				samurai.health_changed.emit(samurai.health) # buvo 100
 			get_tree().paused = false
 			gamble.hide()
 			hud.show()

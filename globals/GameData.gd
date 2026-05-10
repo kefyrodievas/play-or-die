@@ -3,7 +3,7 @@ extends Node
 const SAVE_PATH = "user://highscore.save"
 
 var current_score = 0 # resets on death
-var total_bank_score = 1000 # The "Money" used for PowerUps (NEVER resets)
+var total_bank_score = 1000 # The "Money" used for PowerUps
 var current_health = 100
 var highscore = 0;
 
