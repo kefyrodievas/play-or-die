@@ -2,6 +2,7 @@ extends CanvasLayer
 
 # Use @onready to find the Samurai by name in the scene tree
 @onready var samurai = get_tree().root.find_child("Samurai", true, false)
+@onready var gambler = get_tree().root.find_child("TravelingGambler", true, false)
 
 @onready var hud = $HUD
 @onready var pause_menu = $PauseMenu
@@ -509,5 +510,12 @@ func close_gambler_menu():
 	hud.show()
 	get_tree().paused = false
 func _on_return_game_pressed() -> void:
+	gambler = get_tree().root.find_child("TravelingGambler", true, false)
+
+	if gambler and gambler.has_method("after_interaction"):
+		gambler.after_interaction()
+	else:
+		print("Gambler not found or missing after_interaction()")
 	close_gambler_menu()
+	
 #Gamble node end

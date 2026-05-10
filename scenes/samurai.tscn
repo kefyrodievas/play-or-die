@@ -308,9 +308,9 @@ script = ExtResource("1_v3kpt")
 texture_filter = 1
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_qm0jt")
-animation = &"hurt"
+animation = &"attack"
 autoplay = "idle"
-frame = 3
+frame = 6
 frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=647481060]

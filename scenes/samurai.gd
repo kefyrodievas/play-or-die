@@ -81,11 +81,10 @@ func _physics_process(delta: float) -> void:
 	# ANIMATION
 	if is_Alive and taking_damage:
 		$AnimatedSprite2D.play("hurt")
-	elif abs(velocity.x) > 1:
-		$AnimatedSprite2D.play("run")
 	elif inAttack:
 		$AnimatedSprite2D.play("attack")
-
+	elif abs(velocity.x) > 1:
+		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
 		
@@ -310,8 +309,8 @@ func take_damage(damage_to_take):
 
 # ATTACK
 var can_attack = true
-var attack_cd = 0.4
-var attack_duration = 0.2
+var attack_cd = 0.7
+var attack_duration = 0.6
 var attack_inst
 
 func attack(direction):

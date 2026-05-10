@@ -1058,7 +1058,6 @@ process_mode = 3
 script = ExtResource("1_u2dgd")
 
 [node name="HUD" type="Control" parent="." unique_id=1832089049]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1951,6 +1950,7 @@ theme_override_font_sizes/font_size = 32
 text = "RETURN"
 
 [node name="Gamble" type="Control" parent="." unique_id=82343496]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

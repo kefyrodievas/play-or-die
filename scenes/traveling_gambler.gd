@@ -24,12 +24,18 @@ func _process(delta):
 	if player_in_range and !is_interacting and Input.is_action_just_pressed("Interact"):
 		start_interaction()
 		
-
+func after_interaction():
+	$Sprite2D.visible = false
+	$SpeechBubbleGrey.visible = false
+	$Label.visible = false
+	$AnimatedSprite2D.play("AFTER_GAMBLE")
+	await $AnimatedSprite2D.animation_finished
+	queue_free()
+	
 func start_interaction():
 	is_interacting = true
 	
 	$AnimatedSprite2D.play("INTERACT")
-	
 	await $AnimatedSprite2D.animation_finished
 	GameUi.open_gambler_menu()
 	is_interacting = false
