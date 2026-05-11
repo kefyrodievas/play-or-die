@@ -161,6 +161,8 @@ func _ready():
 	# Initial view
 	get_tree().paused = true
 	start_menu.show()
+	#$StartMenu/Score.editable = false
+	$StartMenu/Score.text="Score: "+ str(GameData.total_bank_score);
 	shop.hide()
 	gambler_menu.hide()
 	GameData.play_floor_music("menu")
@@ -311,14 +313,11 @@ func _set_hp_val(val, max_val = 100):
 func _on_start_pressed():
 	# Svarbu: nunuliname išsaugotą HP, kad Samurai apply_upgrades nustatytų MAX HP
 	GameData.player_health = 0
-	
 	get_tree().paused = false
 	start_menu.hide()
 	hud.show()
 	GameData.play_floor_music("main")
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	
-	
 
 func _on_shop_open_pressed():
 	start_menu.hide()
