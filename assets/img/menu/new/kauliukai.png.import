@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4yxohq0kynx1"
-path="res://.godot/imported/Quit.png-fcd1153c4d334294af88fcc016c14b51.ctex"
+uid="uid://1bcuwpkdifef"
+path="res://.godot/imported/kauliukai.png-4658816e9ef5634350c011abbcd7a0d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/menu/Quit.png"
-dest_files=["res://.godot/imported/Quit.png-fcd1153c4d334294af88fcc016c14b51.ctex"]
+source_file="res://assets/img/menu/new/kauliukai.png"
+dest_files=["res://.godot/imported/kauliukai.png-4658816e9ef5634350c011abbcd7a0d2.ctex"]
 
 [params]
 

@@ -5,27 +5,33 @@
 [ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="3_o3bws"]
 [ext_resource type="FontFile" uid="uid://di74pjmfcnoqu" path="res://assets/fonts/monogram.ttf" id="4_3huio"]
 [ext_resource type="Texture2D" uid="uid://dk14e1fqjoemy" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/emoji style ui/Inventory_Blocks_Spritesheet.png" id="6_g2v8e"]
-[ext_resource type="Texture2D" uid="uid://c2ajg66et1o06" path="res://assets/img/menu/Start.png" id="8_g2v8e"]
-[ext_resource type="Texture2D" uid="uid://chipd31xgrs23" path="res://assets/img/menu/Start_hover.png" id="9_1kaiv"]
 [ext_resource type="Texture2D" uid="uid://b6164nvak0jn2" path="res://assets/img/Shop bars/Buy buttonnormal.png" id="9_upmhx"]
 [ext_resource type="Texture2D" uid="uid://cny8m5wbl6hwq" path="res://assets/img/Shop bars/Buy buttonpress.png" id="10_ihktq"]
-[ext_resource type="Texture2D" uid="uid://btnrbjlxxeb05" path="res://assets/img/menu/Quit.png" id="10_upmhx"]
+[ext_resource type="Texture2D" uid="uid://b4yxohq0kynx1" path="res://assets/img/menu/Quit.png" id="10_upmhx"]
 [ext_resource type="Texture2D" uid="uid://bfksdjputkh14" path="res://assets/img/menu/Quit_hover.png" id="11_ihktq"]
 [ext_resource type="PackedScene" uid="uid://cee3rcvkg2cf1" path="res://scenes/dice.tscn" id="12_g2v8e"]
-[ext_resource type="Texture2D" uid="uid://b0nlt0oe3vugn" path="res://assets/img/menu/Shop.png" id="12_igvt4"]
 [ext_resource type="Texture2D" uid="uid://drbny52m6f8tp" path="res://assets/img/Shop bars/speed/Speed.png" id="12_lab56"]
 [ext_resource type="Texture2D" uid="uid://e4e6lkn1fiyk" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="12_s2npe"]
 [ext_resource type="Texture2D" uid="uid://chosuvimc7h57" path="res://assets/img/Shop bars/strenght/Strengh.png" id="13_gj1yn"]
-[ext_resource type="Texture2D" uid="uid://d0e5iu3e50c0x" path="res://assets/img/menu/Shop_hover.png" id="13_x8pta"]
 [ext_resource type="Texture2D" uid="uid://bdwifv25ah1oa" path="res://assets/img/Shop bars/health/Health.png" id="14_5kjus"]
 [ext_resource type="Texture2D" uid="uid://ctp8fli808rus" path="res://assets/img/Shop bars/luck/Luck.png" id="15_bj1rn"]
 [ext_resource type="Texture2D" uid="uid://dbfg7xepsjkip" path="res://assets/img/Shop bars/defense/Defense.png" id="16_36vcn"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="16_ihktq"]
+[ext_resource type="Texture2D" uid="uid://67m8jd33kbkq" path="res://assets/img/menu/new/background_layer_1.png" id="17_n74c5"]
+[ext_resource type="Texture2D" uid="uid://dw0g7v7vdjtiu" path="res://assets/img/background/background_layer_2.png" id="18_8wu16"]
+[ext_resource type="Texture2D" uid="uid://c4mey0dlhg0c6" path="res://assets/img/background/background_layer_3.png" id="19_sdeak"]
+[ext_resource type="Texture2D" uid="uid://dwey3tg8t3kmi" path="res://assets/img/menu/new/logo.png" id="20_h8a34"]
+[ext_resource type="Texture2D" uid="uid://bacfu5nmx0xdl" path="res://assets/img/menu/new/start.png" id="21_wbo4m"]
 [ext_resource type="Texture2D" uid="uid://batumyl3uiel0" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Icons/special icons/Small Happines-Sadness icons.png" id="22_2yflp"]
 [ext_resource type="PackedScene" uid="uid://c7u8hryloq7hy" path="res://addons/card-framework/card_manager.tscn" id="22_bj1rn"]
+[ext_resource type="Texture2D" uid="uid://c53jirigp422k" path="res://assets/img/menu/new/start selected.png" id="22_nlan2"]
 [ext_resource type="PackedScene" uid="uid://bww551cv2e57x" path="res://scenes/my_card_factory.tscn" id="23_2yflp"]
 [ext_resource type="PackedScene" uid="uid://dk6rb7lhv1ef6" path="res://addons/card-framework/pile.tscn" id="23_36vcn"]
+[ext_resource type="Texture2D" uid="uid://bxdwcj502tg7d" path="res://assets/img/menu/new/quit.png" id="23_sfun4"]
 [ext_resource type="PackedScene" uid="uid://bkpjlq7ggckg6" path="res://addons/card-framework/hand.tscn" id="24_2yflp"]
+[ext_resource type="Texture2D" uid="uid://dw37hb8u6db1h" path="res://assets/img/menu/new/quit selected.png" id="24_27ch3"]
+[ext_resource type="Texture2D" uid="uid://danrdnggvs6mk" path="res://assets/img/menu/new/shop.png" id="25_bhxtc"]
+[ext_resource type="Texture2D" uid="uid://1t77w5sdo3ms" path="res://assets/img/menu/new/shop selected.png" id="26_qleia"]
 
 [sub_resource type="Gradient" id="Gradient_s2npe"]
 
@@ -1805,48 +1811,67 @@ caret_blink_interval = 2.5
 text_direction = 1
 
 [node name="StartMenu" type="Control" parent="." unique_id=332742946]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="StartMenu" unique_id=793961479]
+[node name="background" type="TextureRect" parent="StartMenu" unique_id=540351804]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.49803922, 0.60784316, 0.63529414, 1)
+texture = ExtResource("17_n74c5")
+
+[node name="background2" type="TextureRect" parent="StartMenu" unique_id=1722966556]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("18_8wu16")
+
+[node name="background3" type="TextureRect" parent="StartMenu" unique_id=1653443929]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("19_sdeak")
+
+[node name="logo" type="TextureRect" parent="StartMenu" unique_id=323456408]
+layout_mode = 0
+offset_left = 185.6
+offset_top = 5.0
+offset_right = 971.6
+offset_bottom = 286.5
+texture = ExtResource("20_h8a34")
 
 [node name="Start" type="TextureButton" parent="StartMenu" unique_id=1624941137]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 424.0
-offset_top = 291.0
-offset_right = 944.0
-offset_bottom = 393.0
+offset_left = 426.0
+offset_top = 286.0
+offset_right = 946.0
+offset_bottom = 388.0
 scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("8_g2v8e")
-texture_hover = ExtResource("9_1kaiv")
+texture_normal = ExtResource("21_wbo4m")
+texture_hover = ExtResource("22_nlan2")
 
 [node name="Exit" type="TextureButton" parent="StartMenu" unique_id=130767525]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 464.0
-offset_right = 944.0
-offset_bottom = 566.0
+offset_left = 426.0
+offset_top = 459.25
+offset_right = 946.0
+offset_bottom = 561.25
 scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("10_upmhx")
-texture_hover = ExtResource("11_ihktq")
+texture_normal = ExtResource("23_sfun4")
+texture_hover = ExtResource("24_27ch3")
 
 [node name="Shop" type="TextureButton" parent="StartMenu" unique_id=729611373]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 376.0
-offset_right = 944.0
-offset_bottom = 478.0
+offset_left = 426.0
+offset_top = 372.0
+offset_right = 946.0
+offset_bottom = 474.0
 scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("12_igvt4")
-texture_hover = ExtResource("13_x8pta")
+texture_normal = ExtResource("25_bhxtc")
+texture_hover = ExtResource("26_qleia")
 
 [node name="PauseMenu" type="Control" parent="." unique_id=1815651049]
 process_mode = 3
@@ -2175,7 +2200,6 @@ offset_left = -528.0
 offset_top = -188.802
 offset_right = -528.0
 offset_bottom = -188.802
-allow_card_movement = null
 
 [node name="DealerHand" parent="Gamble/CardManager" unique_id=338380973 instance=ExtResource("24_2yflp")]
 texture_filter = 1
@@ -2185,7 +2209,6 @@ offset_top = -348.802
 offset_right = -479.0
 offset_bottom = -348.802
 rotation = -3.1415927
-allow_card_movement = null
 
 [node name="DiscardPile" parent="Gamble/CardManager" unique_id=1398416148 instance=ExtResource("23_36vcn")]
 texture_filter = 1
