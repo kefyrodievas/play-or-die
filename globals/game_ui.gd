@@ -2,7 +2,7 @@ extends CanvasLayer
 
 # Use @onready to find the Samurai by name in the scene tree
 @onready var samurai = get_tree().root.find_child("Samurai", true, false)
-@onready var gambler = get_tree().root.find_child("TravelingGambler", true, false)
+@onready var gambler = get_tree().root.find_child("Traveling Gambler", true, false)
 
 @onready var hud = $HUD
 @onready var pause_menu = $PauseMenu
@@ -11,10 +11,32 @@ extends CanvasLayer
 @onready var gamble = $DeathGambleMenu
 @onready var gambler_menu = $Gamble
 
+#blackjack variables
+@onready var card_manager = $Gamble/CardManager
+# For Traditional Layout (Option A):
+@onready var deck = $Gamble/CardManager/Deck
+@onready var player_hand = $Gamble/CardManager/PlayerHand
+@onready var dealer_hand = $Gamble/CardManager/DealerHand
+@onready var hit_button: Button = $Gamble/Hit
+@onready var stand_button: Button = $Gamble/Stand
+@onready var restart_button: Button = $Gamble/Restart
+@onready var discard_pile = $Gamble/CardManager/DiscardPile
+var blackjack_game_over := false
+var player_standing := false
+var blackjack_deck_created := false
+var player_won := false
+var min_blackjack_games := 1
+var max_blackjack_games := 8
+var selected_blackjack_games := 1
+var blackjack_games_played := 0
+var blackjack_session_active := false
+
+
 @onready var score_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer/ScoreNum
 @onready var highscore_label = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HBoxContainer2/HighscoreNum
 @onready var health_bar = $HUD/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/NinePatchRect/HealthBar
 
+var score_for_gamble := 0
 #SHOP
 @onready var luck_bar = $Shop/LuckBar
 @onready var luck_cost_label = $Shop/LuckCost
@@ -194,7 +216,6 @@ func _ready():
 	jump_height_button.pressed.connect(func(): buy_upgrade(jump_height_data))
 	
 	_sync_initial_data()
-	
 
 func _sync_initial_data():
 	# 1. Sync the local dictionary levels with the loaded GameData
@@ -505,17 +526,337 @@ func open_gambler_menu():
 	hud.hide()
 	pause_menu.hide()
 	gambler_menu.show()
-func close_gambler_menu():
+
+	player_won = false
+	blackjack_game_over = false
+	player_standing = false
+
+	$Gamble/winner.text = "TO LEAVE WIN ONCE"
+	$Gamble/count.text = ""
+	$Gamble/showscore.text = ""
+	$Gamble/Return_game.disabled = true
+	$Gamble/Return_game.visible = true
+	restart_button.visible = false
+	$Gamble/price.visible = false
+	
+	await get_tree().create_timer(2, true, false, true).timeout
+
+	score_for_gamble = int(score_label.text)
+	setup_game()
+
+	if not hit_button.pressed.is_connected(_on_hit_pressed):
+		hit_button.pressed.connect(_on_hit_pressed)
+
+	if not stand_button.pressed.is_connected(_on_stand_pressed):
+		stand_button.pressed.connect(_on_stand_pressed)
+
+	if not restart_button.pressed.is_connected(_on_restart_pressed):
+		restart_button.pressed.connect(_on_restart_pressed)
+func close_gambler_menu(kill: bool):
+	clear_blackjack_hands()
+	destroy_blackjack_deck()
+	_set_score_val(score_for_gamble)
+	score_label.text = str(score_for_gamble)
+
+	$Gamble/winner.text = ""
+	$Gamble/count.text = ""
+	$Gamble/showscore.text = ""
+	restart_button.visible = false
+	$Gamble/price.visible = false
+
+	gambler = get_tree().root.find_child("TravelingGambler", true, false)
+
 	gambler_menu.hide()
 	hud.show()
 	get_tree().paused = false
+
+	await get_tree().create_timer(1.0).timeout
+
+	if gambler and gambler.has_method("KILL") and kill:
+		gambler.KILL(samurai)
+
 func _on_return_game_pressed() -> void:
+	close_gambler_menu(false)
+
 	gambler = get_tree().root.find_child("TravelingGambler", true, false)
 
 	if gambler and gambler.has_method("after_interaction"):
 		gambler.after_interaction()
 	else:
 		print("Gambler not found or missing after_interaction()")
-	close_gambler_menu()
+func destroy_blackjack_deck():
+	player_hand.destroy_all_cards()
+	dealer_hand.destroy_all_cards()
+	deck.destroy_all_cards()
+	discard_pile.destroy_all_cards()
+
+	blackjack_deck_created = false
+	blackjack_game_over = false
+	player_standing = false
+	player_won = false
+func clear_blackjack_hands():
+	var player_cards = player_hand.get_cards()
+	if player_cards.size() > 0:
+		for card in player_cards:
+			card.set_meta("force_face_down", false)
+			card.show_front = true
+		discard_pile.move_cards(player_cards)
+
+	var dealer_cards = dealer_hand.get_cards()
+	if dealer_cards.size() > 0:
+		for card in dealer_cards:
+			card.set_meta("force_face_down", false)
+			card.show_front = true
+		discard_pile.move_cards(dealer_cards)
+		
+func play_again():
+	blackjack_game_over = false
+	player_standing = false
+	hit_button.disabled = false
+	stand_button.disabled = false
+	clear_blackjack_hands()
+
+func setup_game():
+	score_label.text = str(score_for_gamble)
+
+	$Gamble/Return_game.disabled = true
+	$Gamble/Return_game.visible = true
+	$Gamble/Score.visible = true
+	$Gamble/showscore.visible = true
+	$Gamble/showscore.text = str(score_for_gamble)
+	$Gamble/count.text = ""
+
+	blackjack_game_over = false
+	player_standing = false
+
+	dealer_hand.allow_card_movement = false
+	player_hand.allow_card_movement = true
+
+	hit_button.disabled = false
+	stand_button.disabled = false
+	hit_button.visible = true
+	stand_button.visible = true
+	restart_button.visible = false
+	$Gamble/price.visible = false
+	$Gamble/winner.text = ""
+
+	clear_blackjack_hands()
+
+	if not blackjack_deck_created:
+		create_standard_deck()
+		blackjack_deck_created = true
+
+	if deck.get_card_count() < 10:
+		$Gamble/winner.text = "The dealer ran out of cards :("
+		hit_button.disabled = true
+		stand_button.disabled = true
+		await get_tree().create_timer(6, true, false, true).timeout
+		_on_return_game_pressed()
+		return
+
+	shuffle_deck()
+
+	deal_cards_to_hand(2, player_hand)
+	deal_cards_to_hand(2, dealer_hand)
+
+	hide_dealer_hole_card()
+	print_scores(false)
 	
+func create_standard_deck():
+	var suits = ["club", "diamond", "heart", "spade"]
+	var values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+	for suit in suits:
+		for value in values:
+			var card_name = "%s_%s" % [suit, value]
+			var card = card_manager.card_factory.create_card(card_name, deck)
+
+			card.set_meta("value", value)
+			card.set_meta("suit", suit)
+			card.set_meta("force_face_down", false)
+
+			deck.add_card(card)
+			
+func shuffle_deck():
+	randomize()
+
+	var cards = deck.get_top_cards(deck.get_card_count())
+	cards.shuffle()
+
+	for card in cards:
+		deck.move_cards([card])
+
+func hide_dealer_hole_card():
+	var cards = dealer_hand.get_cards()
+	if cards.size() >= 2:
+		cards[1].set_meta("force_face_down", true)
+		cards[1].show_front = false
+		dealer_hand.update_card_ui()
+		
+func reveal_dealer_cards():
+	var cards = dealer_hand.get_cards()
+
+	for card in cards:
+		card.set_meta("force_face_down", false)
+
+	dealer_hand.update_card_ui()
+	
+func deal_cards_to_hand(count: int, player):
+	for i in range(count):
+		if deck.get_card_count() > 0:
+			var card = deck.get_top_cards(1).front()
+			player.move_cards([card])
+
+func _on_hit_pressed() -> void:
+	if blackjack_game_over or player_standing:
+		return
+
+	deal_cards_to_hand(1, player_hand)
+	await get_tree().create_timer(0.3).timeout
+	var player_value = get_hand_value(player_hand)
+	$Gamble/count.text = str(player_value)
+	print("Player value: ", player_value)
+
+	if player_value > 21:
+		end_game("Player bust. Dealer wins.",false)
+func _on_stand_pressed() -> void:
+	if blackjack_game_over:
+		return
+
+	player_standing = true
+	hit_button.disabled = true
+	stand_button.disabled = true
+
+	reveal_dealer_cards()
+	dealer_turn()
+func dealer_turn():
+	while get_hand_value(dealer_hand) < 17:
+		await get_tree().create_timer(0.5, true, false, true).timeout
+		deal_cards_to_hand(1, dealer_hand)
+
+	check_winner()
+func check_winner():
+	var player_value = get_hand_value(player_hand)
+	var dealer_value = get_hand_value(dealer_hand)
+
+	if player_value > 21:
+		end_game("Player bust. Dealer wins.", false)
+	elif dealer_value > 21:
+		end_game("Dealer bust. Player wins.", true)
+	elif player_value > dealer_value:
+		end_game("Player wins.", true)
+	elif dealer_value > player_value:
+		end_game("Dealer wins.", false)
+	else:
+		end_game("Draw.", false)
+
+func end_game(message: String, won: bool):
+	blackjack_game_over = true
+	player_won = player_won or won
+
+	hit_button.disabled = true
+	stand_button.disabled = true
+	restart_button.visible = true
+	$Gamble/price.visible = true
+
+	reveal_dealer_cards()
+	print_scores(true)
+	print(message)
+
+	await get_tree().create_timer(0.3, true, false, true).timeout
+
+	$Gamble/winner.text = message
+
+	if won:
+		score_for_gamble += 100
+		$Gamble/showscore.text = str(score_for_gamble)
+
+	if player_won:
+		$Gamble/Return_game.disabled = false
+
+func get_hand_value(hand) -> int:
+	var cards = hand.get_cards()
+	var total := 0
+	var aces := 0
+
+	for card in cards:
+		var value = card.get_meta("value")
+
+		if value == "A":
+			total += 11
+			aces += 1
+		elif value in ["J", "Q", "K"]:
+			total += 10
+		else:
+			total += int(value)
+
+	while total > 21 and aces > 0:
+		total -= 10
+		aces -= 1
+
+	return total
+
+
+func get_visible_hand_value(hand) -> int:
+	var cards = hand.get_cards()
+	var total := 0
+	var aces := 0
+
+	for card in cards:
+		if card.has_meta("force_face_down") and card.get_meta("force_face_down"):
+			continue
+
+		var value = card.get_meta("value")
+
+		if value == "A":
+			total += 11
+			aces += 1
+		elif value in ["J", "Q", "K"]:
+			total += 10
+		else:
+			total += int(value)
+
+	while total > 21 and aces > 0:
+		total -= 10
+		aces -= 1
+
+	return total
+
+
+func print_scores(show_dealer_full: bool):
+	var player_value = get_hand_value(player_hand)
+	$Gamble/count.text= str(player_value)
+	var dealer_value: int
+	if show_dealer_full:
+		dealer_value = get_hand_value(dealer_hand)
+	else:
+		dealer_value = get_visible_hand_value(dealer_hand)
+
+	print("Player: ", player_value)
+	print("Dealer: ", dealer_value)
+
+
+func _on_restart_pressed():
+	var cost := 50
+
+	if score_for_gamble < cost:
+		clear_blackjack_hands()
+
+		if player_won:
+			$Gamble/winner.text = "Not enough score to play.\nLEAVE"
+			await get_tree().create_timer(6, true, false, true).timeout
+			_on_return_game_pressed()
+		else:
+			$Gamble/winner.text = "Not enough score to play and you have not won.\nPrepear to DIE!"
+			await get_tree().create_timer(6, true, false, true).timeout
+			close_gambler_menu(true)
+
+		return
+
+	score_for_gamble -= cost
+	$Gamble/showscore.text = str(score_for_gamble) # pakeisk path jei tavo label kitas
+
+	print("Restart pressed")
+	setup_game()
+
 #Gamble node end

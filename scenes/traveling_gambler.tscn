@@ -104,6 +104,22 @@ region = Rect2(0, 384, 64, 64)
 atlas = ExtResource("1_ym2io")
 region = Rect2(64, 384, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cd3a0"]
+atlas = ExtResource("1_ym2io")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w571n"]
+atlas = ExtResource("1_ym2io")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n50qr"]
+atlas = ExtResource("1_ym2io")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ala46"]
+atlas = ExtResource("1_ym2io")
+region = Rect2(192, 128, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cd3a0"]
 animations = [{
 "frames": [{
@@ -207,6 +223,23 @@ animations = [{
 "loop": false,
 "name": &"INTERACT",
 "speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cd3a0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w571n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n50qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ala46")
+}],
+"loop": false,
+"name": &"KILL",
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fi2eb"]
@@ -242,7 +275,7 @@ debug_color = Color(0.9857765, 0.11905991, 0, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1437594817]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cd3a0")
-animation = &"AFTER_GAMBLE"
+animation = &"KILL"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194603552]
 shape = SubResource("CapsuleShape2D_fi2eb")

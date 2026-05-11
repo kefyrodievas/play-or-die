@@ -26,6 +26,10 @@ LevelManager="*uid://crws3gf5pxaim"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+MOB="Mob"
+
 [importer_defaults]
 
 texture={

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://duafdjybk07m7"]
+
+[node name="CustomCard_tscn" type="Node2D" unique_id=1006313746]
+
+[node name="UI" type="Control" parent="." unique_id=946095054]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FrontDisplay" type="TextureRect" parent="UI" unique_id=1586537876]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackDisplay" type="TextureRect" parent="UI" unique_id=1201263747]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Effects" type="Node2D" parent="." unique_id=52378017]

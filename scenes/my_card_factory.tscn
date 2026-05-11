@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bww551cv2e57x"]
+
+[ext_resource type="Script" uid="uid://8n36yadkvxai" path="res://addons/card-framework/json_card_factory.gd" id="1_2iy10"]
+[ext_resource type="Texture2D" uid="uid://dtsdj2r8ay2fj" path="res://cards/back/BackRed2.png" id="2_jcv6k"]
+[ext_resource type="PackedScene" uid="uid://brjlo8xing83p" path="res://addons/card-framework/card.tscn" id="2_ocwhj"]
+
+[node name="MyCardFactory" type="Node" unique_id=1825872929]
+script = ExtResource("1_2iy10")
+default_card_scene = ExtResource("2_ocwhj")
+card_asset_dir = "res://cards/images/"
+card_info_dir = "res://cards/data/"
+back_image = ExtResource("2_jcv6k")
+metadata/_custom_type_script = "uid://8n36yadkvxai"

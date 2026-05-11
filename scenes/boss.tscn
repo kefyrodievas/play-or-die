@@ -424,7 +424,7 @@ height = 86.66667
 radius = 40.666668
 height = 100.0
 
-[node name="Boss" type="CharacterBody2D" unique_id=457228902]
+[node name="Boss" type="CharacterBody2D" unique_id=457228902 groups=["MOB"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_neq0i")
 

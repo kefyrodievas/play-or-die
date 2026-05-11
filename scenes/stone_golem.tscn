@@ -541,7 +541,7 @@ height = 42.937855
 radius = 17.241379
 height = 43.678165
 
-[node name="StoneGolem" type="CharacterBody2D" unique_id=1718958888]
+[node name="StoneGolem" type="CharacterBody2D" unique_id=1718958888 groups=["MOB"]]
 script = ExtResource("1_m2fng")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1010199296]

@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 var player_in_range := false
 var is_interacting := false
+var damage := 999999
 @onready var player = $"../Samurai"
 
 func _ready():
@@ -14,9 +15,8 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	move_and_slide()
-func _process(delta):
-
 	
+func _process(delta):
 	if player.global_position.x < global_position.x:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -40,6 +40,14 @@ func start_interaction():
 	GameUi.open_gambler_menu()
 	is_interacting = false
 	
+func KILL(body):
+	$AnimatedSprite2D.play("KILL")
+	await $AnimatedSprite2D.animation_finished
+	
+	if body.name == "Samurai":
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+
 func _on_area_2d_body_entered(body):
 	if body.name == "Samurai":
 		player_in_range = true

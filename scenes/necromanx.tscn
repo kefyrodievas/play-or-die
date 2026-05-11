@@ -1163,7 +1163,7 @@ height = 52.0
 radius = 18.0
 height = 56.0
 
-[node name="Necromanx" type="CharacterBody2D" unique_id=273729143]
+[node name="Necromanx" type="CharacterBody2D" unique_id=273729143 groups=["MOB"]]
 script = ExtResource("1_ig0fs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918958620]

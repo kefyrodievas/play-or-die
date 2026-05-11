@@ -28,7 +28,7 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.name == "Samurai":
+	if body.name == "Samurai"  or body.is_in_group("MOB"):
 		if body not in bodies_inside:
 			bodies_inside.append(body)
 		if body.has_method("take_damage"):
@@ -37,7 +37,6 @@ func _on_body_entered(body):
 			behind_sprite.texture = bloody_behind
 			top_sprite.texture = bloody_top
 			is_bloody = true
-			
 
 
 func _on_body_exited(body):

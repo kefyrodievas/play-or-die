@@ -21,6 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://ctp8fli808rus" path="res://assets/img/Shop bars/luck/Luck.png" id="15_bj1rn"]
 [ext_resource type="Texture2D" uid="uid://dbfg7xepsjkip" path="res://assets/img/Shop bars/defense/Defense.png" id="16_36vcn"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="16_ihktq"]
+[ext_resource type="Texture2D" uid="uid://batumyl3uiel0" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Icons/special icons/Small Happines-Sadness icons.png" id="22_2yflp"]
+[ext_resource type="PackedScene" uid="uid://c7u8hryloq7hy" path="res://addons/card-framework/card_manager.tscn" id="22_bj1rn"]
+[ext_resource type="PackedScene" uid="uid://bww551cv2e57x" path="res://scenes/my_card_factory.tscn" id="23_2yflp"]
+[ext_resource type="PackedScene" uid="uid://dk6rb7lhv1ef6" path="res://addons/card-framework/pile.tscn" id="23_36vcn"]
+[ext_resource type="PackedScene" uid="uid://bkpjlq7ggckg6" path="res://addons/card-framework/hand.tscn" id="24_2yflp"]
 
 [sub_resource type="Gradient" id="Gradient_s2npe"]
 
@@ -1053,11 +1058,24 @@ sources/0 = SubResource("TileSetAtlasSource_upmhx")
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yflp"]
+atlas = ExtResource("22_2yflp")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n74c5"]
+atlas = ExtResource("22_2yflp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v8bm"]
+atlas = ExtResource("22_2yflp")
+region = Rect2(64, 16, 16, 16)
+
 [node name="Game_UI" type="CanvasLayer" unique_id=1386550571]
 process_mode = 3
 script = ExtResource("1_u2dgd")
 
 [node name="HUD" type="Control" parent="." unique_id=1832089049]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1960,33 +1978,224 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.39014673, 0.49225795, 0.5176919, 1)
+color = Color(0.46785825, 0.3895205, 0.2447297, 1)
 
 [node name="YouDied" type="Label" parent="Gamble" unique_id=856072995]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 328.0
-offset_top = 139.0
-offset_right = 678.0
-offset_bottom = 209.0
+offset_left = 376.0
+offset_top = -17.0
+offset_right = 726.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
-text = "Gamble"
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 63
+text = "Blackjack"
 horizontal_alignment = 1
 
 [node name="Return_game" type="Button" parent="Gamble" unique_id=496327630]
+visible = false
+texture_filter = 1
 layout_mode = 0
-offset_left = 899.0
-offset_top = 568.0
-offset_right = 1049.0
+offset_left = 938.0
+offset_top = 558.0
+offset_right = 1088.0
+offset_bottom = 618.0
+scale = Vector2(1.296, 1.296)
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 41
+text = "EXIT"
+
+[node name="Restart" type="Button" parent="Gamble" unique_id=905711191]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 529.0
+offset_right = 156.81818
+offset_bottom = 581.0
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 38
+text = "RESTART"
+icon = SubResource("AtlasTexture_2yflp")
+expand_icon = true
+
+[node name="Hit" type="Button" parent="Gamble" unique_id=1225482013]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 598.0
+offset_top = 576.0
+offset_right = 735.0
 offset_bottom = 628.0
-theme_override_font_sizes/font_size = 32
-text = "RETURN"
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 38
+text = "HIT"
+icon = SubResource("AtlasTexture_n74c5")
+expand_icon = true
+
+[node name="price" type="Label" parent="Gamble" unique_id=1334217062]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = 570.0
+offset_right = 312.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 48
+text = "Price: 50 points"
+horizontal_alignment = 1
+
+[node name="Stand" type="Button" parent="Gamble" unique_id=1664633942]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 366.0
+offset_top = 575.0
+offset_right = 506.5926
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 38
+text = "STAND"
+icon = SubResource("AtlasTexture_5v8bm")
+expand_icon = true
+
+[node name="count" type="Label" parent="Gamble" unique_id=1656729669]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 376.0
+offset_top = 499.0
+offset_right = 726.0
+offset_bottom = 569.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="winner" type="Label" parent="Gamble" unique_id=1107181167]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 376.0
+offset_top = 283.0
+offset_right = 726.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="Gamble" unique_id=1642191537]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 704.0
+offset_top = -15.0
+offset_right = 1054.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 48
+text = "Your score: "
+horizontal_alignment = 1
+
+[node name="showscore" type="Label" parent="Gamble" unique_id=1320618471]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 970.0
+offset_top = -12.0
+offset_right = 1135.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_o3bws")
+theme_override_font_sizes/font_size = 48
+
+[node name="CardManager" parent="Gamble" unique_id=2067822109 instance=ExtResource("22_bj1rn")]
+layout_mode = 0
+offset_left = 1108.5978
+offset_top = 590.33923
+offset_right = 1108.5978
+offset_bottom = 590.33923
+card_size = Vector2(103, 138)
+card_factory_scene = ExtResource("23_2yflp")
+
+[node name="Deck" parent="Gamble/CardManager" unique_id=54588473 instance=ExtResource("23_36vcn")]
+texture_filter = 1
+layout_mode = 0
+offset_left = -1109.5978
+offset_top = -358.33923
+offset_right = -1109.5978
+offset_bottom = -358.33923
+card_face_up = false
+allow_card_movement = false
+restrict_to_top_card = false
+
+[node name="PlayerHand" parent="Gamble/CardManager" unique_id=301167126 instance=ExtResource("24_2yflp")]
+texture_filter = 1
+layout_mode = 0
+offset_left = -528.0
+offset_top = -188.802
+offset_right = -528.0
+offset_bottom = -188.802
+allow_card_movement = null
+
+[node name="DealerHand" parent="Gamble/CardManager" unique_id=338380973 instance=ExtResource("24_2yflp")]
+texture_filter = 1
+layout_mode = 0
+offset_left = -479.0
+offset_top = -348.802
+offset_right = -479.0
+offset_bottom = -348.802
+rotation = -3.1415927
+allow_card_movement = null
+
+[node name="DiscardPile" parent="Gamble/CardManager" unique_id=1398416148 instance=ExtResource("23_36vcn")]
+texture_filter = 1
+layout_mode = 0
+offset_left = -64.0
+offset_top = -360.773
+offset_right = -64.0
+offset_bottom = -360.773
+card_face_up = false
+allow_card_movement = false
 
 [connection signal="pressed" from="Shop/Exit" to="." method="_on_shop_exit_pressed"]
 [connection signal="pressed" from="StartMenu/Start" to="." method="_on_start_pressed"]
@@ -1997,3 +2206,6 @@ text = "RETURN"
 [connection signal="pressed" from="DeathGambleMenu/Gamble" to="." method="_on_gamble_pressed"]
 [connection signal="pressed" from="DeathGambleMenu/Return" to="." method="_on_return_pressed"]
 [connection signal="pressed" from="Gamble/Return_game" to="." method="_on_return_game_pressed"]
+[connection signal="pressed" from="Gamble/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Gamble/Hit" to="." method="_on_hit_pressed"]
+[connection signal="pressed" from="Gamble/Stand" to="." method="_on_stand_pressed"]

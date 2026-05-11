@@ -369,7 +369,7 @@ height = 133.33334
 radius = 70.58823
 height = 152.94115
 
-[node name="Satyr" type="CharacterBody2D" unique_id=244790960]
+[node name="Satyr" type="CharacterBody2D" unique_id=244790960 groups=["MOB"]]
 script = ExtResource("1_uht0k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2137806366]

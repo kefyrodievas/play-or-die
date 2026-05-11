@@ -227,6 +227,14 @@ scale = Vector2(5, 5)
 position = Vector2(927.9999, 607)
 scale = Vector2(4, 4)
 
+[node name="Chest2" parent="." unique_id=510472019 instance=ExtResource("10_ya4ey")]
+position = Vector2(460, 605)
+scale = Vector2(4, 4)
+
+[node name="Chest3" parent="." unique_id=1321586859 instance=ExtResource("10_ya4ey")]
+position = Vector2(542, 609)
+scale = Vector2(4, 4)
+
 [node name="Spike" parent="." unique_id=870259076 instance=ExtResource("11_ya4ey")]
 position = Vector2(802, 608)
 scale = Vector2(4, 4)

@@ -355,7 +355,7 @@ height = 42.93785
 radius = 17.241379
 height = 48.27586
 
-[node name="MaceSkeleton" type="CharacterBody2D" unique_id=864059572]
+[node name="MaceSkeleton" type="CharacterBody2D" unique_id=864059572 groups=["MOB"]]
 script = ExtResource("1_3xios")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1505825567]
