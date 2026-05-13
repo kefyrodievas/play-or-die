@@ -261,12 +261,6 @@ func unlock_damage_boost():
 	got_powerup.emit($DamageBoostTimer)
 	
 
-#TAKING DAMAGE FROM ENEMY
-func _on_s_hitbox_area_entered(area):
-	#Reiktu dar prideti kad enemy attackina o ne tiesiog prisiliecia
-	if (area.name == "Hitbox"):
-		take_damage(area.owner.damage_to_deal)
-
 
 #Pakeistas scrip kad veiktu su tick ir invincibility frames kad nenumirtu Samurai iskarto.
 func take_damage(damage_to_take):

@@ -165,19 +165,16 @@ func _ready():
 	$StartMenu/Score.text="Score: "+ str(GameData.total_bank_score);
 	shop.hide()
 	gambler_menu.hide()
-	GameData.play_floor_music("menu")
 	pause_menu.hide()
-	#hud.hide()
 	gamble.hide()
+	
+	GameData.play_floor_music("menu")
+	
 	# reikes imti is player, kai numirsta
 	$DeathGambleMenu/Score.text = "Score: 0"
 	# Wait until the next frame AND until the scene tree actually has the new nodes
 	await get_tree().process_frame
-	# Try to connect. If it fails, wait one more frame and try again.
-	#_connect_samurai_signals()
-	#if not samurai:
-		#await get_tree().create_timer(0.1).timeout
-		#_connect_samurai_signals()
+
 	#SHOP
 	luck_data["bar"] = luck_bar
 	luck_data["label"] = luck_cost_label
@@ -312,12 +309,15 @@ func _set_hp_val(val, max_val = 100):
 
 func _on_start_pressed():
 	# Svarbu: nunuliname išsaugotą HP, kad Samurai apply_upgrades nustatytų MAX HP
-	GameData.player_health = 0
-	get_tree().paused = false
+	get_viewport().set_input_as_handled()
 	start_menu.hide()
 	hud.show()
+
+	GameData.player_health = 0
 	GameData.play_floor_music("main")
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
+	get_tree().paused = false
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
 
 func _on_shop_open_pressed():
 	start_menu.hide()
@@ -329,6 +329,8 @@ func _on_shop_exit_pressed():
 	shop.hide()
 	start_menu.show()
 	GameData.play_floor_music("menu")
+	$StartMenu/Score.text = "Score: " + str(GameData.total_bank_score)
+	#_set_score_val(GameData.total_bank_score)
 	
 func _on_exit_pressed():
 	get_tree().quit()
@@ -359,8 +361,6 @@ func _on_quit_btn_pressed() -> void:
 	
 
 # --- DEATH/GAMBLE MENU BUTTONS ---
-
-
 func _on_gamble_pressed() -> void:
 	# Disable the button immediately so they can't spam it
 	$DeathGambleMenu/Gamble.disabled = true

@@ -3,6 +3,34 @@
 [ext_resource type="Script" uid="uid://dabj1i34ivmg4" path="res://scenes/stone_golem.gd" id="1_m2fng"]
 [ext_resource type="Texture2D" uid="uid://c0fjevtyt7kt4" path="res://assets/img/characters/enemies/stone golem/Character_sheet.png" id="2_e078r"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4j7v"]
+atlas = ExtResource("2_e078r")
+region = Rect2(0, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ee7ha"]
+atlas = ExtResource("2_e078r")
+region = Rect2(100, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gy62"]
+atlas = ExtResource("2_e078r")
+region = Rect2(200, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnc3s"]
+atlas = ExtResource("2_e078r")
+region = Rect2(300, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ga7b"]
+atlas = ExtResource("2_e078r")
+region = Rect2(400, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vklin"]
+atlas = ExtResource("2_e078r")
+region = Rect2(500, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6lg6"]
+atlas = ExtResource("2_e078r")
+region = Rect2(600, 400, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb2sg"]
 atlas = ExtResource("2_e078r")
 region = Rect2(0, 200, 100, 100)
@@ -38,34 +66,6 @@ region = Rect2(700, 200, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vqjd7"]
 atlas = ExtResource("2_e078r")
 region = Rect2(800, 200, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4j7v"]
-atlas = ExtResource("2_e078r")
-region = Rect2(0, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ee7ha"]
-atlas = ExtResource("2_e078r")
-region = Rect2(100, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gy62"]
-atlas = ExtResource("2_e078r")
-region = Rect2(200, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnc3s"]
-atlas = ExtResource("2_e078r")
-region = Rect2(300, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ga7b"]
-atlas = ExtResource("2_e078r")
-region = Rect2(400, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vklin"]
-atlas = ExtResource("2_e078r")
-region = Rect2(500, 400, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k6lg6"]
-atlas = ExtResource("2_e078r")
-region = Rect2(600, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_axaro"]
 atlas = ExtResource("2_e078r")
@@ -275,6 +275,32 @@ region = Rect2(600, 500, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_m4j7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ee7ha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gy62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnc3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ga7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vklin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6lg6")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pb2sg")
 }, {
 "duration": 1.0,
@@ -302,33 +328,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_vqjd7")
 }],
 "loop": true,
-"name": &"attack",
-"speed": 7.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m4j7v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ee7ha")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2gy62")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tnc3s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ga7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vklin")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k6lg6")
-}],
-"loop": true,
-"name": &"attack?",
+"name": &"attack??",
 "speed": 7.0
 }, {
 "frames": [{
@@ -541,6 +541,10 @@ height = 42.937855
 radius = 17.241379
 height = 43.678165
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e078r"]
+radius = 13.793104
+height = 48.27586
+
 [node name="StoneGolem" type="CharacterBody2D" unique_id=1718958888 groups=["MOB"]]
 script = ExtResource("1_m2fng")
 
@@ -548,10 +552,10 @@ script = ExtResource("1_m2fng")
 texture_filter = 1
 scale = Vector2(0.534, 0.59)
 sprite_frames = SubResource("SpriteFrames_tkuvu")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.41748908
+frame = 6
+frame_progress = 0.5217667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362979970]
 position = Vector2(0, 4)
@@ -578,5 +582,15 @@ position = Vector2(13, 17.000002)
 scale = Vector2(0.445, 0.445)
 target_position = Vector2(0, 20.799994)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=1135612095]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=1619626863]
+position = Vector2(0, 4)
+rotation = -1.5707964
+scale = Vector2(0.87, 0.87)
+shape = SubResource("CapsuleShape2D_e078r")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]

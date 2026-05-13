@@ -366,6 +366,10 @@ height = 154.0
 radius = 54.0
 height = 176.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nenq2"]
+radius = 52.87356
+height = 328.73563
+
 [node name="Enemy" type="CharacterBody2D" unique_id=2045138673]
 script = ExtResource("1_md0e3")
 
@@ -374,8 +378,10 @@ texture_filter = 1
 position = Vector2(8, -20)
 scale = Vector2(2.699, 2.981)
 sprite_frames = SubResource("SpriteFrames_8qclf")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
+frame = 6
+frame_progress = 0.16187571
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=772311672]
 position = Vector2(0, 11)
@@ -402,5 +408,16 @@ position = Vector2(55.115, 63)
 scale = Vector2(2.5, 2.5)
 target_position = Vector2(0, 20.799994)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=520928364]
+position = Vector2(4, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=598901413]
+position = Vector2(-11, -20)
+rotation = -1.5707964
+scale = Vector2(0.87, 0.87)
+shape = SubResource("CapsuleShape2D_nenq2")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]
