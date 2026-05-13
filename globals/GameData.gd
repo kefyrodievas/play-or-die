@@ -29,15 +29,33 @@ var upgrade_keys = ["luck", "health", "speed", "defense", "strength", "jump"]
 var music_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var floor_music = {
-	"menu": "res://assets/audio/menu_soundtrack_by_chiphead64.wav",
-	"shop": "res://assets/audio/Shop Theme.wav",
-	"main": "res://assets/audio/3. Concrete Jungle.wav",
-	"1_floor": "res://assets/audio/Through Mountains.wav",
-	"2ndFloor": "res://assets/audio/Ambush.wav",
-	"3rdFloor": "res://assets/audio/Time To Get Serious Bass.wav",
-	"Boss1": "res://assets/audio/Time To Get Serious.wav",
-	"Boss2": "res://assets/audio/Incoming Boss.wav",
-	"Boss3": "res://assets/audio/Bowser Returns.wav",
+	"menu": {
+			"path": "res://assets/audio/menu_soundtrack_by_chiphead64.wav",
+			"volume": 0},
+	"shop": {
+			"path": "res://assets/audio/Shop Theme.wav",
+			"volume": 0},
+	"main": { 
+			"path": "res://assets/audio/3. Concrete Jungle.wav",
+			"volume": -15},
+	"1stFloor": {
+			"path": "res://assets/audio/Through Mountains.wav",
+			"volume": -15},
+	"2ndFloor": {
+			"path": "res://assets/audio/Ambush.wav",
+			"volume": -15},
+	"3rdFloor": {
+			"path": "res://assets/audio/Time To Get Serious Bass.wav",
+			"volume": -15},
+	"Boss1": {
+			"path": "res://assets/audio/Time To Get Serious.wav",
+			"volume": -15},
+	"Boss2": {
+			"path": "res://assets/audio/Incoming Boss.wav",
+			"volume": -15},
+	"Boss3": {
+			"path": "res://assets/audio/Bowser Returns.wav",
+			"volume": -15},
 }
 
 # --- Core Logic ---
@@ -124,8 +142,9 @@ func save_highscore(new_score: int) -> void:
 
 # --- Music System ---
 
-func play_music(path: String) -> void:
+func play_music(path: String, volume_db: float = 0.0) -> void:
 	var new_stream: AudioStream = load(path)
+	
 	if new_stream == null:
 		push_warning("Invalid music path: " + path)
 		return
@@ -136,7 +155,9 @@ func play_music(path: String) -> void:
 		return
 
 	music_player.stop()
+	
 	music_player.stream = new_stream
+	music_player.volume_db = volume_db
 	music_player.play()
 
 func stop_music() -> void:
@@ -147,5 +168,6 @@ func play_floor_music(floor_name: String) -> void:
 	if not floor_music.has(floor_name):
 		push_warning("No music assigned for floor: " + floor_name)
 		return
-	
-	play_music(floor_music[floor_name])
+		
+	var data = floor_music[floor_name]
+	play_music(data["path"], data["volume"])

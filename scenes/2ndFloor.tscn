@@ -294,6 +294,7 @@ scale = Vector2(0.3, 0.3)
 [node name="Boots2" parent="." unique_id=1835377063 instance=ExtResource("5_0yuhk")]
 position = Vector2(207, -40)
 scale = Vector2(0.3, 0.3)
+script = ExtResource("6_0yuhk")
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("9_gwb0a")]
 visible = false

@@ -205,7 +205,7 @@ texture = ExtResource("11_eb6dy")
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("8_tipki")]
 position = Vector2(1641, 547)
 scale = Vector2(6, 6)
-target_scene = "1_floor"
+target_scene = "1stFloor"
 
 [node name="GroundLayer" type="TileMapLayer" parent="." unique_id=633971364]
 texture_filter = 1

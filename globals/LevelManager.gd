@@ -1,7 +1,7 @@
 extends Node
 
 var floor_variants = {
-	"1_floor": [
+	"1stFloor": [
 		"res://scenes/1_1floor.tscn",
 		"res://scenes/1_2floor.tscn",
 		"res://scenes/1_3floor.tscn"

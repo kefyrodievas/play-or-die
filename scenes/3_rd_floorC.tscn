@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="6_dhito"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_xoeh5"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="9_w3kdh"]
+[ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="10_1pic2"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="10_q2mx1"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="11_fy1we"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="12_1pic2"]
@@ -231,6 +232,7 @@ position = Vector2(463.75, 41.75)
 [node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("9_w3kdh")]
 position = Vector2(80, 144)
 scale = Vector2(0.3, 0.3)
+script = ExtResource("10_1pic2")
 
 [node name="Star" parent="." unique_id=2096763841 instance=ExtResource("10_q2mx1")]
 position = Vector2(28, -32)
