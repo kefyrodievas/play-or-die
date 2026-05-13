@@ -131,7 +131,7 @@ func _flip():
 
 #Follow and attack player if close enough
 func follow_and_attack_player():
-	if global_position.distance_to(player.global_position) < 300 and (abs(global_position.y - player.global_position.y) < 73) and !dead:
+	if global_position.distance_to(player.global_position) < 300 and (abs(global_position.y - player.global_position.y) < 100) and !dead:
 		is_chasing = true
 		if global_position.distance_to(player.global_position) < attack_range:
 			var temp = sign(player.global_position.x - global_position.x)

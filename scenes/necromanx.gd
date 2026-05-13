@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 class_name Necromanx
 
+@export var damage_to_deal := 10
+@export var tick_time := 4
+var bodies_inside: Array = []
+
 const speed = 50
 var is_chasing: bool
 #if true - following player, false - roaming around randomly
@@ -12,7 +16,6 @@ var health_min = 0
 
 var dead: bool = false
 var taking_damage: bool = false
-var damage_to_deal = 6
 var is_dealing_damage: bool = false
 
 var direction: Vector2
@@ -27,14 +30,19 @@ var attack_range = 110
 var chase_speed = 150
 var points = 10;
 
-
 func _process(delta):
 	player = $"../Samurai".playerBody
 	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
-		
+	
+	var timer = Timer.new()
+	timer.wait_time = tick_time
+	timer.autostart = true
+	timer.timeout.connect(_on_tick)
+	add_child(timer)
+	
 	move(delta)
 	platform_edge()
 	follow_and_attack_player()
@@ -129,6 +137,7 @@ func follow_and_attack_player():
 			if (temp < 0 and direction.x > 0) or (temp > 0 and direction.x < 0):
 				direction *= -1
 			_attack()
+			is_dealing_damage = true
 		else:
 			is_dealing_damage = false
 			
@@ -137,12 +146,25 @@ func follow_and_attack_player():
 
 #Attack animation
 func _attack():
-	is_dealing_damage = true
 	velocity.x = 0
 	is_roaming = false
 	$AnimatedSprite2D.play("attack")
 	await get_tree().create_timer(1.0).timeout
 
+func _on_attack_box_body_entered(body):
+	if body.name == "Samurai":
+		if body not in bodies_inside:
+			bodies_inside.append(body)
+		if body.has_method("take_damage") and is_dealing_damage:
+			body.take_damage(damage_to_deal) 
+
+func _on_attack_box_body_exited(body):
+	bodies_inside.erase(body)
+
+func _on_tick():
+	for body in bodies_inside:
+		if body.has_method("take_damage") and is_dealing_damage:
+			body.take_damage(damage_to_deal)
 
 func drop_loot():
 	# Base 30% chance + 5% per Luck Level (up to 50% at level 4)
