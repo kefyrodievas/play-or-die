@@ -341,6 +341,10 @@ height = 42.93785
 radius = 12.643678
 height = 48.27586
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l85bo"]
+radius = 28.73563
+height = 64.36781
+
 [node name="Necromancer" type="CharacterBody2D" unique_id=1219581124]
 script = ExtResource("1_l85bo")
 
@@ -351,7 +355,8 @@ scale = Vector2(0.657, 0.726)
 sprite_frames = SubResource("SpriteFrames_5eb4m")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.20934197
+frame = 7
+frame_progress = 0.36766094
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1700734953]
 position = Vector2(0, -1)
@@ -378,5 +383,15 @@ position = Vector2(10, 17)
 scale = Vector2(0.55, 0.55)
 target_position = Vector2(0, 20.799994)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=1241352819]
+position = Vector2(3, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=91790182]
+position = Vector2(-3, -8)
+scale = Vector2(0.87, 0.87)
+shape = SubResource("CapsuleShape2D_l85bo")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]

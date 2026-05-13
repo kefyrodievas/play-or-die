@@ -355,16 +355,22 @@ height = 42.93785
 radius = 17.241379
 height = 48.27586
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3xios"]
+radius = 24.137932
+height = 73.56322
+
 [node name="MaceSkeleton" type="CharacterBody2D" unique_id=864059572 groups=["MOB"]]
 script = ExtResource("1_3xios")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1505825567]
 texture_filter = 1
 position = Vector2(2.0000002, -1)
-scale = Vector2(0.9465938, 1.1391876)
+scale = Vector2(0.947, 1.139)
 sprite_frames = SubResource("SpriteFrames_t8tny")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
+frame = 4
+frame_progress = 0.16412124
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=393190538]
 scale = Vector2(0.885, 0.885)
@@ -389,5 +395,16 @@ position = Vector2(15, 16)
 scale = Vector2(0.75, 0.75)
 target_position = Vector2(0, 13)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=2142053246]
+position = Vector2(8, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=935670573]
+position = Vector2(-6, -7)
+rotation = -1.5707964
+scale = Vector2(0.87, 0.87)
+shape = SubResource("CapsuleShape2D_3xios")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]

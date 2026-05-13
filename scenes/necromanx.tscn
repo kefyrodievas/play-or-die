@@ -769,7 +769,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 9.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1163,6 +1163,10 @@ height = 52.0
 radius = 18.0
 height = 56.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lpnlg"]
+radius = 16.0
+height = 94.0
+
 [node name="Necromanx" type="CharacterBody2D" unique_id=273729143 groups=["MOB"]]
 script = ExtResource("1_ig0fs")
 
@@ -1172,7 +1176,7 @@ scale = Vector2(0.839, 0.972)
 sprite_frames = SubResource("SpriteFrames_efuon")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.40659884
+frame_progress = 0.6897028
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446020337]
 position = Vector2(0, -1)
@@ -1194,6 +1198,14 @@ target_position = Vector2(0, 32)
 [node name="ground_right" type="RayCast2D" parent="." unique_id=727267329]
 position = Vector2(15, 24)
 target_position = Vector2(0, 32)
+
+[node name="AttackBox" type="Area2D" parent="." unique_id=1114188720]
+position = Vector2(7, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=619570004]
+position = Vector2(-7, -1)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_lpnlg")
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

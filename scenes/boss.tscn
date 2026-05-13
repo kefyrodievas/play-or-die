@@ -424,6 +424,10 @@ height = 86.66667
 radius = 40.666668
 height = 100.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnbj4"]
+radius = 40.666668
+height = 244.00002
+
 [node name="Boss" type="CharacterBody2D" unique_id=457228902 groups=["MOB"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_neq0i")
@@ -432,8 +436,10 @@ script = ExtResource("1_neq0i")
 position = Vector2(0.9999981, -28.000002)
 scale = Vector2(-1, 0.963)
 sprite_frames = SubResource("SpriteFrames_ajbp4")
-animation = &"walk"
+animation = &"attack"
 autoplay = "idle"
+frame = 9
+frame_progress = 0.6724147
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686047377]
 position = Vector2(2, 5.3333335)
@@ -456,5 +462,15 @@ target_position = Vector2(0, 32)
 position = Vector2(38, 44)
 target_position = Vector2(0, 32)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=2111291953]
+position = Vector2(6.666667, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=1587893448]
+position = Vector2(-4.66667, 10)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_qnbj4")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]

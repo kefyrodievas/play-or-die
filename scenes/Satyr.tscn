@@ -369,6 +369,10 @@ height = 133.33334
 radius = 70.58823
 height = 152.94115
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23hic"]
+radius = 58.823524
+height = 199.99992
+
 [node name="Satyr" type="CharacterBody2D" unique_id=244790960 groups=["MOB"]]
 script = ExtResource("1_uht0k")
 
@@ -378,7 +382,8 @@ scale = Vector2(1.042, 1.151)
 sprite_frames = SubResource("SpriteFrames_0fq7f")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.57327497
+frame = 6
+frame_progress = 0.049718633
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450048693]
 position = Vector2(1.4210855e-14, 2)
@@ -405,5 +410,15 @@ position = Vector2(9, 13)
 scale = Vector2(0.555, 0.555)
 target_position = Vector2(0, 20.799994)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=1093643471]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=1386407867]
+position = Vector2(3.9339066e-06, 9.536743e-07)
+rotation = -1.5707964
+scale = Vector2(0.17, 0.17)
+shape = SubResource("CapsuleShape2D_23hic")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]

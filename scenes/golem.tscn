@@ -410,16 +410,21 @@ height = 78.0
 radius = 43.0
 height = 88.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6fya6"]
+radius = 43.0
+height = 174.0
+
 [node name="Golem" type="CharacterBody2D" unique_id=1566718816]
 script = ExtResource("1_6fya6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842099655]
 position = Vector2(-4.7683716e-07, 0)
-scale = Vector2(-0.9189745, 0.9906945)
+scale = Vector2(-0.919, 0.991)
 sprite_frames = SubResource("SpriteFrames_m3xxr")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.6760153
+frame = 1
+frame_progress = 0.9619528
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179010949]
 position = Vector2(-2, 8)
@@ -442,5 +447,15 @@ target_position = Vector2(0, 32)
 position = Vector2(30, 44)
 target_position = Vector2(0, 32)
 
+[node name="AttackBox" type="Area2D" parent="." unique_id=195937708]
+position = Vector2(7, 0)
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackBox" unique_id=1318303131]
+position = Vector2(-5, 5)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_6fya6")
+
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="AttackBox" to="." method="_on_attack_box_body_entered"]
+[connection signal="body_exited" from="AttackBox" to="." method="_on_attack_box_body_exited"]
