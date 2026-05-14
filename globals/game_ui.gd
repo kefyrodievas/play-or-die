@@ -161,8 +161,8 @@ func _ready():
 	# Initial view
 	get_tree().paused = true
 	start_menu.show()
-	#$StartMenu/Score.editable = false
-	$StartMenu/Score.text="Score: "+ str(GameData.total_bank_score);
+
+	
 	shop.hide()
 	gambler_menu.hide()
 	pause_menu.hide()
@@ -215,6 +215,7 @@ func _ready():
 	jump_height_button.pressed.connect(func(): buy_upgrade(jump_height_data))
 	
 	_sync_initial_data()
+	$StartMenu/Score.text="Score: "+ str(GameData.total_bank_score)
 
 func _sync_initial_data():
 	# 1. Sync the local dictionary levels with the loaded GameData
