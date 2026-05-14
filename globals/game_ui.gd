@@ -556,7 +556,9 @@ func open_gambler_menu():
 func close_gambler_menu(kill: bool):
 	clear_blackjack_hands()
 	destroy_blackjack_deck()
+	GameData.current_score = score_for_gamble
 	_set_score_val(score_for_gamble)
+	samurai.score = score_for_gamble
 	score_label.text = str(score_for_gamble)
 
 	$Gamble/winner.text = ""
