@@ -375,7 +375,7 @@ func _on_gamble_pressed() -> void:
 	$DeathGambleMenu/Dice/AnimatedSprite2D.pause()
 	# 4. Roll the logic (1 to 6)
 	#var roll = randi_range(1, 6)
-	var outcomes = [1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6] # 11% good
+	var outcomes = [1, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6] # 11% good
 	
 	# For each luck level adds more 1 and 6 outcomes (max 10/26 (around 38%) of good outcomes)
 	for i in range(GameData.luck_level):
@@ -516,7 +516,9 @@ func _on_return_pressed() -> void:
 	
 	# 3. Go to Start Menu
 	gamble.hide()
+	$StartMenu/Score.text = "Score: " + str(GameData.total_bank_score)
 	start_menu.show()
+	
 	
 # Traveling Gambler opening and closing gambling screen
 #Gamble node start
