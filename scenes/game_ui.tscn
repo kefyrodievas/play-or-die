@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dk14e1fqjoemy" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/emoji style ui/Inventory_Blocks_Spritesheet.png" id="6_g2v8e"]
 [ext_resource type="Texture2D" uid="uid://b6164nvak0jn2" path="res://assets/img/Shop bars/Buy buttonnormal.png" id="9_upmhx"]
 [ext_resource type="Texture2D" uid="uid://cny8m5wbl6hwq" path="res://assets/img/Shop bars/Buy buttonpress.png" id="10_ihktq"]
-[ext_resource type="Texture2D" uid="uid://b4yxohq0kynx1" path="res://assets/img/menu/Quit.png" id="10_upmhx"]
-[ext_resource type="Texture2D" uid="uid://bfksdjputkh14" path="res://assets/img/menu/Quit_hover.png" id="11_ihktq"]
 [ext_resource type="PackedScene" uid="uid://cee3rcvkg2cf1" path="res://scenes/dice.tscn" id="12_g2v8e"]
 [ext_resource type="Texture2D" uid="uid://drbny52m6f8tp" path="res://assets/img/Shop bars/speed/Speed.png" id="12_lab56"]
 [ext_resource type="Texture2D" uid="uid://e4e6lkn1fiyk" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Setting menu.png" id="12_s2npe"]
@@ -32,6 +30,9 @@
 [ext_resource type="Texture2D" uid="uid://dw37hb8u6db1h" path="res://assets/img/menu/new/quit selected.png" id="24_27ch3"]
 [ext_resource type="Texture2D" uid="uid://danrdnggvs6mk" path="res://assets/img/menu/new/shop.png" id="25_bhxtc"]
 [ext_resource type="Texture2D" uid="uid://1t77w5sdo3ms" path="res://assets/img/menu/new/shop selected.png" id="26_qleia"]
+[ext_resource type="Texture2D" uid="uid://cm7j0m0b5goac" path="res://assets/img/menu/new/gamble_selected.png" id="27_sfun4"]
+[ext_resource type="Texture2D" uid="uid://buup6yac1sru2" path="res://assets/img/menu/new/resume.png" id="29_27ch3"]
+[ext_resource type="Texture2D" uid="uid://bbqsvf6phddxo" path="res://assets/img/menu/new/resume_selected.png" id="30_bhxtc"]
 
 [sub_resource type="Gradient" id="Gradient_s2npe"]
 
@@ -1066,6 +1067,9 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8a34"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qleia"]
+load_path = "res://.godot/imported/gamble.png-ad89f04920410a135a7e91e78db5e0ec.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2yflp"]
 atlas = ExtResource("22_2yflp")
 region = Rect2(32, 16, 16, 16)
@@ -1249,8 +1253,8 @@ offset_top = 554.0
 offset_right = 960.0
 offset_bottom = 656.0
 scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("10_upmhx")
-texture_hover = ExtResource("11_ihktq")
+texture_normal = ExtResource("23_sfun4")
+texture_hover = ExtResource("24_27ch3")
 
 [node name="TextEdit" type="TextEdit" parent="Shop" unique_id=322298421]
 clip_children = 1
@@ -1813,6 +1817,7 @@ caret_blink_interval = 2.5
 text_direction = 1
 
 [node name="StartMenu" type="Control" parent="." unique_id=332742946]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1961,11 +1966,11 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="DeathGambleMenu" unique_id=1423304259]
+[node name="ColorRect" type="TextureRect" parent="DeathGambleMenu" unique_id=151439344]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.39014673, 0.49225795, 0.5176919, 1)
+texture = ExtResource("17_n74c5")
 
 [node name="YouDied" type="Label" parent="DeathGambleMenu" unique_id=1879689405]
 layout_mode = 1
@@ -2001,27 +2006,29 @@ theme_override_font_sizes/font_size = 48
 text = "Score: "
 horizontal_alignment = 1
 
-[node name="Gamble" type="Button" parent="DeathGambleMenu" unique_id=1774870187]
+[node name="Gamble" type="TextureButton" parent="DeathGambleMenu" unique_id=288527431]
 layout_mode = 0
-offset_left = 900.0
-offset_top = 500.0
-offset_right = 1050.0
-offset_bottom = 560.0
-theme_override_font_sizes/font_size = 32
-text = "GAMBLE"
+offset_left = 737.0
+offset_top = 459.25003
+offset_right = 1227.0
+offset_bottom = 546.25
+scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("CompressedTexture2D_qleia")
+texture_hover = ExtResource("27_sfun4")
 
 [node name="Dice" parent="DeathGambleMenu" unique_id=1545132458 instance=ExtResource("12_g2v8e")]
 position = Vector2(576, 350)
 
-[node name="Return" type="Button" parent="DeathGambleMenu" unique_id=368119778]
+[node name="Return" type="TextureButton" parent="DeathGambleMenu" unique_id=1159591296]
 visible = false
 layout_mode = 0
-offset_left = 899.0
-offset_top = 568.0
-offset_right = 1049.0
-offset_bottom = 628.0
-theme_override_font_sizes/font_size = 32
-text = "RETURN"
+offset_left = 738.0
+offset_top = 543.0
+offset_right = 1228.0
+offset_bottom = 639.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("29_27ch3")
+texture_hover = ExtResource("30_bhxtc")
 
 [node name="Gamble" type="Control" parent="." unique_id=82343496]
 visible = false
