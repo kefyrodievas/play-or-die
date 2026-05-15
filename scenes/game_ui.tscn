@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bdwifv25ah1oa" path="res://assets/img/Shop bars/health/Health.png" id="14_5kjus"]
 [ext_resource type="Texture2D" uid="uid://ctp8fli808rus" path="res://assets/img/Shop bars/luck/Luck.png" id="15_bj1rn"]
 [ext_resource type="Texture2D" uid="uid://dbfg7xepsjkip" path="res://assets/img/Shop bars/defense/Defense.png" id="16_36vcn"]
-[ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="16_ihktq"]
+[ext_resource type="Texture2D" uid="uid://tdtjk1egsu87" path="res://assets/img/items/Boots.png" id="16_sfun4"]
 [ext_resource type="Texture2D" uid="uid://67m8jd33kbkq" path="res://assets/img/menu/new/background_layer_1.png" id="17_n74c5"]
 [ext_resource type="Texture2D" uid="uid://dw0g7v7vdjtiu" path="res://assets/img/background/background_layer_2.png" id="18_8wu16"]
 [ext_resource type="Texture2D" uid="uid://c4mey0dlhg0c6" path="res://assets/img/background/background_layer_3.png" id="19_sdeak"]
@@ -1067,6 +1067,10 @@ sources/0 = SubResource("TileSetAtlasSource_upmhx")
 bg_color = Color(1, 1, 1, 1)
 border_color = Color(0.8, 0.8, 0.8, 0)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_27ch3"]
+atlas = ExtResource("16_sfun4")
+region = Rect2(0, 0, 64, 64)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8a34"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qleia"]
@@ -1720,11 +1724,6 @@ offset_top = 473.0
 offset_right = 1040.0
 offset_bottom = 513.0
 
-[node name="Boots" parent="Shop" unique_id=1305261216 instance=ExtResource("16_ihktq")]
-position = Vector2(833, 439)
-rotation = 0.5235988
-scale = Vector2(0.9, 0.9)
-
 [node name="Speed2" type="TextureRect" parent="Shop" unique_id=1149247328]
 texture_filter = 1
 layout_mode = 1
@@ -1816,6 +1815,12 @@ tab_input_mode = false
 virtual_keyboard_enabled = false
 caret_blink_interval = 2.5
 text_direction = 1
+
+[node name="Boots2" type="Sprite2D" parent="Shop" unique_id=2114910705]
+position = Vector2(833, 440.00006)
+rotation = 0.5235988
+scale = Vector2(0.9, 0.9)
+texture = SubResource("AtlasTexture_27ch3")
 
 [node name="StartMenu" type="Control" parent="." unique_id=332742946]
 visible = false
