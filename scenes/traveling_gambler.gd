@@ -5,9 +5,11 @@ extends CharacterBody2D
 var player_in_range := false
 var is_interacting := false
 var damage := 999999
+var kill := false
 @onready var player = $"../Samurai"
 
 func _ready():
+	kill=false
 	$AnimatedSprite2D.play("IDLE")
 	
 func _physics_process(delta: float) -> void:
@@ -28,6 +30,7 @@ func after_interaction():
 	$Sprite2D.visible = false
 	$SpeechBubbleGrey.visible = false
 	$Label.visible = false
+	$Label2.visible=false
 	$AnimatedSprite2D.play("AFTER_GAMBLE")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
@@ -43,21 +46,35 @@ func start_interaction():
 func KILL(body):
 	$AnimatedSprite2D.play("KILL")
 	await $AnimatedSprite2D.animation_finished
-	
+	kill = true
 	if body.name == "Samurai":
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+	
+	$AnimatedSprite2D.play("IDLE")
+	await get_tree().create_timer(5, true, false, true).timeout
+	
+	after_interaction()
 
 func _on_area_2d_body_entered(body):
-	if body.name == "Samurai":
+	if body.name == "Samurai" and !kill:
 		player_in_range = true
 		$Sprite2D.visible = false;
 		$Label.visible = true;
-		print("Samurai entered NPC area")
+	elif kill:
+		$Sprite2D.visible = false;
+		$Label.visible = false;
+		$Label2.visible = true;
+
 
 func _on_area_2d_body_exited(body):
-	if body.name == "Samurai":
+	if body.name == "Samurai" and !kill:
 		player_in_range = false
-		print("Samurai exited NPC area")
 		$Sprite2D.visible = true;
 		$Label.visible = false;
+	elif kill:
+		$Sprite2D.visible = false;
+		$Label.visible = false;
+		$Label2.visible = true;
+
+		

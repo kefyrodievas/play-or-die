@@ -178,7 +178,7 @@ func apply_upgrades():
 	self.SPEED = 400 + (GameData.speed_level * 40)
 	
 	# Update UI to show the new max health
-	health_changed.emit(health)
+	health_changed.emit(health,max_hp)
 	
 
 

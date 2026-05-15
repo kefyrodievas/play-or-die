@@ -275,7 +275,8 @@ debug_color = Color(0.9857765, 0.11905991, 0, 0.41960785)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1437594817]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_cd3a0")
-animation = &"KILL"
+animation = &"IDLE"
+autoplay = "IDLE"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194603552]
 shape = SubResource("CapsuleShape2D_fi2eb")
@@ -289,6 +290,19 @@ offset_right = 29.0
 offset_bottom = -4.0
 scale = Vector2(0.6760916, 0.42624038)
 text = "PRESS E"
+label_settings = SubResource("LabelSettings_i1qjr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=398362226]
+visible = false
+texture_filter = 1
+offset_left = -13.0
+offset_top = -27.0
+offset_right = 29.0
+offset_bottom = -4.0
+scale = Vector2(0.6760916, 0.42624038)
+text = "Lucky ?"
 label_settings = SubResource("LabelSettings_i1qjr")
 horizontal_alignment = 1
 vertical_alignment = 1
