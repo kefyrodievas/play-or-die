@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="3_o3bws"]
 [ext_resource type="FontFile" uid="uid://di74pjmfcnoqu" path="res://assets/fonts/monogram.ttf" id="4_3huio"]
 [ext_resource type="Texture2D" uid="uid://dk14e1fqjoemy" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/emoji style ui/Inventory_Blocks_Spritesheet.png" id="6_g2v8e"]
+[ext_resource type="Texture2D" uid="uid://b7gwo3uv2kalx" path="res://assets/img/menu/new/quit_x.png" id="7_sfun4"]
+[ext_resource type="Texture2D" uid="uid://c5usna5o24kyh" path="res://assets/img/menu/new/quit_x_selected.png" id="8_27ch3"]
 [ext_resource type="Texture2D" uid="uid://b6164nvak0jn2" path="res://assets/img/Shop bars/Buy buttonnormal.png" id="9_upmhx"]
 [ext_resource type="Texture2D" uid="uid://cny8m5wbl6hwq" path="res://assets/img/Shop bars/Buy buttonpress.png" id="10_ihktq"]
 [ext_resource type="PackedScene" uid="uid://cee3rcvkg2cf1" path="res://scenes/dice.tscn" id="12_g2v8e"]
@@ -31,8 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://danrdnggvs6mk" path="res://assets/img/menu/new/shop.png" id="25_bhxtc"]
 [ext_resource type="Texture2D" uid="uid://1t77w5sdo3ms" path="res://assets/img/menu/new/shop selected.png" id="26_qleia"]
 [ext_resource type="Texture2D" uid="uid://cm7j0m0b5goac" path="res://assets/img/menu/new/gamble_selected.png" id="27_sfun4"]
-[ext_resource type="Texture2D" uid="uid://buup6yac1sru2" path="res://assets/img/menu/new/resume.png" id="29_27ch3"]
-[ext_resource type="Texture2D" uid="uid://bbqsvf6phddxo" path="res://assets/img/menu/new/resume_selected.png" id="30_bhxtc"]
+[ext_resource type="Texture2D" uid="uid://bun1l0qjo0ulh" path="res://assets/img/menu/new/return.png" id="29_bhxtc"]
+[ext_resource type="Texture2D" uid="uid://cdnfnobyc7sjp" path="res://assets/img/menu/new/return_selected.png" id="30_qleia"]
 
 [sub_resource type="Gradient" id="Gradient_s2npe"]
 
@@ -1221,7 +1223,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Shop" type="Control" parent="." unique_id=1038527130]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1253,8 +1254,8 @@ offset_top = 554.0
 offset_right = 960.0
 offset_bottom = 656.0
 scale = Vector2(0.6, 0.6)
-texture_normal = ExtResource("23_sfun4")
-texture_hover = ExtResource("24_27ch3")
+texture_normal = ExtResource("7_sfun4")
+texture_hover = ExtResource("8_27ch3")
 
 [node name="TextEdit" type="TextEdit" parent="Shop" unique_id=322298421]
 clip_children = 1
@@ -2023,12 +2024,12 @@ position = Vector2(576, 350)
 visible = false
 layout_mode = 0
 offset_left = 738.0
-offset_top = 543.0
+offset_top = 542.0
 offset_right = 1228.0
-offset_bottom = 639.0
+offset_bottom = 640.0
 scale = Vector2(0.75, 0.75)
-texture_normal = ExtResource("29_27ch3")
-texture_hover = ExtResource("30_bhxtc")
+texture_normal = ExtResource("29_bhxtc")
+texture_hover = ExtResource("30_qleia")
 
 [node name="Gamble" type="Control" parent="." unique_id=82343496]
 visible = false
