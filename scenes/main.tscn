@@ -5,11 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="9_choun"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://c1el2cchn7dsm" path="res://scenes/spike.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_trceg"]
 
@@ -217,16 +216,9 @@ tile_set = SubResource("TileSet_trceg")
 [node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("8_85g3d")]
 position = Vector2(-234, 584)
 
-[node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("9_choun")]
-position = Vector2(-349, 567)
-
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("10_choun")]
 position = Vector2(-702, 544)
 scale = Vector2(5, 5)
-
-[node name="Chest" parent="." unique_id=275545822 instance=ExtResource("10_ya4ey")]
-position = Vector2(927.9999, 607)
-scale = Vector2(4, 4)
 
 [node name="Chest2" parent="." unique_id=510472019 instance=ExtResource("10_ya4ey")]
 position = Vector2(460, 605)
@@ -236,10 +228,9 @@ scale = Vector2(4, 4)
 position = Vector2(542, 609)
 scale = Vector2(4, 4)
 
-[node name="Spike" parent="." unique_id=870259076 instance=ExtResource("11_ya4ey")]
-position = Vector2(802, 608)
-scale = Vector2(4, 4)
-
 [node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("12_trceg")]
 position = Vector2(715, 584)
 scale = Vector2(4, 4)
+
+[node name="Star" parent="." unique_id=2096763841 instance=ExtResource("11_ya4ey")]
+position = Vector2(-316, 594)

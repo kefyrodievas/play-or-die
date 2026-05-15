@@ -81,6 +81,7 @@ size = Vector2(47, 57)
 script = ExtResource("1_bbpp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317849889]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t5eb2")
 animation = &"Idle"
 autoplay = "Idle"

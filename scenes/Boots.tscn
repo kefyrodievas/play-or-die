@@ -39,8 +39,10 @@ size = Vector2(64, 33)
 script = ExtResource("1_t1mf3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=790989788]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_05eic")
 animation = &"Idle"
+autoplay = "Idle"
 frame_progress = 0.710358
 speed_scale = 0.695
 

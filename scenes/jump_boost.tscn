@@ -30,6 +30,7 @@ animations = [{
 radius = 32.0
 
 [node name="Jump_boost" type="Area2D" unique_id=1781381766]
+texture_filter = 1
 script = ExtResource("1_lew4j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1232439978]
