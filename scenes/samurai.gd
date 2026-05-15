@@ -169,7 +169,7 @@ func apply_upgrades():
 	
 	
 	# Strength increases damage by 2 for every level
-	self.damage = 6 + (GameData.strength_level * 2)
+	self.damage = (6 + (GameData.strength_level * 2))*damage_multiplier
 	
 	# Jump increases jump velocity by 20 for every level
 	self.JUMP_VELOCITY = -700.0 - (GameData.jump_level * 20)
@@ -255,7 +255,8 @@ func activate_dash():
 	)
 	
 func unlock_damage_boost():
-	damage_multiplier *= 2
+	damage_multiplier = 2
+	update_damage()
 	$DamageBoostTimer.wait_time = damage_boost_duration
 	$DamageBoostTimer.start()
 	got_powerup.emit($DamageBoostTimer)
@@ -300,7 +301,10 @@ func take_damage(damage_to_take):
 	taking_damage = false
 
 
-
+func update_damage():
+	damage = (6 + (GameData.strength_level * 2)) * damage_multiplier
+	print("Damage updated: ", damage)
+	
 # ATTACK
 var can_attack = true
 var attack_cd = 0.7
@@ -335,7 +339,8 @@ func attack_timers():
 
 
 func _on_damage_boost_timer_timeout() -> void:
-	damage_multiplier /= 2
+	damage_multiplier = 1
+	update_damage()
 
 
 func _on_dash_timer_timeout() -> void:

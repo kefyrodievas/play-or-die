@@ -83,6 +83,7 @@ script = ExtResource("1_bbpp6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=317849889]
 sprite_frames = SubResource("SpriteFrames_t5eb2")
 animation = &"Idle"
+autoplay = "Idle"
 frame_progress = 0.083650075
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015479616]
