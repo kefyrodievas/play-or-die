@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://54py7d84kbhd"]
 
 [ext_resource type="Texture2D" uid="uid://dp74hgs4iae1l" path="res://assets/img/items/gem0.png" id="1_aqqvs"]
+[ext_resource type="Script" uid="uid://d21125ltibt7f" path="res://scenes/gem.gd" id="1_gm24i"]
 [ext_resource type="Texture2D" uid="uid://5bdr2i1gory2" path="res://assets/img/items/gem1.png" id="2_gm24i"]
 [ext_resource type="Texture2D" uid="uid://b4mg5d65l6xhw" path="res://assets/img/items/gem2.png" id="3_aalvx"]
 [ext_resource type="Texture2D" uid="uid://da37t6arxoxa3" path="res://assets/img/items/gem3.png" id="4_rnfkx"]
@@ -53,7 +54,7 @@ animations = [{
 "texture": ExtResource("12_3ibxd")
 }],
 "loop": true,
-"name": &"gem animation",
+"name": &"Idle",
 "speed": 6.0
 }]
 
@@ -61,13 +62,13 @@ animations = [{
 size = Vector2(16, 14)
 
 [node name="Gem" type="Area2D" unique_id=642667019]
+script = ExtResource("1_gm24i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=767262706]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_nbv6p")
-animation = &"gem animation"
-autoplay = "gem animation"
-frame = 4
-frame_progress = 0.49397156
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1919088895]
 shape = SubResource("RectangleShape2D_n6vln")

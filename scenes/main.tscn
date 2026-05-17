@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_trceg"]
 
@@ -234,3 +235,7 @@ scale = Vector2(4, 4)
 
 [node name="Star" parent="." unique_id=2096763841 instance=ExtResource("11_ya4ey")]
 position = Vector2(-316, 594)
+
+[node name="Gem" parent="." unique_id=642667019 instance=ExtResource("12_a8y0u")]
+position = Vector2(-1439, 550)
+scale = Vector2(3, 3)
