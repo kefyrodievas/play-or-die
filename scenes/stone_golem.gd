@@ -86,7 +86,9 @@ func handle_animation():
 
 func handle_death():
 	drop_loot()
-	$"../Samurai".call_deferred("add_score", points)
+	var current_level = max(0, GameData.current_floor)
+	var final_reward = points + current_level * 5
+	$"../Samurai".call_deferred("add_score", final_reward)
 	self.queue_free()
 	#additional stuff like giving points for killing enemy
 

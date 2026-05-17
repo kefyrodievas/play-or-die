@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_trceg"]
+[ext_resource type="PackedScene" uid="uid://c8vnx7lft2s6g" path="res://scenes/golem.tscn" id="13_trceg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
 texture = ExtResource("12_eb6dy")
@@ -239,3 +240,6 @@ position = Vector2(-316, 594)
 [node name="Gem" parent="." unique_id=642667019 instance=ExtResource("12_a8y0u")]
 position = Vector2(-1439, 550)
 scale = Vector2(3, 3)
+
+[node name="Golem" parent="." unique_id=1566718816 instance=ExtResource("13_trceg")]
+position = Vector2(-1201, 537)

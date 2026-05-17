@@ -86,7 +86,9 @@ func handle_animation():
 
 func handle_death():
 	drop_loot()
-	$"../Samurai".call_deferred("add_score", points)
+	var current_level = max(0, GameData.current_floor)
+	var final_reward = points + current_level * 5
+	$"../Samurai".call_deferred("add_score", final_reward)
 	self.queue_free()
 	#additional stuff like giving points for killing enemy
 
@@ -181,13 +183,13 @@ func spawn_random_powerup():
 	]
 	var item_instance = items.pick_random().instantiate()
 	# 1. Get the current scale of this enemy (the boss)
-	var boss_size = global_scale.x 
+	var boss_size = scale.x 
 	# 2. Calculate the new scale for the item
 	# This maps boss scale (0.7 to 4.0) to item scale (0.3 to 1.0)
-	var item_scale_val = remap(boss_size, 1.0, 4.0, 0.3, 1.0)
+	var item_scale_val = remap(boss_size, 0.7, 4.0, 0.3, 1.0)
 	
 	# Optional: Clamp the value so it doesn't get too tiny or too huge if the boss is 0.1 or 10.0
-	item_scale_val = clamp(item_scale_val, 0.3, 1.0)
+	#item_scale_val = clamp(item_scale_val, 0.2, 1.0)
 	# 3. Apply the scale
 	item_instance.scale = Vector2(item_scale_val, item_scale_val)
 	get_parent().add_child(item_instance)
