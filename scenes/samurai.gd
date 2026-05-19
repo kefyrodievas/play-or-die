@@ -21,6 +21,7 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 6
+var base_damage = 6
 var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
@@ -302,7 +303,7 @@ func take_damage(damage_to_take):
 
 
 func update_damage():
-	damage = (6 + (GameData.strength_level * 2)) * damage_multiplier
+	damage = (base_damage + (GameData.strength_level * 2)) * damage_multiplier
 	print("Damage updated: ", damage)
 	
 # ATTACK

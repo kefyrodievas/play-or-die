@@ -767,9 +767,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j5hcm")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
-"speed": 15.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -928,7 +928,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lbuw2")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 13.0
 }, {
@@ -960,7 +960,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q1n8i")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 4.0
 }, {
@@ -1168,6 +1168,7 @@ radius = 16.0
 height = 94.0
 
 [node name="Necromanx" type="CharacterBody2D" unique_id=273729143 groups=["MOB"]]
+texture_filter = 1
 script = ExtResource("1_ig0fs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1918958620]
@@ -1176,7 +1177,8 @@ scale = Vector2(0.839, 0.972)
 sprite_frames = SubResource("SpriteFrames_efuon")
 animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.6897028
+frame = 38
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1446020337]
 position = Vector2(0, -1)
@@ -1206,6 +1208,7 @@ position = Vector2(7, 0)
 position = Vector2(-7, -1)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_lpnlg")
+debug_color = Color(0.99999994, 0.007482214, 0.07421311, 0.41960785)
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

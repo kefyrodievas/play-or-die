@@ -260,7 +260,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_61q0s")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 9.0
 }, {
@@ -313,7 +313,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o2m04")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 10.0
 }, {
@@ -339,7 +339,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sn3cj")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 7.0
 }, {
@@ -415,16 +415,15 @@ radius = 43.0
 height = 174.0
 
 [node name="Golem" type="CharacterBody2D" unique_id=1566718816]
+texture_filter = 1
 script = ExtResource("1_6fya6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842099655]
 position = Vector2(-4.7683716e-07, 0)
 scale = Vector2(-0.919, 0.991)
 sprite_frames = SubResource("SpriteFrames_m3xxr")
-animation = &"attack"
+animation = &"die"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.9619528
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=179010949]
 position = Vector2(-2, 8)

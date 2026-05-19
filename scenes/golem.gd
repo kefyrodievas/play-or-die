@@ -3,7 +3,6 @@ extends CharacterBody2D
 class_name Golem
 
 @export var damage_to_deal := 20
-@export var tick_time := 4
 var bodies_inside: Array = []
 
 const speed = 50
@@ -17,6 +16,13 @@ var health_min = 0
 var dead: bool = false
 var taking_damage: bool = false
 var is_dealing_damage: bool = false
+var is_attacking: bool = false
+
+@export var attack_cooldown := 1
+@export var attack_hit_time := 1
+
+var can_attack := true
+var player_in_attack_box := false
 
 var direction: Vector2
 const gravity = 900
@@ -24,26 +30,21 @@ var knockback_force = -20
 var is_roaming: bool = true
 
 var player_in_area = false
-var player: CharacterBody2D
+@onready var player: CharacterBody2D = $"../Samurai"
 
-var attack_range = 215
+@export var chase_range := 200
+@export var chase_y_range := 200
+@export var attack_range := 100
 var chase_speed = 150
 var points = 10;
 
 
-func _process(delta):
-	player = $"../Samurai".playerBody
+
+func _physics_process(delta):
 	
 	if !is_on_floor():
 		velocity.y += gravity * delta
 		velocity.x = 0
-
-	var timer = Timer.new()
-	timer.wait_time = tick_time
-	timer.autostart = true
-	timer.timeout.connect(_on_tick)
-	add_child(timer)
-	
 	move(delta)
 	platform_edge()
 	follow_and_attack_player()
@@ -51,39 +52,51 @@ func _process(delta):
 	move_and_slide()
 
 func move(delta):
-	if !dead:
-		if !is_chasing:
-			velocity += direction * speed * delta
-		elif is_chasing and !taking_damage:
-			var direction_to_player = position.direction_to(player.position) * chase_speed
-			velocity.x = direction_to_player.x #not gonna follow it upwards
-			direction.x = abs(velocity.x) / velocity.x
-		elif taking_damage:
-			#This needs fixing
-			var knockback_direction = position.direction_to(player.position) * knockback_force
-			velocity.x = knockback_direction.x
-		is_roaming = true
-	elif dead:
+	if dead:
 		velocity.x = 0
+		return
+
+	if !is_chasing:
+		velocity.x = direction.x * speed
+	elif is_chasing and !taking_damage and !is_attacking:
+		var direction_to_player = global_position.direction_to(player.global_position)
+		velocity.x = direction_to_player.x * chase_speed
+
+		if velocity.x != 0:
+			direction.x = sign(velocity.x)
+	elif taking_damage:
+		var knockback_direction = global_position.direction_to(player.global_position) * knockback_force
+		velocity.x = knockback_direction.x
+
+	is_roaming = true
 
 func handle_animation():
 	var anim_sprite = $AnimatedSprite2D
-	if !dead and !taking_damage and !is_dealing_damage:
-		anim_sprite.play("walk")
-		if direction.x == -1:
-			anim_sprite.flip_h = true
-		elif direction.x == 1:
-			anim_sprite.flip_h = false
-	elif !dead and taking_damage and !is_dealing_damage:
+
+	if dead:
+		if is_roaming or is_dealing_damage:
+			is_roaming = false
+			is_dealing_damage = false
+			anim_sprite.play("die")
+			await get_tree().create_timer(1.0).timeout
+			handle_death()
+		return
+
+	if is_attacking:
+		return
+
+	if taking_damage:
 		anim_sprite.play("hurt")
 		await get_tree().create_timer(0.5).timeout
 		taking_damage = false
-	elif (dead and is_roaming) or (dead and is_dealing_damage):
-		is_roaming = false
-		is_dealing_damage = false
-		anim_sprite.play("die")
-		await get_tree().create_timer(1.0).timeout
-		handle_death()
+		return
+
+	anim_sprite.play("walk")
+
+	if direction.x == -1:
+		anim_sprite.flip_h = true
+	elif direction.x == 1:
+		anim_sprite.flip_h = false
 
 func handle_death():
 	drop_loot()
@@ -134,41 +147,77 @@ func _flip():
 
 #Follow and attack player if close enough
 func follow_and_attack_player():
-	if global_position.distance_to(player.global_position) < 400 and (abs(global_position.y - player.global_position.y) < 180) and !dead:
+	if player == null or dead:
+		return
+
+	var boss_scale = abs(global_scale.x)
+
+	var x_distance = abs(global_position.x - player.global_position.x)
+	var y_distance = abs(global_position.y - player.global_position.y)
+
+	var scaled_chase_range = chase_range * boss_scale
+	var scaled_attack_range = attack_range * boss_scale
+
+	if x_distance < scaled_chase_range and y_distance < chase_y_range:
 		is_chasing = true
-		if global_position.distance_to(player.global_position) < attack_range:
-			var temp = sign(player.global_position.x - global_position.x)
-			if (temp < 0 and direction.x > 0) or (temp > 0 and direction.x < 0):
-				direction *= -1
-			_attack()
+
+		var player_side = sign(player.global_position.x - global_position.x)
+		if player_side != 0:
+			direction.x = player_side
+
+		if x_distance < scaled_attack_range:
 			is_dealing_damage = true
+
+			if !is_attacking:
+				_attack()
 		else:
 			is_dealing_damage = false
-			
 	else:
 		is_chasing = false
+		is_dealing_damage = false
 
 #Attack animation
 func _attack():
+	if is_attacking or !can_attack:
+		return
+
+	is_attacking = true
+	can_attack = false
+	is_dealing_damage = true
 	velocity.x = 0
 	is_roaming = false
-	$AnimatedSprite2D.play("attack")
-	await get_tree().create_timer(1.0).timeout
 
+	$AnimatedSprite2D.play("attack")
+
+	await get_tree().create_timer(attack_hit_time).timeout
+
+	_deal_attack_damage()
+
+	await $AnimatedSprite2D.animation_finished
+
+	is_attacking = false
+	is_dealing_damage = false
+	is_roaming = true
+
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
+	
+func _deal_attack_damage():
+	for body in bodies_inside:
+		if body != null and body.name == "Samurai" and body.has_method("take_damage"):
+			body.take_damage(damage_to_deal)
+			
 func _on_attack_box_body_entered(body):
 	if body.name == "Samurai":
 		if body not in bodies_inside:
 			bodies_inside.append(body)
-		if body.has_method("take_damage") and is_dealing_damage:
-			body.take_damage(damage_to_deal)
+		player_in_attack_box = true
 
 func _on_attack_box_body_exited(body):
+	if body.name == "Samurai":
+		player_in_attack_box = false
 	bodies_inside.erase(body)
 
-func _on_tick():
-	for body in bodies_inside:
-		if body.has_method("take_damage") and is_dealing_damage:
-			body.take_damage(damage_to_deal)
 
 func drop_loot():
 	# Base 30% chance + 5% per Luck Level (up to 50% at level 4)
@@ -176,6 +225,19 @@ func drop_loot():
 	if randf() <= drop_chance:
 		spawn_random_powerup()
 		
+func get_boss_bottom_position() -> Vector2:
+	var collision := $CollisionShape2D
+	var shape = collision.shape
+	
+	var bottom_offset := 0.0
+	
+	if shape is CapsuleShape2D:
+		bottom_offset = shape.height * 0.5 * abs(scale.y)-abs(scale.y)*10
+	else:
+		bottom_offset = 40.0
+	
+	return global_position + Vector2(0, bottom_offset)
+	
 func spawn_random_powerup():
 	var items = [ preload("res://scenes/jump_boost.tscn"), 
 	preload("res://scenes/Damage_boost.tscn"), 
@@ -184,5 +246,11 @@ func spawn_random_powerup():
 	preload("res://scenes/star.tscn")
 	]
 	var item_instance = items.pick_random().instantiate()
-	get_parent().add_child(item_instance) # Add to level, not enemy
-	item_instance.global_position = global_position
+	# 1. Get the current scale of this enemy (the boss)
+	var item_size = abs(player.scale.x/3)
+	print(item_size)
+	print(player.global_scale.x)
+	# 3. Apply the scale
+	item_instance.scale = Vector2(item_size,item_size)
+	get_parent().add_child(item_instance)
+	item_instance.global_position = get_boss_bottom_position()

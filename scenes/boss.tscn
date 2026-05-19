@@ -271,7 +271,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mautr")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o4ffm")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 13.0
 }, {
@@ -347,7 +347,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ft6lg")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 7.0
 }, {
@@ -429,6 +429,7 @@ radius = 40.666668
 height = 244.00002
 
 [node name="Boss" type="CharacterBody2D" unique_id=457228902 groups=["MOB"]]
+texture_filter = 1
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_neq0i")
 
@@ -436,10 +437,8 @@ script = ExtResource("1_neq0i")
 position = Vector2(0.9999981, -28.000002)
 scale = Vector2(-1, 0.963)
 sprite_frames = SubResource("SpriteFrames_ajbp4")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 9
-frame_progress = 0.6724147
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1686047377]
 position = Vector2(2, 5.3333335)
@@ -469,6 +468,7 @@ position = Vector2(6.666667, 0)
 position = Vector2(-4.66667, 10)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qnbj4")
+debug_color = Color(0.9931719, 0, 0.24821264, 0.41960785)
 
 [connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

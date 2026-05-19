@@ -664,7 +664,7 @@ func setup_game():
 	deal_cards_to_hand(2, dealer_hand)
 
 	hide_dealer_hole_card()
-	print_scores(false)
+	#print_scores(false)
 	
 func create_standard_deck():
 	var suits = ["club", "diamond", "heart", "spade"]
@@ -719,7 +719,7 @@ func _on_hit_pressed() -> void:
 	await get_tree().create_timer(0.3).timeout
 	var player_value = get_hand_value(player_hand)
 	$Gamble/count.text = str(player_value)
-	print("Player value: ", player_value)
+	#print("Player value: ", player_value)
 
 	if player_value > 21:
 		end_game("Player bust. Dealer wins.",false)
@@ -764,8 +764,8 @@ func end_game(message: String, won: bool):
 	$Gamble/price.visible = true
 
 	reveal_dealer_cards()
-	print_scores(true)
-	print(message)
+	#print_scores(true)
+	#print(message)
 
 	await get_tree().create_timer(0.3, true, false, true).timeout
 

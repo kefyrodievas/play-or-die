@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="1_hpvv5"]
 [ext_resource type="Script" uid="uid://ckgmvkia3ral" path="res://scenes/door.gd" id="1_uvdjg"]
+[ext_resource type="Texture2D" uid="uid://di2711tn8ou0m" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/speech_bubble_grey.png" id="3_la1wf"]
+[ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="4_18pbm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("1_hpvv5")
+region = Rect2(208, 160, 16, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvdjg"]
 atlas = ExtResource("1_hpvv5")
@@ -20,24 +26,58 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_83dcw")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_18pbm"]
 size = Vector2(21, 35)
 
+[sub_resource type="LabelSettings" id="LabelSettings_q5w8r"]
+font = ExtResource("4_18pbm")
+
 [node name="Door" type="Area2D" unique_id=1195312133]
 script = ExtResource("1_uvdjg")
+
+[node name="DungeonTileSet" type="Sprite2D" parent="." unique_id=1992427747]
+visible = false
+modulate = Color(15.652424, 15.30028, 2.834349, 1)
+texture_filter = 1
+position = Vector2(-3.400001, -1.0999994)
+scale = Vector2(1.05, 0.9937499)
+texture = SubResource("AtlasTexture_la1wf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=637179286]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_la1wf")
-frame_progress = 0.9714787
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1576308143]
 position = Vector2(-3.5, -0.5)
 shape = SubResource("RectangleShape2D_18pbm")
 
+[node name="SpeechBubbleGrey" type="Sprite2D" parent="." unique_id=1206977157]
+visible = false
+modulate = Color(0.8540778, 0.63003016, 0.45084506, 1)
+texture_filter = 1
+position = Vector2(2.0000005, -24)
+scale = Vector2(0.821, 0.288)
+texture = ExtResource("3_la1wf")
+hframes = 6
+vframes = 3
+
+[node name="Label" type="Label" parent="." unique_id=744404763]
+visible = false
+texture_filter = 1
+offset_left = -16.0
+offset_top = -29.000002
+offset_right = 26.0
+offset_bottom = -6.000002
+scale = Vector2(0.6760916, 0.42624038)
+text = "PRESS E"
+label_settings = SubResource("LabelSettings_q5w8r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -5,14 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_choun"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="12_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_trceg"]
-[ext_resource type="PackedScene" uid="uid://c8vnx7lft2s6g" path="res://scenes/golem.tscn" id="13_trceg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
 texture = ExtResource("12_eb6dy")
@@ -218,10 +217,6 @@ tile_set = SubResource("TileSet_trceg")
 [node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("8_85g3d")]
 position = Vector2(-234, 584)
 
-[node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("10_choun")]
-position = Vector2(-702, 544)
-scale = Vector2(5, 5)
-
 [node name="Chest2" parent="." unique_id=510472019 instance=ExtResource("10_ya4ey")]
 position = Vector2(460, 605)
 scale = Vector2(4, 4)
@@ -241,5 +236,7 @@ position = Vector2(-316, 594)
 position = Vector2(-1439, 550)
 scale = Vector2(3, 3)
 
-[node name="Golem" parent="." unique_id=1566718816 instance=ExtResource("13_trceg")]
-position = Vector2(-1201, 537)
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("12_jkv2x")]
+position = Vector2(-361, 552)
+scale = Vector2(3.5, 3.5)
+tick_time = 10
