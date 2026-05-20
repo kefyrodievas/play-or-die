@@ -6,6 +6,16 @@ signal score_changed(new_score)
 signal highscore_changed(new_hs)
 signal got_powerup(timer)
 
+@export var left_marker: Marker2D
+@export var right_marker: Marker2D
+@export var top_marker: Marker2D
+@export var bottom_marker: Marker2D
+
+var default_left := -9999990
+var default_top := -1000000
+var default_right := 4010
+var default_bottom := 52
+
 var SPEED = 400.0
 var JUMP_VELOCITY = -700.0
 
@@ -21,8 +31,8 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 6
-var base_damage = 6
-var damage_multiplier = 1
+var base_damage = 100
+var damage_multiplier = 10
 var damage_boost_duration = 10.0
 
 #HEALTH SYSTEM
@@ -41,6 +51,8 @@ const cd_timer := preload("res://scenes/cd_timer.gd")
 var inAttack = false
 
 var playerBody = self
+
+
 
 func _ready():
 	GameUi._connect_samurai_signals()
@@ -72,13 +84,13 @@ func _ready():
 	highscore_changed.emit(max(score, highscore))
 	
 	apply_upgrades()
+	apply_camera_limits()
 	#if score > highscore:
 	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", score)
 	#else:
 	#	$CanvasLayer/InGameHUD.call("_set_highscore_val", highscore)
 
 func _physics_process(delta: float) -> void:
-	
 	# ANIMATION
 	if is_Alive and taking_damage:
 		$AnimatedSprite2D.play("hurt")
@@ -137,7 +149,12 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1.0:
 		$AnimatedSprite2D.flip_h = true
 
-
+func apply_camera_limits():
+	$Camera2D.limit_left = int(left_marker.global_position.x) if left_marker != null else -9999990
+	$Camera2D.limit_right = int(right_marker.global_position.x) if right_marker != null else 4010
+	$Camera2D.limit_top = int(top_marker.global_position.y) if top_marker != null else -1000000
+	$Camera2D.limit_bottom = int(bottom_marker.global_position.y) if bottom_marker != null else 52
+	
 # SCORE
 func add_score(amount):
 	score += amount * score_multiplier
@@ -337,6 +354,8 @@ func attack_timers():
 		inAttack = false
 		)
 	
+
+
 
 
 func _on_damage_boost_timer_timeout() -> void:

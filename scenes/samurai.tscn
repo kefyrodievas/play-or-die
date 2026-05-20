@@ -333,10 +333,7 @@ shape = SubResource("CapsuleShape2D_s6way")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=96058188]
 position = Vector2(-136.48, -61.36)
 anchor_mode = 0
-limit_left = -9999990
-limit_top = -10000008
-limit_right = 4010
-limit_bottom = 52
+limit_smoothed = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=429229607]
 

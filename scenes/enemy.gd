@@ -172,10 +172,23 @@ func _on_tick():
 
 func drop_loot():
 	# Base 30% chance + 5% per Luck Level (up to 50% at level 4)
-	var drop_chance = 0.3 + (GameData.luck_level * 0.05)
+	var drop_chance = 1
 	if randf() <= drop_chance:
 		spawn_random_powerup()
 		
+func get_boss_bottom_position() -> Vector2:
+	var collision := $CollisionShape2D
+	var shape = collision.shape
+	
+	var bottom_offset := 0.0
+	
+	if shape is CapsuleShape2D:
+		bottom_offset = shape.height * 0.5 * abs(scale.y)-abs(scale.y)*50
+	else:
+		bottom_offset = 40.0
+	
+	return global_position + Vector2(0, bottom_offset)
+	
 func spawn_random_powerup():
 	var items = [ preload("res://scenes/jump_boost.tscn"), 
 	preload("res://scenes/Damage_boost.tscn"), 
@@ -184,7 +197,11 @@ func spawn_random_powerup():
 	preload("res://scenes/star.tscn")
 	]
 	var item_instance = items.pick_random().instantiate()
-	# Makes it 30% of its original size
-	item_instance.scale = Vector2(0.3, 0.3)
-	get_parent().add_child(item_instance) # Add to level, not enemy
-	item_instance.global_position = global_position
+	# 1. Get the current scale of this enemy (the boss)
+	var item_size = abs(player.scale.x/3)
+	print(item_size)
+	print(player.global_scale.x)
+	# 3. Apply the scale
+	item_instance.scale = Vector2(item_size,item_size)
+	get_parent().add_child(item_instance)
+	item_instance.global_position = get_boss_bottom_position()

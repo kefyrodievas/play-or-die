@@ -21,6 +21,8 @@ extends CanvasLayer
 @onready var stand_button: Button = $Gamble/Stand
 @onready var restart_button: Button = $Gamble/Restart
 @onready var discard_pile = $Gamble/CardManager/DiscardPile
+
+var interacting := true
 var blackjack_game_over := false
 var player_standing := false
 var blackjack_deck_created := false
@@ -321,12 +323,14 @@ func _on_start_pressed():
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")
 
 func _on_shop_open_pressed():
+	interacting = true
 	start_menu.hide()
 	$Shop/Money.text="Score: "+ str(GameData.total_bank_score);
 	shop.show()
 	GameData.play_floor_music("shop")
 
 func _on_shop_exit_pressed():
+	interacting = false
 	shop.hide()
 	start_menu.show()
 	GameData.play_floor_music("menu")
@@ -347,6 +351,10 @@ func toggle_pause():
 	# If we are in the start menu, don't allow pausing
 	if start_menu.visible:
 		return
+	if interacting:
+		return
+	if  !samurai.is_Alive:
+		return
 		
 	get_tree().paused = !get_tree().paused
 	pause_menu.visible = get_tree().paused
@@ -364,6 +372,7 @@ func _on_quit_btn_pressed() -> void:
 # --- DEATH/GAMBLE MENU BUTTONS ---
 func _on_gamble_pressed() -> void:
 	# Disable the button immediately so they can't spam it
+	interacting = true
 	$DeathGambleMenu/Gamble.disabled = true
 	# 1. Start the animation
 	$DeathGambleMenu/Dice/AnimatedSprite2D.play()
@@ -415,6 +424,7 @@ func _process_gamble_result(roll: int):
 			get_tree().paused = false
 			gamble.hide()
 			hud.show()
+			interacting = false
 			return # Exit function early so gamble menu disappears
 			
 		2: # LOSE ALL SCORE
@@ -519,11 +529,12 @@ func _on_return_pressed() -> void:
 	gamble.hide()
 	$StartMenu/Score.text = "Score: " + str(GameData.total_bank_score)
 	start_menu.show()
-	
+	interacting = false
 	
 # Traveling Gambler opening and closing gambling screen
 #Gamble node start
 func open_gambler_menu():
+	interacting = true
 	get_tree().paused = true
 	hud.hide()
 	pause_menu.hide()
@@ -555,6 +566,7 @@ func open_gambler_menu():
 	if not restart_button.pressed.is_connected(_on_restart_pressed):
 		restart_button.pressed.connect(_on_restart_pressed)
 func close_gambler_menu(kill: bool):
+	interacting = false
 	clear_blackjack_hands()
 	destroy_blackjack_deck()
 	GameData.current_score = score_for_gamble
@@ -573,9 +585,9 @@ func close_gambler_menu(kill: bool):
 	gambler_menu.hide()
 	hud.show()
 	get_tree().paused = false
-
+	samurai.set_physics_process(false)
 	await get_tree().create_timer(1.0).timeout
-
+	samurai.set_physics_process(true)
 	if gambler and gambler.has_method("KILL") and kill:
 		gambler.KILL(samurai)
 
@@ -664,7 +676,7 @@ func setup_game():
 	deal_cards_to_hand(2, dealer_hand)
 
 	hide_dealer_hole_card()
-	#print_scores(false)
+	print_scores(false)
 	
 func create_standard_deck():
 	var suits = ["club", "diamond", "heart", "spade"]
@@ -764,7 +776,7 @@ func end_game(message: String, won: bool):
 	$Gamble/price.visible = true
 
 	reveal_dealer_cards()
-	#print_scores(true)
+	print_scores(true)
 	#print(message)
 
 	await get_tree().create_timer(0.3, true, false, true).timeout

@@ -417,6 +417,7 @@ height = 174.0
 [node name="Golem" type="CharacterBody2D" unique_id=1566718816]
 texture_filter = 1
 script = ExtResource("1_6fya6")
+attack_range = 89
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=842099655]
 position = Vector2(-4.7683716e-07, 0)

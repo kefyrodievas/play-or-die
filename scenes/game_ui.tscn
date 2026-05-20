@@ -1227,6 +1227,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Shop" type="Control" parent="." unique_id=1038527130]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

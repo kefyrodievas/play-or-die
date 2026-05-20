@@ -220,9 +220,13 @@ position = Vector2(398, -136)
 [node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("4_86t0d")]
 position = Vector2(614, 126)
 
-[node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("5_jkj16")]
+[node name="Samurai" parent="." unique_id=1828783833 node_paths=PackedStringArray("left_marker", "right_marker", "top_marker", "bottom_marker") instance=ExtResource("5_jkj16")]
 position = Vector2(18, 136)
 scale = Vector2(1, 1)
+left_marker = NodePath("../Left")
+right_marker = NodePath("../Right")
+top_marker = NodePath("../Up")
+bottom_marker = NodePath("../Down")
 
 [node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("6_dhito")]
 position = Vector2(18, -126)
@@ -261,3 +265,19 @@ position = Vector2(408.5, 152)
 
 [node name="Gem" parent="." unique_id=642667019 instance=ExtResource("14_ixw5e")]
 position = Vector2(752, -130)
+
+[node name="Left" type="Marker2D" parent="." unique_id=1219004133]
+position = Vector2(-32, -51.5)
+gizmo_extents = 3.6
+
+[node name="Down" type="Marker2D" parent="." unique_id=2089644061]
+position = Vector2(186.5, 176)
+gizmo_extents = 3.6
+
+[node name="Up" type="Marker2D" parent="." unique_id=820409013]
+position = Vector2(179.75, -176)
+gizmo_extents = 3.6
+
+[node name="Right" type="Marker2D" parent="." unique_id=2087104850]
+position = Vector2(784, -6)
+gizmo_extents = 3.6

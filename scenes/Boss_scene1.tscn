@@ -101,13 +101,16 @@ tile_set = SubResource("TileSet_srufa")
 position = Vector2(44, 358)
 
 [node name="Boss" parent="." unique_id=457228902 instance=ExtResource("8_db7sa")]
-texture_filter = 1
 position = Vector2(1243, 478)
 scale = Vector2(4, 4)
 
-[node name="Samurai" parent="." unique_id=1828783833 instance=ExtResource("9_o3bv5")]
+[node name="Samurai" parent="." unique_id=1828783833 node_paths=PackedStringArray("left_marker", "right_marker", "top_marker", "bottom_marker") instance=ExtResource("9_o3bv5")]
 position = Vector2(-11.999996, 641.00006)
 scale = Vector2(3.5, 3.5)
+left_marker = NodePath("../Left")
+right_marker = NodePath("../Right")
+top_marker = NodePath("../Up")
+bottom_marker = NodePath("../Down")
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("10_3n5un")]
 position = Vector2(2777, 635)
@@ -119,3 +122,19 @@ position = Vector2(266, 158)
 
 [node name="Jump_boost" parent="." unique_id=1781381766 instance=ExtResource("4_tox3y")]
 position = Vector2(441, 666)
+
+[node name="Left" type="Marker2D" parent="." unique_id=1075406603]
+position = Vector2(-124, 352)
+gizmo_extents = 3.6
+
+[node name="Down" type="Marker2D" parent="." unique_id=19124472]
+position = Vector2(1306, 768)
+gizmo_extents = 3.6
+
+[node name="Up" type="Marker2D" parent="." unique_id=433282361]
+position = Vector2(1220, 0)
+gizmo_extents = 3.6
+
+[node name="Right" type="Marker2D" parent="." unique_id=1953402643]
+position = Vector2(2884, 378)
+gizmo_extents = 3.6

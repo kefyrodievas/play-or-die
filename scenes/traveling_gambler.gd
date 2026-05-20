@@ -44,6 +44,7 @@ func start_interaction():
 	is_interacting = false
 	
 func KILL(body):
+	body.set_physics_process(false)
 	$AnimatedSprite2D.play("KILL")
 	await $AnimatedSprite2D.animation_finished
 	kill = true
