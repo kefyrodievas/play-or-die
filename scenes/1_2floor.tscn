@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="7_ltq3n"]
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="8_2fo4a"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="10_v4pdv"]
+[ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="12_8uovf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6u0c"]
 texture = ExtResource("1_v58oy")
@@ -1840,7 +1841,7 @@ tile_set = SubResource("TileSet_umm5u")
 
 [node name="TileMapLayerBackgound2" type="TileMapLayer" parent="." unique_id=1511947548]
 position = Vector2(-8.75, 4.5)
-tile_map_data = PackedByteArray("AAD5/wYAAAAKAAUAAAD5/wcAAAAJAAYAAAD5/wgAAAAJAAcAAAD8/wcAAAANAAcAAAD8/wgAAAANAAgAAAD7/wgAAAAMAAgAAAD+/wYAAAAKAAUAAAD+/wcAAAAJAAYAAAD+/wgAAAAJAAcAAAD7/wcAAAAMAAcAAAD+/wUAAAABAAoAAAD9/wUAAAACAAkAAAD8/wUAAAABAAkAAAD7/wUAAAADAAkAAAD6/wUAAAAEAAkAAAD5/wUAAAABAAoAABAJAAgAAwALAAQAAAD3/wMAAwAKAAQAAFD3/wIAAwAKAAQAADD4/wAAAQAMAAkAAAD3/wAAAQALAAwAAAD3/9H/AwALAAQAAFD6/9X/AwALAAQAADADANn/AQAKAA4AAAAEANn/AQANAA4AAAAIANH/AwAKAAQAACAJANH/AwAKAAQAACAJANT/AwALAAQAAED3/+H/AwAKAAQAACD4/+H/AwAKAAQAACAFAN3/AwALAAQAACD3/+z/AwALAAQAAFD3/+3/AwALAAQAAFD3/+7/AwALAAQAAFAAAPb/AwAKAAQAACABAPb/AwAKAAQAACAIAOz/AwAKAAQAAAAHAO7/AQACAAwAAAAHAPH/AQAFAA0AAAA=")
+tile_map_data = PackedByteArray("AAD5/wYAAAAKAAUAAAD5/wcAAAAJAAYAAAD5/wgAAAAJAAcAAAD8/wcAAAANAAcAAAD8/wgAAAANAAgAAAD7/wgAAAAMAAgAAAD+/wYAAAAKAAUAAAD+/wcAAAAJAAYAAAD+/wgAAAAJAAcAAAD7/wcAAAAMAAcAAAD+/wUAAAABAAoAAAD9/wUAAAACAAkAAAD8/wUAAAABAAkAAAD7/wUAAAADAAkAAAD6/wUAAAAEAAkAAAD5/wUAAAABAAoAABAJAAgAAwALAAQAAAD3/wMAAwAKAAQAAFD3/wIAAwAKAAQAADD3/wAAAQALAAwAAAD3/9H/AwALAAQAAFD6/9X/AwALAAQAADADANn/AQAKAA4AAAAEANn/AQANAA4AAAAIANH/AwAKAAQAACAJANH/AwAKAAQAACAJANT/AwALAAQAAED3/+H/AwAKAAQAACD4/+H/AwAKAAQAACAFAN3/AwALAAQAACD3/+z/AwALAAQAAFD3/+3/AwALAAQAAFD3/+7/AwALAAQAAFAAAPb/AwAKAAQAACABAPb/AwAKAAQAACAIAOz/AwAKAAQAAAAHAO7/AQACAAwAAAAHAPH/AQAFAA0AAAD4/wAAAQAMAAkAAAA=")
 tile_set = SubResource("TileSet_4cg0v")
 
 [node name="Key" parent="." unique_id=27981406 instance=ExtResource("4_v4pdv")]
@@ -1896,3 +1897,6 @@ position = Vector2(-137.5, -56)
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("10_v4pdv")]
 position = Vector2(128.25, -384)
+
+[node name="Chest" parent="." unique_id=275545822 instance=ExtResource("12_8uovf")]
+position = Vector2(142, -596)

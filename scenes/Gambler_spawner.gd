@@ -5,7 +5,7 @@ extends Node2D
 func _ready():
 	randomize()
 
-	var chance = 0.3 # 30%
+	var chance = 0.3 + GameData.luck_level * 0.05 # 30% + 5% per luck level
 
 	if randf() <= chance:
 		gambler.visible = true

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="7_kt8d2"]
 [ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="8_ta78h"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="9_kt8d2"]
+[ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="10_qffij"]
+[ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="11_lisiu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_25dbv"]
 texture = ExtResource("1_dt8he")
@@ -202,3 +204,9 @@ position = Vector2(172, -74)
 [node name="Star" parent="." unique_id=2096763841 instance=ExtResource("9_kt8d2")]
 position = Vector2(56, 138)
 scale = Vector2(0.3, 0.3)
+
+[node name="Gem" parent="." unique_id=642667019 instance=ExtResource("10_qffij")]
+position = Vector2(168, 14)
+
+[node name="Chest" parent="." unique_id=275545822 instance=ExtResource("11_lisiu")]
+position = Vector2(408, -72)

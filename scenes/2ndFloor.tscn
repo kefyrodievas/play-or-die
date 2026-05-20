@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_53thu"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_vl5is"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_0yuhk"]
-[ext_resource type="Script" uid="uid://c32vi6auclucx" path="res://scenes/Boots.gd" id="6_0yuhk"]
 [ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="7_vv7jq"]
+[ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="9_8yxst"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="9_gwb0a"]
+[ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="10_m703w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_0yuhk")
@@ -281,7 +282,6 @@ scale = Vector2(0.3, 0.3)
 [node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("5_0yuhk")]
 position = Vector2(203.75, 54)
 scale = Vector2(0.3, 0.3)
-script = ExtResource("6_0yuhk")
 
 [node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("7_vv7jq")]
 position = Vector2(819, -43)
@@ -294,8 +294,13 @@ scale = Vector2(0.3, 0.3)
 [node name="Boots2" parent="." unique_id=1835377063 instance=ExtResource("5_0yuhk")]
 position = Vector2(207, -40)
 scale = Vector2(0.3, 0.3)
-script = ExtResource("6_0yuhk")
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("9_gwb0a")]
 visible = false
 position = Vector2(937, 16.25)
+
+[node name="Chest" parent="." unique_id=275545822 instance=ExtResource("9_8yxst")]
+position = Vector2(73.25, -40)
+
+[node name="Gem" parent="." unique_id=642667019 instance=ExtResource("10_m703w")]
+position = Vector2(663.75, -108)
