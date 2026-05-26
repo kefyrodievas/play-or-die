@@ -225,12 +225,20 @@ func _save_highscore():
 		GameData.save_highscore(score)
 
 func save_player_state():
-	GameData.current_score = score
-	GameData.player_health = health
-	GameData.dash_time_left = $DashTimer.time_left
-	GameData.double_jump_time_left = $DoubleJumpTimer.time_left
-	GameData.damage_boost_time_left = $DamageBoostTimer.time_left
-	GameData.score_boost_time_left = $ScoreBoostTimer.time_left
+	if is_Alive:
+		GameData.current_score = score
+		GameData.player_health = health
+		GameData.dash_time_left = $DashTimer.time_left
+		GameData.double_jump_time_left = $DoubleJumpTimer.time_left
+		GameData.damage_boost_time_left = $DamageBoostTimer.time_left
+		GameData.score_boost_time_left = $ScoreBoostTimer.time_left
+	else:
+		GameData.current_score = score
+		GameData.player_health = health
+		GameData.dash_time_left = 0
+		GameData.double_jump_time_left = 0
+		GameData.damage_boost_time_left = 0
+		GameData.score_boost_time_left = 0
 
 # DOUBLE JUMP
 func activate_double_jump():

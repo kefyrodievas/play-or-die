@@ -13,6 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if timer == null or not is_instance_valid(timer):
 		#queue_free()
+		$p_bar.value = 0
 		return
 	$p_bar.value = timer.time_left
 	#print(timer.time_left)
@@ -20,8 +21,9 @@ func _process(delta: float) -> void:
 		#self.queue_free()
 		return
 	
+#func kill_timer(timer_ : Timer):
+	
 func set_timer(timer_ : Timer):
-	print("AAAAAAAAAAAAAAAAAAAAa\n")
 	timer = timer_
 	$p_bar.max_value = timer.wait_time 
 	

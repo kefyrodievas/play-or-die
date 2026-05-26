@@ -340,9 +340,14 @@ func _on_start_pressed():
 	get_viewport().set_input_as_handled()
 	start_menu.hide()
 	hud.show()
-
+	
 	GameData.player_health = 0
+	GameData.dash_time_left = 0
+	GameData.double_jump_time_left = 0
+	GameData.damage_boost_time_left = 0
+	GameData.score_boost_time_left = 0
 	GameData.play_floor_music("main")
+
 	
 	get_tree().paused = false
 	get_tree().call_deferred("change_scene_to_file", "res://scenes/main.tscn")

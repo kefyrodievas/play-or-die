@@ -22,7 +22,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ow3vr")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 10.0
 }]
 
@@ -35,8 +35,8 @@ script = ExtResource("1_lew4j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1232439978]
 sprite_frames = SubResource("SpriteFrames_r3vwk")
-autoplay = "default"
-frame_progress = 0.75897336
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=887389156]
 shape = SubResource("CircleShape2D_aa5we")
