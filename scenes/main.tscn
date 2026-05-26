@@ -3,12 +3,9 @@
 [ext_resource type="Script" uid="uid://cp4qpftn2yorl" path="res://scenes/main.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cntkojaf7bkoh" path="res://assets/img/background/background_layer_1.png" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://duhc0s151bqb2" path="res://scenes/Damage_boost.tscn" id="8_85g3d"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
-[ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="11_trceg"]
-[ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="11_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="12_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://2dbkrmsr2ukp" path="res://assets/img/background/Dungeon Tile Set.png" id="12_eb6dy"]
 
@@ -493,19 +490,10 @@ scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AAD2/wkAAAAHAAoAAADx/wkAAAAHAAsAAADy/wkAAAAIAAsAAADz/wkAAAAJAAsAAADr/wkAAAAHAAsAAADs/wkAAAAIAAsAAADt/wkAAAAJAAsAAADv/wkAAAALAAwAAAAfAAkAAAAMAAkAAAD4/wkAAAAKAAsAAAAbAAYAAAAEAAwAAAAXAAUAAAABAAwAAAAEAAkAAAAHAAoAAAAPAAkAAAAHAAoAAADp/wkAAAANAAkAAAAJAAkAAAAKAAwAAAAQAAkAAAAKAAsAAAA=")
 tile_set = SubResource("TileSet_a8y0u")
 
-[node name="DamageBoost" parent="." unique_id=1792063056 instance=ExtResource("8_85g3d")]
-position = Vector2(-234, 584)
-
-[node name="Chest2" parent="." unique_id=510472019 instance=ExtResource("10_ya4ey")]
-position = Vector2(460, 605)
-scale = Vector2(4, 4)
-
 [node name="Chest3" parent="." unique_id=1321586859 instance=ExtResource("10_ya4ey")]
 position = Vector2(542, 609)
 scale = Vector2(4, 4)
-
-[node name="Star" parent="." unique_id=2096763841 instance=ExtResource("11_ya4ey")]
-position = Vector2(-316, 594)
+points = 10
 
 [node name="Gem" parent="." unique_id=642667019 instance=ExtResource("12_a8y0u")]
 position = Vector2(-1439, 550)
@@ -523,6 +511,3 @@ position = Vector2(0, -99)
 
 [node name="Right" type="Marker2D" parent="." unique_id=465677050]
 position = Vector2(3199, 253)
-
-[node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("11_trceg")]
-position = Vector2(908, 538)

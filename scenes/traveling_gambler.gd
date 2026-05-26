@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-@export var next_scene: String = "res://scenes/CrazyGamble.tscn"
 
 var player_in_range := false
 var is_interacting := false

@@ -172,7 +172,7 @@ func _on_tick():
 
 func drop_loot():
 	# Base 30% chance + 5% per Luck Level (up to 50% at level 4)
-	var drop_chance = 1
+	var drop_chance = 0.3 + (GameData.luck_level * 0.05)
 	if randf() <= drop_chance:
 		spawn_random_powerup()
 		

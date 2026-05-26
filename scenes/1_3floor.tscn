@@ -1334,7 +1334,8 @@ position = Vector2(421.50003, 98.75)
 scale = Vector2(0.7, 0.7)
 
 [node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("12_ds51n")]
-position = Vector2(738.25, 9.25)
+position = Vector2(753.99994, -1.25)
+scale = Vector2(1.29, 1.29)
 
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("13_dnahn")]
 position = Vector2(-314.5, -51)

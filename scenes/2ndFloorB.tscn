@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_h8dg7"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="8_murvd"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_x6jlp"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="9_m1xnn"]
+[ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="10_e1681"]
+[ext_resource type="PackedScene" uid="uid://cmh1wf6w5jc2l" path="res://scenes/necromanx.tscn" id="11_yrae8"]
+[ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_8anlq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_hmkys")
@@ -288,11 +292,6 @@ texture_filter = 1
 position = Vector2(0.25, -187.5)
 scale = Vector2(0.3, 0.3)
 
-[node name="Jump_boost2" parent="." unique_id=821232366 instance=ExtResource("4_x6jlp")]
-z_index = 1
-position = Vector2(681, -232.75)
-scale = Vector2(0.3, 0.3)
-
 [node name="Boots2" parent="." unique_id=141505014 instance=ExtResource("5_h8dg7")]
 z_index = 1
 texture_filter = 1
@@ -304,16 +303,12 @@ z_index = 1
 position = Vector2(684, 135)
 scale = Vector2(0.3, 0.3)
 
-[node name="Boots3" parent="." unique_id=897047608 instance=ExtResource("5_h8dg7")]
-position = Vector2(947.75, 171)
-scale = Vector2(0.3, 0.3)
-
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("8_x6jlp")]
 visible = false
 position = Vector2(291.75, 155.5)
 
 [node name="Chest" parent="." unique_id=275545822 instance=ExtResource("8_murvd")]
-position = Vector2(289.25, 166.25)
+position = Vector2(680, -231)
 
 [node name="Left" type="Marker2D" parent="." unique_id=559594473]
 position = Vector2(-32, -51.5)
@@ -330,3 +325,18 @@ gizmo_extents = 3.6
 [node name="Right" type="Marker2D" parent="." unique_id=1772419212]
 position = Vector2(975.75, -2)
 gizmo_extents = 3.6
+
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("9_m1xnn")]
+position = Vector2(81, -44.5)
+scale = Vector2(0.939, 0.939)
+
+[node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("10_e1681")]
+position = Vector2(163.5, 36)
+scale = Vector2(0.215, 0.215)
+
+[node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("11_yrae8")]
+position = Vector2(517.5, -67.75)
+scale = Vector2(1.224, 1.224)
+
+[node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("12_8anlq")]
+position = Vector2(697.75, 157.25)

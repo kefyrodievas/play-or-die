@@ -34,8 +34,8 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 6
-var base_damage = 100
-var damage_multiplier = 10
+var base_damage = 6
+var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
 #HEALTH SYSTEM

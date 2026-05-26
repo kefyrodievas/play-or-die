@@ -295,7 +295,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k6lg6")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 7.0
 }, {
@@ -327,7 +327,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vqjd7")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack??",
 "speed": 7.0
 }, {
@@ -356,7 +356,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pg73s")
 }],
-"loop": true,
+"loop": false,
 "name": &"defence",
 "speed": 9.0
 }, {
@@ -403,7 +403,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_poi02")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 9.0
 }, {
@@ -432,7 +432,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0teou")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 7.0
 }, {
@@ -484,7 +484,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_63m3b")
 }],
-"loop": true,
+"loop": false,
 "name": &"shine",
 "speed": 10.0
 }, {
@@ -510,7 +510,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n75kt")
 }],
-"loop": true,
+"loop": false,
 "name": &"shiny face?",
 "speed": 7.0
 }, {
@@ -552,10 +552,8 @@ script = ExtResource("1_m2fng")
 texture_filter = 1
 scale = Vector2(0.534, 0.59)
 sprite_frames = SubResource("SpriteFrames_tkuvu")
-animation = &"attack"
+animation = &"shine"
 autoplay = "idle"
-frame = 6
-frame_progress = 0.5217667
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362979970]
 position = Vector2(0, 4)

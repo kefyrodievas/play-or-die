@@ -6,7 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="3_ga2eh"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="4_kfdll"]
 [ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="5_kddd8"]
+[ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="8_2m0uc"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="8_kfdll"]
+[ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="9_unxv6"]
+[ext_resource type="PackedScene" uid="uid://dx7ijrxknj3bd" path="res://scenes/enemy.tscn" id="10_o7ui8"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="11_cvf15"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_meu6x")
@@ -317,3 +321,19 @@ gizmo_extents = 3.6
 [node name="Right" type="Marker2D" parent="." unique_id=430347443]
 position = Vector2(975.75, -2)
 gizmo_extents = 3.6
+
+[node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("8_2m0uc")]
+position = Vector2(272.75, -194.25)
+
+[node name="Satyr2" parent="." unique_id=1701392047 instance=ExtResource("8_2m0uc")]
+position = Vector2(681, -56.75)
+
+[node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("9_unxv6")]
+position = Vector2(331, -121.25)
+
+[node name="Enemy" parent="." unique_id=2045138673 instance=ExtResource("10_o7ui8")]
+position = Vector2(328, -51)
+scale = Vector2(0.206, 0.206)
+
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("11_cvf15")]
+position = Vector2(604.25, 68.75)

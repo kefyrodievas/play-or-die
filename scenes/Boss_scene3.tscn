@@ -120,8 +120,8 @@ position = Vector2(266, 158)
 position = Vector2(441, 666)
 
 [node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("10_0ce8j")]
-position = Vector2(1175, 591)
-scale = Vector2(4, 4)
+position = Vector2(1251.9999, 542)
+scale = Vector2(5.165, 5.165)
 
 [node name="Left" type="Marker2D" parent="." unique_id=1106660300]
 position = Vector2(-124, 352)
