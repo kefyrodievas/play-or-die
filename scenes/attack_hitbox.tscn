@@ -20,11 +20,6 @@ func _rotate(degrees: float):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8xky"]
 size = Vector2(235.41179, 38.57143)
 
-[sub_resource type="Gradient" id="Gradient_v8xky"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_boghs"]
-gradient = SubResource("Gradient_v8xky")
-
 [node name="AttackHitbox" type="Node2D" unique_id=1060419399]
 script = SubResource("GDScript_v8xky")
 
@@ -34,8 +29,3 @@ script = SubResource("GDScript_v8xky")
 position = Vector2(30.990002, 0)
 scale = Vector2(0.17, 0.28)
 shape = SubResource("RectangleShape2D_v8xky")
-
-[node name="Sprite2D" type="Sprite2D" parent="AttackArea2D/CollisionShape2D" unique_id=1863797012]
-position = Vector2(0.05882263, 0)
-scale = Vector2(0.9191176, 39.28571)
-texture = SubResource("GradientTexture1D_boghs")

@@ -125,19 +125,19 @@ func _physics_process(delta: float) -> void:
 		activate_dash()
 		
 	# Attack logic
-	if Input.is_action_just_pressed("Attack_up"):
-		attack(Vector2.UP)
-	elif Input.is_action_just_pressed("Attack_down"):
-		attack(Vector2.DOWN)
-	elif Input.is_action_just_pressed("Attack_left"):
+	if Input.is_action_just_pressed("Attack_left"):
 		attack(Vector2.LEFT)
+		$AnimatedSprite2D.flip_h = true
 	elif Input.is_action_just_pressed("Attack_right"):
 		attack(Vector2.RIGHT)
+		$AnimatedSprite2D.flip_h = false
 	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
-	
-	if not is_dashing:
+	#if inAttack:
+		#velocity.x = 0
+		#velocity.y = 0
+	if not is_dashing and not inAttack :
 		if direction:
 			velocity.x = direction * SPEED
 		else:
@@ -146,11 +146,11 @@ func _physics_process(delta: float) -> void:
 				velocity.x = 0
 	
 	move_and_slide()
-	
-	if direction == 1.0:
-		$AnimatedSprite2D.flip_h = false
-	elif direction == -1.0:
-		$AnimatedSprite2D.flip_h = true
+	if not inAttack:
+		if direction == 1.0:
+			$AnimatedSprite2D.flip_h = false
+		elif direction == -1.0:
+			$AnimatedSprite2D.flip_h = true
 
 func apply_camera_limits():
 	$Camera2D.limit_left = int(left_marker.global_position.x) if left_marker != null else -9999990
