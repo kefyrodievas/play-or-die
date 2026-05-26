@@ -22,6 +22,12 @@ extends CanvasLayer
 @onready var restart_button: Button = $Gamble/Restart
 @onready var discard_pile = $Gamble/CardManager/DiscardPile
 
+@onready var jump_timer = $HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/jump_timer
+@onready var dash_timer = $HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/dash_timer
+@onready var damage_timer = $HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/damage_timer
+@onready var score_timer = $HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/score_timer
+
+
 var interacting := true
 var blackjack_game_over := false
 var player_standing := false
@@ -253,8 +259,18 @@ func _connect_samurai_signals():
 			samurai.score_changed.connect(_on_samurai_score_changed)
 		if not samurai.highscore_changed.is_connected(_on_samurai_highscore_changed):
 			samurai.highscore_changed.connect(_on_samurai_highscore_changed)
-		if not samurai.got_powerup.is_connected(_on_samurai_get_powerup):
-			samurai.got_powerup.connect(_on_samurai_get_powerup)
+			
+		if not samurai.got_jump_powerup.is_connected(_on_samurai_get_jump_powerup):
+			samurai.got_jump_powerup.connect(_on_samurai_get_jump_powerup)
+			
+		if not samurai.got_dash_powerup.is_connected(_on_samurai_get_dash_powerup):
+			samurai.got_dash_powerup.connect(_on_samurai_get_dash_powerup)
+			
+		if not samurai.got_damage_powerup.is_connected(_on_samurai_get_damage_powerup):
+			samurai.got_damage_powerup.connect(_on_samurai_get_damage_powerup)
+			
+		if not samurai.got_score_powerup.is_connected(_on_samurai_get_score_powerup):
+			samurai.got_score_powerup.connect(_on_samurai_get_score_powerup)
 		
 		# Sync the UI immediately
 		var current_max_hp = 100 + (GameData.health_level * 20)
@@ -266,10 +282,19 @@ func _connect_samurai_signals():
 		print("Connection Failed: Samurai not found in the current scene tree.")
 # --- SIGNAL CALLBACKS (From Samurai) ---
 
-func _on_samurai_get_powerup(timer):
-	var cd = cd_timer.instantiate();
+func _on_samurai_get_jump_powerup(timer):
+	var cd = jump_timer;
 	cd.call("set_timer", timer)
-	$HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer.add_child(cd)
+	#$HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer.add_child(cd)
+func _on_samurai_get_score_powerup(timer):
+	var cd = score_timer;
+	cd.call("set_timer", timer)
+func _on_samurai_get_damage_powerup(timer):
+	var cd = damage_timer;
+	cd.call("set_timer", timer)
+func _on_samurai_get_dash_powerup(timer):
+	var cd = dash_timer;
+	cd.call("set_timer", timer)
 
 func _on_samurai_health_changed(new_hp, max_hp = 100):
 	

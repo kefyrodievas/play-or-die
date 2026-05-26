@@ -20,6 +20,5 @@ layout_mode = 0
 offset_right = 200.0
 offset_bottom = 200.0
 scale = Vector2(0.21, 0.21)
-value = 100.0
 fill_mode = 5
 texture_progress = ExtResource("2_hantg")

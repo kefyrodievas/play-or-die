@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c66wsgxtyjb7t" path="res://globals/game_ui.gd" id="1_u2dgd"]
 [ext_resource type="Texture2D" uid="uid://dqqmp7gikoigl" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/Sprite sheets/Sprite sheet for Basic Pack.png" id="2_e0pfi"]
+[ext_resource type="PackedScene" uid="uid://dk8dua7dnqf45" path="res://scenes/cd_timer.tscn" id="3_27ch3"]
 [ext_resource type="FontFile" uid="uid://ck88p0edgunem" path="res://assets/fonts/monogram-extended.ttf" id="3_o3bws"]
 [ext_resource type="FontFile" uid="uid://di74pjmfcnoqu" path="res://assets/fonts/monogram.ttf" id="4_3huio"]
+[ext_resource type="Texture2D" uid="uid://dkdmcoesjq5kj" path="res://assets/img/items/Damage_boost.png" id="5_vvx0m"]
 [ext_resource type="Texture2D" uid="uid://dk14e1fqjoemy" path="res://assets/img/UI/Sprout Lands - UI Pack - Basic pack/Sprout Lands - UI Pack - Basic pack/emojis-free/emoji style ui/Inventory_Blocks_Spritesheet.png" id="6_g2v8e"]
+[ext_resource type="Texture2D" uid="uid://dx5f8qmoiv1ps" path="res://assets/img/items/boost64_1025.png" id="6_ptl2c"]
+[ext_resource type="Texture2D" uid="uid://bq3u4qbt51q24" path="res://assets/img/items/star64_12.png" id="7_lsbho"]
 [ext_resource type="Texture2D" uid="uid://b7gwo3uv2kalx" path="res://assets/img/menu/new/quit_x.png" id="7_sfun4"]
 [ext_resource type="Texture2D" uid="uid://c5usna5o24kyh" path="res://assets/img/menu/new/quit_x_selected.png" id="8_27ch3"]
 [ext_resource type="Texture2D" uid="uid://b6164nvak0jn2" path="res://assets/img/Shop bars/Buy buttonnormal.png" id="9_upmhx"]
@@ -1093,7 +1097,6 @@ process_mode = 3
 script = ExtResource("1_u2dgd")
 
 [node name="HUD" type="Control" parent="." unique_id=1832089049]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1114,7 +1117,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HUD/MarginContainer/VBoxContainer" unique_id=1610179637]
-custom_minimum_size = Vector2(50, 500)
+custom_minimum_size = Vector2(50, 187.855)
 layout_mode = 2
 texture = ExtResource("2_e0pfi")
 region_rect = Rect2(741, 38, 22, 22)
@@ -1135,6 +1138,42 @@ theme_override_constants/margin_bottom = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer" unique_id=1836333198]
 layout_mode = 2
 theme_override_constants/separation = 45
+
+[node name="dash_timer" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=376867768 instance=ExtResource("3_27ch3")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/dash_timer" unique_id=2064330827]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("16_sfun4")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="damage_timer" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1082063281 instance=ExtResource("3_27ch3")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/damage_timer" unique_id=1024421009]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("5_vvx0m")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="jump_timer" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=444680113 instance=ExtResource("3_27ch3")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/jump_timer" unique_id=1717974042]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("6_ptl2c")
+centered = false
+
+[node name="score_timer" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer" unique_id=1370624448 instance=ExtResource("3_27ch3")]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer/score_timer" unique_id=1684083043]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("7_lsbho")
+centered = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer" unique_id=928954257]
 layout_mode = 2

@@ -4,7 +4,10 @@ extends CharacterBody2D
 signal health_changed(new_hp, max_hp) # Pridėtas max_hp
 signal score_changed(new_score)
 signal highscore_changed(new_hs)
-signal got_powerup(timer)
+signal got_dash_powerup(timer)
+signal got_damage_powerup(timer)
+signal got_jump_powerup(timer)
+signal got_score_powerup(timer)
 
 @export var left_marker: Marker2D
 @export var right_marker: Marker2D
@@ -60,22 +63,22 @@ func _ready():
 	if GameData.double_jump_time_left > 0:
 		max_jumps = 2
 		$DoubleJumpTimer.start(GameData.double_jump_time_left)
-		got_powerup.emit($DoubleJumpTimer)
+		got_jump_powerup.emit($DoubleJumpTimer)
 	
 	if GameData.damage_boost_time_left > 0:
 		damage_multiplier = 2
 		$DamageBoostTimer.start(GameData.damage_boost_time_left)
-		got_powerup.emit($DamageBoostTimer)
+		got_damage_powerup.emit($DamageBoostTimer)
 	
 	if GameData.score_boost_time_left > 0:
 		score_multiplier = 2
 		$ScoreBoostTimer.start(GameData.score_boost_time_left)
-		got_powerup.emit($ScoreBoostTimer)
+		got_score_powerup.emit($ScoreBoostTimer)
 	
 	if GameData.dash_time_left > 0:
 		canDash = true
 		$DashTimer.start(GameData.dash_time_left)
-		got_powerup.emit($DashTimer)
+		got_dash_powerup.emit($DashTimer)
 	#$CanvasLayer/InGameHUD.call("_set_score_val", score)
 	#health_changed.connect(GameUi._on_score_changed)
 	
@@ -204,7 +207,7 @@ func activate_score_doubler():
 	score_multiplier = 2
 	#$AnimatedSprite2D.modulate = Color(1, 1, 0)
 	$ScoreBoostTimer.start(multiplier_time)
-	got_powerup.emit($ScoreBoostTimer)
+	got_score_powerup.emit($ScoreBoostTimer)
 
 func _on_score_boost_timer_timeout():
 	score_multiplier = 1
@@ -234,7 +237,7 @@ func activate_double_jump():
 	$DoubleJumpTimer.wait_time = double_jump_duration
 	#$AnimatedSprite2D.modulate = Color(0, 1, 0) # GREEN for score boost
 	$DoubleJumpTimer.start()
-	got_powerup.emit($DoubleJumpTimer)
+	got_jump_powerup.emit($DoubleJumpTimer)
 	
 
 func _on_double_jump_timer_timeout():
@@ -254,7 +257,7 @@ var dashCooldown = 1.0
 func unlock_dash():
 	canDash = true
 	$DashTimer.start(20.0)
-	got_powerup.emit($DashTimer)
+	got_dash_powerup.emit($DashTimer)
 
 func activate_dash():
 	canDash = false
@@ -277,7 +280,7 @@ func unlock_damage_boost():
 	update_damage()
 	$DamageBoostTimer.wait_time = damage_boost_duration
 	$DamageBoostTimer.start()
-	got_powerup.emit($DamageBoostTimer)
+	got_damage_powerup.emit($DamageBoostTimer)
 	
 
 
