@@ -163,6 +163,7 @@ func add_score(amount):
 	score += amount * score_multiplier
 	GameData.current_score = score
 	score_changed.emit(score) # Broadcast update
+	$ScoreSFX.play()
 	var highscore = GameData.load_highscore()
 	if score > highscore:
 		highscore_changed.emit(score)
