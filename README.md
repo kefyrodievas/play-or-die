@@ -152,3 +152,23 @@ Features:
 
 - **Expanded Bestiary**  
   Add ranged and flying enemy types to scale up the late-game difficulty.
+  ---
+
+## Creators
+
+### Development Team
+- Ignas K.
+- Gabrielius M.
+- Diana P.
+- Kipras R.
+- Deimantė V.
+
+### Special Thanks
+- We want to thank our profesors Tomas B. and Andrius P. for giving us feedback on our project.
+
+---
+
+## License
+
+Butu gerai cia su licence dar parasyt kazka
+
