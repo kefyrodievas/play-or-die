@@ -19,8 +19,9 @@ var default_top := -1000000
 var default_right := 4010
 var default_bottom := 52
 
-var SPEED = 400.0
-var JUMP_VELOCITY = -700.0
+@export var attack_move_multiplier := 0.45
+@export var SPEED = 400.0
+@export var JUMP_VELOCITY = -700.0
 
 # SCORE SYSTEM
 var score = 0
@@ -34,8 +35,8 @@ var double_jump_duration = 20.0
 
 #DAMAGE SYSTEM
 var damage = 6
-var base_damage = 6
-var damage_multiplier = 1
+@export var base_damage = 6
+@export var damage_multiplier = 1
 var damage_boost_duration = 10.0
 
 #HEALTH SYSTEM
@@ -126,20 +127,25 @@ func _physics_process(delta: float) -> void:
 		
 	# Attack logic
 	if Input.is_action_just_pressed("Attack_left"):
-		attack(Vector2.LEFT)
 		$AnimatedSprite2D.flip_h = true
+		attack(Vector2.LEFT)
 	elif Input.is_action_just_pressed("Attack_right"):
-		attack(Vector2.RIGHT)
 		$AnimatedSprite2D.flip_h = false
+		attack(Vector2.RIGHT)
+		
+		
 	
 	# MOVEMENT
 	var direction := Input.get_axis("Move_left", "Move_right")
-	#if inAttack:
-		#velocity.x = 0
-		#velocity.y = 0
-	if not is_dashing and not inAttack :
+	
+	if not is_dashing:
+		var current_speed = SPEED
+		
+		if inAttack:
+			current_speed *= attack_move_multiplier
+
 		if direction:
-			velocity.x = direction * SPEED
+			velocity.x = direction * current_speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta / 0.3)
 			if abs(velocity.x) < 1:
@@ -271,7 +277,7 @@ func unlock_dash():
 func activate_dash():
 	canDash = false
 	is_dashing = true
-	var dash_direction = 1.0 if not $AnimatedSprite2D.flip_h else -1.0
+	var dash_direction = 1.0 if velocity.x > 0 else -1.0
 	velocity.x = dash_direction * dashSpeed
 	
 	var dash_timer = get_tree().create_timer(dashDuration)

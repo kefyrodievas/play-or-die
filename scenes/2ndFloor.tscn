@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="10_m703w"]
 [ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="12_0pqon"]
 [ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="13_05826"]
-[ext_resource type="PackedScene" uid="uid://c8vnx7lft2s6g" path="res://scenes/golem.tscn" id="14_tmer1"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="14_fdgqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vv7jq"]
 texture = ExtResource("1_0yuhk")
@@ -448,5 +448,6 @@ scale = Vector2(1.093, 1.093)
 position = Vector2(612, -184.25)
 scale = Vector2(1.3, 1.3)
 
-[node name="Golem" parent="." unique_id=1566718816 instance=ExtResource("14_tmer1")]
-position = Vector2(572.5, -81)
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("14_fdgqe")]
+position = Vector2(611.5, -60)
+scale = Vector2(1.197, 1.197)

@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="7_40b28"]
 [ext_resource type="PackedScene" uid="uid://q5fbfmrildw4" path="res://scenes/jump_boost.tscn" id="7_dnahn"]
 [ext_resource type="PackedScene" uid="uid://dn2y1gi02oqyv" path="res://scenes/star.tscn" id="9_ds51n"]
-[ext_resource type="PackedScene" uid="uid://crklelqujgyx8" path="res://scenes/boss.tscn" id="11_40b28"]
-[ext_resource type="PackedScene" uid="uid://cmh1wf6w5jc2l" path="res://scenes/necromanx.tscn" id="12_ds51n"]
 [ext_resource type="PackedScene" uid="uid://bg1kbpe0bvbvh" path="res://scenes/traveling_gambler.tscn" id="13_dnahn"]
+[ext_resource type="PackedScene" uid="uid://c477mmx1jguj2" path="res://scenes/Satyr.tscn" id="13_ldplg"]
+[ext_resource type="PackedScene" uid="uid://bf774ual4iqsi" path="res://scenes/stone_golem.tscn" id="14_0darh"]
 [ext_resource type="PackedScene" uid="uid://c1el2cchn7dsm" path="res://scenes/spike.tscn" id="14_c67my"]
+[ext_resource type="PackedScene" uid="uid://ioiiodkau367" path="res://scenes/Necromancer.tscn" id="15_eoxdv"]
+[ext_resource type="PackedScene" uid="uid://pxnub2ar2ndh" path="res://scenes/MaceSkeleton.tscn" id="16_o148n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qatpg"]
 texture = ExtResource("1_b1oud")
@@ -1329,14 +1331,6 @@ scale = Vector2(0.3, 0.3)
 position = Vector2(-246.75, 149)
 target_scene = "Boss1"
 
-[node name="Boss" parent="." unique_id=457228902 instance=ExtResource("11_40b28")]
-position = Vector2(421.50003, 98.75)
-scale = Vector2(0.7, 0.7)
-
-[node name="Necromanx" parent="." unique_id=273729143 instance=ExtResource("12_ds51n")]
-position = Vector2(753.99994, -1.25)
-scale = Vector2(1.29, 1.29)
-
 [node name="TravelingGambler" parent="." unique_id=318272650 instance=ExtResource("13_dnahn")]
 position = Vector2(-314.5, -51)
 
@@ -1367,3 +1361,18 @@ gizmo_extents = 3.6
 [node name="Right" type="Marker2D" parent="." unique_id=91978281]
 position = Vector2(1222.5, 40.75)
 gizmo_extents = 3.6
+
+[node name="Satyr" parent="." unique_id=244790960 instance=ExtResource("13_ldplg")]
+position = Vector2(830, 18)
+
+[node name="Satyr2" parent="." unique_id=330977441 instance=ExtResource("13_ldplg")]
+position = Vector2(-310.75, 17.25)
+
+[node name="StoneGolem" parent="." unique_id=1718958888 instance=ExtResource("14_0darh")]
+position = Vector2(129.25, 99.5)
+
+[node name="Necromancer" parent="." unique_id=1219581124 instance=ExtResource("15_eoxdv")]
+position = Vector2(629, 103)
+
+[node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("16_o148n")]
+position = Vector2(969.5, 14.75)

@@ -207,6 +207,7 @@ left_marker = NodePath("../Left")
 right_marker = NodePath("../Right")
 top_marker = NodePath("../Up")
 bottom_marker = NodePath("../Down")
+attack_move_multiplier = 0.65
 
 [node name="Door" parent="." unique_id=1195312133 instance=ExtResource("3_mdy7f")]
 position = Vector2(192, -96)

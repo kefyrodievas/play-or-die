@@ -335,5 +335,9 @@ position = Vector2(331, -121.25)
 position = Vector2(328, -51)
 scale = Vector2(0.206, 0.206)
 
+[node name="Enemy2" parent="." unique_id=951199823 instance=ExtResource("10_o7ui8")]
+position = Vector2(663.25, 151.49998)
+scale = Vector2(0.206, 0.206)
+
 [node name="MaceSkeleton" parent="." unique_id=864059572 instance=ExtResource("11_cvf15")]
 position = Vector2(604.25, 68.75)
