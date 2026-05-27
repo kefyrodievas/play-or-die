@@ -39,7 +39,7 @@ Dying isn't the end! Roll the dice to test your luck on the game-over screen:
 ### **Traveling Gambler**
 When traveling through different floors there's a chance to meet the Traveling Gambler, but be cautious as he does not attack you but still can get you killed!
 
-Upon interacting you enter a Blackjack game. The Traveling Gambler does not let you go until you win at least one game. Those who don’t win, they end up dying.
+Upon interacting you enter a Blackjack game. The Traveling Gambler does not let you go until you win at least one game. Those who don’t win, they end up dying. However, he never shuffles the deck, so every card counts
 
 #### Notes
 - If you win you can play again for a score of 50.
@@ -101,12 +101,16 @@ Features:
 ---
 
 ### **Level Manager**
-Handles level progression and transitions.
+Responsible for handling level selection and level progression. 
+
+It stores a list of available level scenes, tracks the current level or floor, and loads the next level when needed. This keeps level-changing logic separate from the player, enemies, and UI systems. 
 
 ---
 
 ### **Traveling Gambler**
-Handles Blackjack interactions and gamble systems.
+The TravelingGambler is responsible for handling the player’s interaction with the gambling NPC and managing the related game flow.
+
+It detects when the player enters the interaction area, opens the gambling interface, and controls what happens after the interaction ends. This keeps NPC interaction logic separate from the player, UI, and level systems.
 
 ---
 
