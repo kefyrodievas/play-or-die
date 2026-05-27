@@ -170,5 +170,20 @@ Features:
 
 ## License
 
-Butu gerai cia su licence dar parasyt kazka
+This project is not licensed under an open-source license.
 
+You are allowed to:
+- View the source code
+- Use the project for personal learning
+- Modify the project for personal use
+
+You are not allowed to:
+- Publish this project or modified versions of it
+- Redistribute the project
+- Sell the project or its assets
+- Claim the project as your own
+- Use the project commercially without permission
+
+All rights are reserved by the original creators.
+
+For permission to use, publish, or distribute this project, please contact the authors.
