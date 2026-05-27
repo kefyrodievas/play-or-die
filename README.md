@@ -152,7 +152,7 @@ Features:
 
 - **Expanded Bestiary**  
   Add ranged and flying enemy types to scale up the late-game difficulty.
-  ---
+---
 
 ## Creators
 
