@@ -164,19 +164,19 @@ var jump_height_data = {
 }
 
 func _ready():
+	
+	call_deferred("_start_menu_music")
+	
 	# 1. Ensure the UI itself can process even when the game is paused
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	# Initial view
 	get_tree().paused = true
 	start_menu.show()
-
 	
 	shop.hide()
 	gambler_menu.hide()
 	pause_menu.hide()
 	gamble.hide()
-	
-	GameData.play_floor_music("menu")
 	
 	# reikes imti is player, kai numirsta
 	$DeathGambleMenu/Score.text = "Score: 0"
@@ -225,6 +225,9 @@ func _ready():
 	_sync_initial_data()
 	$StartMenu/Score.text="Score: "+ str(GameData.total_bank_score)
 
+func _start_menu_music():
+	GameData.play_floor_music("menu")
+
 func _sync_initial_data():
 	# 1. Sync the local dictionary levels with the loaded GameData
 	luck_data["level"] = GameData.luck_level
@@ -250,7 +253,7 @@ func _connect_samurai_signals():
 	# Look for the Samurai everywhere in the root
 	samurai = get_tree().root.find_child("Samurai", true, false)
 	if samurai:
-		print("Samurai found! Connecting signals...")
+		#print("Samurai found! Connecting signals...")
 		# Use 'disconnect' first if you want to be extra safe, 
 		# but 'is_connected' check is usually enough
 		if not samurai.health_changed.is_connected(_on_samurai_health_changed):
@@ -278,8 +281,8 @@ func _connect_samurai_signals():
 		_set_score_val(samurai.score)
 		#_set_hp_val(samurai.health)
 		_set_highscore_val(GameData.load_highscore())
-	else:
-		print("Connection Failed: Samurai not found in the current scene tree.")
+	#else:
+		#print("Connection Failed: Samurai not found in the current scene tree.")
 # --- SIGNAL CALLBACKS (From Samurai) ---
 
 func _on_samurai_get_jump_powerup(timer):
@@ -317,11 +320,11 @@ func _on_samurai_highscore_changed(new_hs):
 # --- VISUAL UPDATES ---
 # Ensure these node paths ($HUD/...) match your scene structure exactly!
 func _set_score_val(val):
-	print("Updating UI score to: ", val) # Check if this prints in the console
+	#print("Updating UI score to: ", val) # Check if this prints in the console
 	if score_label:
 		score_label.text = str(val)
-	else:
-		print("CRITICAL: ScoreLabel is NULL!")
+	#else:
+		#print("CRITICAL: ScoreLabel is NULL!")
 
 func _set_highscore_val(val):
 	if highscore_label:
@@ -332,7 +335,7 @@ func _set_hp_val(val, max_val = 100):
 		# Pirmiausia pakeičiame max_value, tik tada value!
 		health_bar.max_value = max_val
 		health_bar.value = val
-		print("UI atnaujintas: ", val, "/", max_val) # Skirta patikrai console lange
+		#print("UI atnaujintas: ", val, "/", max_val) # Skirta patikrai console lange
 # --- START MENU BUTTONS ---
 
 func _on_start_pressed():
@@ -374,7 +377,7 @@ func _on_exit_pressed():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
-		print("THE KEY IS PHYSICALLY DOWN!")
+		#print("THE KEY IS PHYSICALLY DOWN!")
 		toggle_pause()
 		
 func toggle_pause():
@@ -389,7 +392,7 @@ func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	pause_menu.visible = get_tree().paused
 	
-	print("Pause State is now: ", get_tree().paused)
+	#print("Pause State is now: ", get_tree().paused)
 	
 func _on_resume_btn_pressed() -> void:
 	# This is what happens when you click "Resume"
@@ -424,7 +427,7 @@ func _on_gamble_pressed() -> void:
 	
 	# Pick one random out of the given 18 + 2 * luck
 	var roll = outcomes.pick_random()
-	print(outcomes)
+	#print(outcomes)
 	_process_gamble_result(roll)
 	
 	# Show return button ONLY if they didn't resurrect
@@ -524,7 +527,7 @@ func buy_upgrade(data: Dictionary) -> void:
 	var cost = data["costs"][data["level"]]
 
 	if GameData.total_bank_score < cost: #Player's Money = 10000
-		print("Not enough score")
+		#print("Not enough score")
 		return
 	# Subtract cost
 	GameData.total_bank_score -= cost
@@ -628,8 +631,8 @@ func _on_return_game_pressed() -> void:
 
 	if gambler and gambler.has_method("after_interaction"):
 		gambler.after_interaction()
-	else:
-		print("Gambler not found or missing after_interaction()")
+	#else:
+		#print("Gambler not found or missing after_interaction()")
 func destroy_blackjack_deck():
 	player_hand.destroy_all_cards()
 	dealer_hand.destroy_all_cards()
@@ -878,8 +881,8 @@ func print_scores(show_dealer_full: bool):
 	else:
 		dealer_value = get_visible_hand_value(dealer_hand)
 
-	print("Player: ", player_value)
-	print("Dealer: ", dealer_value)
+	#print("Player: ", player_value)
+	#print("Dealer: ", dealer_value)
 
 
 func _on_restart_pressed():
@@ -902,7 +905,7 @@ func _on_restart_pressed():
 	score_for_gamble -= cost
 	$Gamble/showscore.text = str(score_for_gamble) # pakeisk path jei tavo label kitas
 
-	print("Restart pressed")
+	#print("Restart pressed")
 	setup_game()
 
 #Gamble node end
