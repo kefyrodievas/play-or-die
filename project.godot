@@ -24,7 +24,6 @@ LevelManager="*uid://crws3gf5pxaim"
 [display]
 
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [global_group]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cntkojaf7bkoh" path="res://assets/img/background/background_layer_1.png" id="2_trceg"]
 [ext_resource type="PackedScene" uid="uid://ce0qhlmjkphle" path="res://scenes/samurai.tscn" id="3_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://bxxewruas7fgs" path="res://scenes/door.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://cpfxfy84rdl2w" path="res://scenes/Boots.tscn" id="9_85g3d"]
 [ext_resource type="PackedScene" uid="uid://dbhqfs6ya84kl" path="res://scenes/chest.tscn" id="10_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://cpyaws6vcl5et" path="res://assets/img/background/Dungeon Tile Set_scaled_5x_pngcrushed.png" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://54py7d84kbhd" path="res://scenes/Gem.tscn" id="12_a8y0u"]
@@ -513,6 +512,3 @@ position = Vector2(0, -99)
 
 [node name="Right" type="Marker2D" parent="." unique_id=465677050]
 position = Vector2(3199, 253)
-
-[node name="Boots" parent="." unique_id=1305261216 instance=ExtResource("9_85g3d")]
-position = Vector2(107, 506)
